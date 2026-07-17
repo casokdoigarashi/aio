@@ -53,10 +53,48 @@ def check_perplexity(query: str, api_key: str) -> dict:
     return {"text": text, "citations": citations}
 
 
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
+# 優先順。キーで利用可能なものを自動選択する
+GEMINI_MODEL_CANDIDATES = [
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-1.5-flash",
+]
+_gemini_model_cache: dict[str, str] = {}
+
+
+def resolve_gemini_model(api_key: str) -> str:
+    """このAPIキーで使えるflash系モデルをListModelsから自動検出する。"""
+    if api_key in _gemini_model_cache:
+        return _gemini_model_cache[api_key]
+    resp = requests.get(
+        f"{GEMINI_BASE}/models",
+        headers={"x-goog-api-key": api_key},
+        params={"pageSize": 1000},
+        timeout=TIMEOUT,
+    )
+    resp.raise_for_status()
+    available = {
+        m["name"].removeprefix("models/")
+        for m in resp.json().get("models", [])
+        if "generateContent" in m.get("supportedGenerationMethods", [])
+    }
+    model = next(
+        (c for c in GEMINI_MODEL_CANDIDATES if c in available),
+        next((m for m in sorted(available) if "flash" in m), None),
+    )
+    if not model:
+        raise RuntimeError(f"利用可能なGeminiモデルが見つかりません: {sorted(available)[:10]}")
+    print(f"  (Geminiモデル: {model})")
+    _gemini_model_cache[api_key] = model
+    return model
+
+
 def check_gemini(query: str, api_key: str) -> dict:
+    model = resolve_gemini_model(api_key)
     resp = requests.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/"
-        "gemini-2.5-flash:generateContent",
+        f"{GEMINI_BASE}/models/{model}:generateContent",
         headers={"x-goog-api-key": api_key},
         json={
             "contents": [{"parts": [{"text": query}]}],
@@ -179,7 +217,11 @@ def main() -> None:
                 else:
                     raw = check_serpapi(query, key, own_domains)
             except Exception as exc:  # 個別失敗は記録して続行
-                print(f"  -> エラー: {exc}")
+                detail = ""
+                resp = getattr(exc, "response", None)
+                if resp is not None:
+                    detail = f" / {resp.text[:300]}"
+                print(f"  -> エラー: {exc}{detail}")
                 continue
             entry = evaluate(query_cfg, engine, raw, config)
             mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
