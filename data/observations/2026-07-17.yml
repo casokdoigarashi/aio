@@ -1,0 +1,68 @@
+# 手動観測（Google AIモードのスクリーンショットから記録）
+# スクショ保管先: https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK
+# 注: 画像の撮影日時は2026-07-15。ユーザー確認に基づき今回の観測日を2026-07-17として記録。
+date: 2026-07-17
+method: manual_screenshot
+source: "Google AIモード（手動スクリーンショット）"
+queries:
+  - query_id: q1
+    query: "神楽坂 ハウススタジオ"
+    engine: google_ai_mode
+    brand_mentioned: true
+    # featured=筆頭で紹介 / listed=リスト内で言及 / cited_only=引用リンクのみ / none=なし
+    mention_position: featured
+    mention_text: >-
+      「ナチュラル・スタイリッシュ（自然光・デザイン家具）」カテゴリの筆頭として
+      「ARIGATO Living（アリガトリビング）」を紹介。東面・南面の大きな窓から
+      日中を通して自然光が降り注ぐナチュラルモダンな最上階スタジオで、上質な無垢材の床、
+      フリッツ・ハンセンなどの北欧デザイナーズ家具、大型カウンターキッチン、
+      フィッティングルーム・控室、カメラやマイク等の無料機材貸出、神楽坂駅徒歩3分と説明している。
+    cited: true
+    cited_sources:
+      - "shootest.jp（【神楽坂】ナチュラルなハウススタジオ | ARIGATO Living）"
+    own_site_cited: false
+    related_cited: true
+    competitors_mentioned:
+      - "アン・デオール神楽坂"
+      - "坂ノ上スタジオ"
+      - "shucof神楽坂"
+    screenshot: "https://drive.google.com/file/d/1Pmq1N-JCZ08CXi5eqF5f6KuE_BnIWVaG/view"
+    notes: >-
+      引用元パネルは「26件のサイト」。表示範囲では自社公式a-ms2.comは確認できず、
+      関連ドメインのSHOOTEST掲載ページが引用元。前回と同じくカテゴリ筆頭で、
+      自然光・無垢材・北欧家具・キッチン・設備・駅距離が具体的に拾われており、
+      画面から明確な事実誤認は確認できない。回答の続きは
+      https://drive.google.com/file/d/1936cRAAYGYGiDv8zZlx-WnhQobJj-Zbh/view および
+      https://drive.google.com/file/d/10o03IQkDHXe2U1evaaPPw8r2V4H2WF2c/view 。
+  - query_id: q3
+    query: "神楽坂 スタジオ"
+    engine: google_ai_mode
+    brand_mentioned: false
+    mention_position: none
+    mention_text: ""
+    cited: true
+    cited_sources:
+      - "kagurazakastudio.com（神楽坂スタジオ）"
+      - "instabase.jp（【神楽坂駅】音楽スタジオおすすめTOP20）"
+      - "kagurazakaonlinestudio.com（神楽坂オンラインスタジオ）"
+    own_site_cited: false
+    related_cited: false
+    competitors_mentioned:
+      - "神楽坂スタジオ"
+      - "神楽坂オンラインスタジオ"
+      - "神楽坂セッションハウス"
+      - "shucof神楽坂"
+    screenshot: "https://drive.google.com/file/d/1vk43irIpe1ARRRqG9lx81oVv5YYwFsOh/view"
+    notes: >-
+      引用元パネルは「36件のサイト」。回答はフォト・動画、ダンス・演劇・フィットネス、
+      音楽・レッスンの用途別構成で、ARIGATO Livingは本文・地図・表示中の引用元に登場しない。
+      config未登録の名称として、AI回答内に「神楽坂レンタルスタジオ・アドレ」
+      「ミュージックスタジオユニバース」「WAO亭 Studio」が登場したが、いずれも
+      ダンス・音楽等の広義スタジオ枠。前回ファイルではcited=falseだったが、今回の指示に従い、
+      画面に表示された一般引用元パネルをcited=trueとして記録したため、回答変化ではなく記録基準の差。
+      同一クエリの通常検索タブ画像3枚はAI回答の判定根拠から除外。回答の続きは
+      https://drive.google.com/file/d/1ssL_F65Xw7A02fMr9erMEoeS3IvOeDPB/view 、
+      https://drive.google.com/file/d/1jt5MY8Jh5ZBwLJz8bV5ps9yKE7_AA_8v/view 、
+      https://drive.google.com/file/d/1sqVap8mhOM364jzt-QyB9MUE_vahqsmg/view および
+      https://drive.google.com/file/d/1KDd8lHs8f5ZaYuIrPjwNqPQuxUjdTezu/view 。
+      さらに、検索クエリのないMetaイベントマネージャ画面1枚が混在していたため観測対象外とした。
