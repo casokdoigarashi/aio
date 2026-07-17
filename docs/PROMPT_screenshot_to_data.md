@@ -16,6 +16,8 @@ Google検索AIモードのスクリーンショットを読み取り、観測デ
 
 - Google Driveフォルダ: https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK
   の「検索結果画面」配下にある、今回の観測日のスクリーンショット一式
+  （ファイル名は `YYYY-MM-DD_q1_01.png` 形式。日付＝観測日、q1等＝クエリID、
+  末尾番号＝同一クエリの分割枚数。同じクエリの複数枚は1つの回答としてつなげて読むこと）
 - リポジトリ: github.com/casokdoigarashi/aio（ブランチ: claude/aio-search-impact-tracking-auwbao）
 
 ### 手順

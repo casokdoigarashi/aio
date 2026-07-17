@@ -25,23 +25,21 @@ export GEMINI_API_KEY=...   # 使うキーだけ
 python scripts/auto_check.py
 ```
 
-## 2. 手動観測（Google AIモードのスクリーンショット）
+## 2. Google AIモードのスクリーンショット取得（Manusが毎週火曜10:00に自動実行）
 
-Google AIモードそのものはAPIが無いため、ここだけ手動（週1回・5〜10分）です。
+Google AIモードそのものはAPIが無いため、スクリーンショットで観測する。
+この取得作業は Manus のブラウザ自動化タスクで週次自動化済み:
 
-1. シークレットウィンドウ（ログインなし推奨。条件を毎週固定する）で
-   `config/config.yml` の各クエリを Google 検索し、**AIモード**タブを開く
-2. 回答全体をスクリーンショットして [Driveフォルダ](https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK) に
-   `YYYY-MM-DD/` サブフォルダを作って保存
-3. テンプレートを生成して記入:
+- 毎週火曜 10:00 JST に q1〜q6 を検索し、AIモードの回答を
+  [Driveフォルダ「検索結果画面」](https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK)
+  へ `YYYY-MM-DD_q1_01.png` 形式で保存（回答が長い場合は複数枚 _01, _02, …）
+- ログイン要求・CAPTCHA・AIモード未表示のクエリは「未取得」として報告される
 
-```bash
-python scripts/new_observation.py
-# → data/observations/<今日の日付>.yml が生成されるので、スクショを見ながら記入
-```
+スクショが揃ったら、**データ化**を行う（撮っただけではレポートに反映されない）:
 
-> 記入のコツ: Claude にDriveフォルダのスクショを読ませて
-> 「この観測テンプレートYAMLを埋めて」と依頼すると、OCR＋判定を自動化できます。
+- Claude に「今週のスクショをデータ化して」と依頼する、または
+  `docs/PROMPT_screenshot_to_data.md` のプロンプトを他のAIに渡す
+- 手で記入する場合は `python scripts/new_observation.py` でテンプレートを生成して記入
 
 ## 3. 施策を実施したら記録
 
