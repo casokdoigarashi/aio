@@ -126,8 +126,13 @@ def check_gemini(query: str, api_key: str) -> dict:
     text = "".join(
         p.get("text", "") for p in candidate.get("content", {}).get("parts", [])
     )
+    # 注意: web.uri はGoogleのリダイレクトURLで実ドメインが分からないため、
+    # ドメイン名が入る web.title を引用元として記録する
     chunks = candidate.get("groundingMetadata", {}).get("groundingChunks", [])
-    citations = [c.get("web", {}).get("uri", "") for c in chunks]
+    citations = [
+        c.get("web", {}).get("title") or c.get("web", {}).get("uri", "")
+        for c in chunks
+    ]
     return {"text": text, "citations": citations}
 
 
