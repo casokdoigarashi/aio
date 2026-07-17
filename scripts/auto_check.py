@@ -18,6 +18,7 @@ from __future__ import annotations
 import datetime
 import os
 import sys
+import time
 
 import requests
 import yaml
@@ -61,49 +62,63 @@ GEMINI_MODEL_CANDIDATES = [
     "gemini-2.0-flash",
     "gemini-1.5-flash",
 ]
-_gemini_model_cache: dict[str, str] = {}
+_gemini_models: list[str] | None = None  # キーで利用可能なモデル（優先順）
+_gemini_exhausted: set[str] = set()  # クォータ切れ(429)になったモデル
 
 
-def resolve_gemini_model(api_key: str) -> str:
-    """このAPIキーで使えるflash系モデルをListModelsから自動検出する。"""
-    if api_key in _gemini_model_cache:
-        return _gemini_model_cache[api_key]
-    resp = requests.get(
-        f"{GEMINI_BASE}/models",
-        headers={"x-goog-api-key": api_key},
-        params={"pageSize": 1000},
-        timeout=TIMEOUT,
-    )
-    resp.raise_for_status()
-    available = {
-        m["name"].removeprefix("models/")
-        for m in resp.json().get("models", [])
-        if "generateContent" in m.get("supportedGenerationMethods", [])
-    }
-    model = next(
-        (c for c in GEMINI_MODEL_CANDIDATES if c in available),
-        next((m for m in sorted(available) if "flash" in m), None),
-    )
-    if not model:
-        raise RuntimeError(f"利用可能なGeminiモデルが見つかりません: {sorted(available)[:10]}")
-    print(f"  (Geminiモデル: {model})")
-    _gemini_model_cache[api_key] = model
-    return model
+def gemini_model_candidates(api_key: str) -> list[str]:
+    """このAPIキーで使えるflash系モデルをListModelsから優先順で列挙する。"""
+    global _gemini_models
+    if _gemini_models is None:
+        resp = requests.get(
+            f"{GEMINI_BASE}/models",
+            headers={"x-goog-api-key": api_key},
+            params={"pageSize": 1000},
+            timeout=TIMEOUT,
+        )
+        resp.raise_for_status()
+        available = {
+            m["name"].removeprefix("models/")
+            for m in resp.json().get("models", [])
+            if "generateContent" in m.get("supportedGenerationMethods", [])
+        }
+        preferred = [c for c in GEMINI_MODEL_CANDIDATES if c in available]
+        others = sorted(
+            m for m in available
+            if "flash" in m and m not in preferred
+            and not any(x in m for x in ("image", "live", "tts", "audio", "lite"))
+        )
+        _gemini_models = preferred + others
+        print(f"  (Gemini候補モデル: {_gemini_models[:6]})")
+    return [m for m in _gemini_models if m not in _gemini_exhausted]
 
 
 def check_gemini(query: str, api_key: str) -> dict:
-    model = resolve_gemini_model(api_key)
-    resp = requests.post(
-        f"{GEMINI_BASE}/models/{model}:generateContent",
-        headers={"x-goog-api-key": api_key},
-        json={
-            "contents": [{"parts": [{"text": query}]}],
-            "tools": [{"google_search": {}}],
-        },
-        timeout=TIMEOUT,
-    )
-    resp.raise_for_status()
-    data = resp.json()
+    """429(クォータ切れ)のモデルは除外しつつ、使えるモデルで検索グラウンディング付き回答を得る。"""
+    candidates = gemini_model_candidates(api_key)
+    if not candidates:
+        raise RuntimeError("全Geminiモデルがクォータ切れ(429)です。課金設定または翌日の回復を確認してください。")
+    last_exc: Exception | None = None
+    for model in candidates:
+        resp = requests.post(
+            f"{GEMINI_BASE}/models/{model}:generateContent",
+            headers={"x-goog-api-key": api_key},
+            json={
+                "contents": [{"parts": [{"text": query}]}],
+                "tools": [{"google_search": {}}],
+            },
+            timeout=TIMEOUT,
+        )
+        if resp.status_code == 429:
+            print(f"  ({model} はクォータ切れ。次の候補を試します)")
+            _gemini_exhausted.add(model)
+            last_exc = requests.HTTPError(f"429 for {model}", response=resp)
+            continue
+        resp.raise_for_status()
+        data = resp.json()
+        break
+    else:
+        raise last_exc or RuntimeError("Gemini呼び出しに失敗しました")
     candidate = data["candidates"][0]
     text = "".join(
         p.get("text", "") for p in candidate.get("content", {}).get("parts", [])
@@ -227,6 +242,7 @@ def main() -> None:
             mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
             print(f"  -> {mark} ({entry['mention_position']})")
             entries.append(entry)
+            time.sleep(5)  # 無料枠のRPM制限対策
 
     if not entries:
         print("観測結果が1件も取得できませんでした。")
