@@ -1,0 +1,387 @@
+date: '2026-07-17'
+method: api_auto
+source: 自動観測 (gemini)
+queries:
+- query_id: q1
+  query: 神楽坂 ハウススタジオ
+  engine: gemini
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: '番出口より徒歩7分
+
+    * **おすすめの用途**: ファッション・アパレル撮影、カタログ撮影、ポートレート、ミュージックビデオ（MV）
+
+
+    ### 2. ARIGATO Living（アリガトリビング）
+
+    **北欧名作家具とたっぷりの自然光が差し込む上質ライフスタイル空間**
+
+
+    * **特徴**: 遮るも'
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ0g-KhkbKZ1X2Tj8t6zeNPq5SnlYT4mWXQNDcZ_YMhCLsVzWqCdwCZUS1B-bQyFBUa5Hyc2876qHf66-FIe8OXddEXbxw-ngEoP4QAEABcFZy45ax6k_uhVfV_xQ=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEXK1Bpbwopr4JQs8aKpbVhZX_syTxnOqFQ1DgA-t8EnmZxaAbyvFpAu4O0u1EmemR6esTEJy5gCvB8BsGvrGq-P3C4O1exkAUbj_q6e9-F
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwzatPwFxGqcuShS_bT83Ey7N55yebt6pvFjeGj5NTbxnqI2vRG4PD5MhpG_3WTdL4AvJRxMhyakHGqXXEOyHhjMrGO8i4tzo=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfR5VOAjNMUCHhHW1TL-7x4T14cAfmMyHJyoATEmo_ISxX8G_secZPurETXusgOpu41WQ8ERQSrIq51DixHgxrrPu2tUkHymOB4p4kcIiQ6NJk2qfCZuCkFUcsKeKBXpR7oytcBVuQCvMKjpZmxwHe3tlfWlr9yqfpBQ8PxcEi2E65hG42u-FXCca-MXG8AchnoDH8UfbX8RXIAwdJt06VVcj83-HlKWWEBrl0LEAIc6O4OUlDHSuX-gSvW0XXcH4Zr0olk0y5OcTh8STyo6ElmG_Tm6ekqsQqllOIo-bdxzXvTYHwiq9iT9WiyASai-nQHlFFpHNM-XVcYmTd9nw_jCYkqWCRp7iUcXHp3xpIY7o-LDNP_6JCfVZIvC4=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_w1enPbrC6zi0-sOrZdDo34Ii-G0xQ8FI9FcsPeD2kdN1VPAwZrtSWqZY5IbtRdtxr-u3fxuykx3y0UXl8zICQtWnjm7uBg_NRe2_6yfjtFwF2g08UQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUiJe0PpyyG--ePxgFNWo8LiRbhiSx33WjUyNcARBy7S8ckUQOtqzpYuRWkf6Lkr3K6SAiVLGuyJgJsPMFyXzn-aHHtbimNaR_d_4u2lQ2nm8Kt3j30OiQDqCPknhQ-tWc
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIa0Wy9rLDcGQRgUG1NF37KtHswBNRbezCkU1DiKVG5t0CNQFrrr0kPl8hRAvv6X2cGTymmti_ljAawuQ9-tgN7lzj_gL8wumu39ZLE6k5PH8uvzvHajNG-LGdJBtpLQ9VH49XbAV-DKrESYjSCVbIf6VzeD1g_GCfMVcf7Ub2qr2ZjIxc2EU0yBd8sW88YnLAVBgJpiOY
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH2tp8HeZh5M24DIZFi83C6SpamELRLouhSHJiIRSEXQlPnT5suwWNfhjVSOlsd0xtm1ut2XxH9D8iORCvvNPZ55m1gpcXXNP9gft5P-hRE4jk6pxER3u0=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGCPsAd1IM4g4djiRShKbP7yYsz2vsA7FSz29Nc9Utsm63TGEAzKO6cog90fsyLzQqk1EDjHytast3c51r8mOAmF_AHqf1TEOLTrOLOgxZ-kkJ45k=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4wMFMTJqFTE2zrfgZsvO9MuIZsNmLnesmmYri1htE1M3eNj6USA-_pRkxesVVB1ncr4h59lug28IFFP3hBu2GcXRzxzMMQWoG1UNHN8TkSNUuUw9tEYKc2XnqWLJIfelNc7wqep-1qQPYTNzE
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE96BZ30tNJ6VPVfn2NDfbwRXkp39uVqmWa3Fa7SRhU-3mgK2zOuBrbsjjLsB7xM06hSlE-sRezguhoB0Yn-el0IEyFtGnDBS6N4miGajfoIi9yrXgsdwzczVR3NUeh
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_6_8F7zRPcRtzpBkIktOkEVAoXrBicTGX5N53uqDnjQ9IxCAa0tdvicKIElcqzvVGm0-5cBmwMpvDHYM12s1bkkuEKZ_imzQgGMLGKcvaExiZLUzDWi0=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH6f1Cz-jA7B4kJXMbUuv1k2QEm_AnFwhtIgmWdCtYc5_oJS9LhxMFS6uWU9I3P3UAR2Pwos0VtCCTdFYjCpW5H3_8by7R8lVnmmoBU0P7exbBlDv7D5K41kbVy6OYrliAGFNcwCUc85I2T
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEw49lNATzIkZkIGFJ1fjxWo4tu2d0qfl9OnO0mtadFYiNAcNGbcMz1_itA6-6g83f2C6Sg14sEEN3EckpX-kkZCTbg7I2wCa0siOkD1DWowPE-qBj6PPy_nxcEYWj1fy3yOLhJYII3XjMOK-5-I3p9Xa5mY2uDiOHZHQvJAGliXaRhVx2oriLyktW_uZ6IFrhM-lAFej6W
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEb8EtAb1KVeqz7qv7WlOw1DbSEQWbiu6qHbTSAM0dZuVFD0e2R9L3QZiyqZUoIDzcV3oD_LBLJDVhTwk8RK0_ONhtnMvRtPO7MiMrZPamoG8ktjX5o3Q==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH2Y3eCCYPyZaQ_P4kVvLQqEQtoxYmSmfO7R_zfpkm-dhaw01qwnZkNYERlxUZVWoOSrXBwcuWm0BEYGiGtcp2F-0kO9KZzDWxAs7HZLcQL8oUC_UaMAdkgXL4Rig==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFcgNp_Siem7-y5qdiCm5w68dOekythUtrroobK6mnUNoka7NOIkZvCy8-T7pm29oyyNpdse2JV6WaxqIXs6DYaQ9K6aVwbuf6fvdLGeD7qLrcPzvH0tUAh
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG91WnNeCQ8wz9SnH8ZB5bjFjoD8V1ap1WGcILPNs6DF1iCWEr5c9NXP4cnkjf4agb-arOdGjjXlsxzcnWtXY_EoJ6eYYw69gX1zZIfSpFXvAtocYr0W6d4kjdrwIMxa2WW6WOTMDHd_J4wkjd-fbkFZTgHQw4WTWN3ryciN6Tv
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcx05Xdul3_dRO-9MX29pjYV9300OZ_L66lBIyIqIyMCkjfAGJy8Eh7PWWoCDIGCv-S-5qZhQ-NYIvhagiT2Q_ZGfcyvvkMgI1B9Q7CJZuWh6sZQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrGgxApfW-29gekpe28VvdJKVJtRJ1ZMW3qo3kF8Sy1tyciDE5xDPUeQGMAgglnFWA91pL4aLu5hk_FL_c5wvFyUfrIGXcNl0mtA5usQo3doEpkNIcLjR648g=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFg-WBAEnAJxLshefEbajaJCSh0M2yWWJYDNnmJuvWRslPqCX_XaWVpAYZUG1sF0j66Wayinl2cBqp6l7Ywxj-LDYgMaa_k1m7AR5P7ocFdXrBCRO6-hBkeWyT2szGHYoMJg-8SvBgLWR3WITNO1jaq6w==
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - shucof神楽坂
+  answer_text: "神楽坂・飯田橋・江戸川橋エリアは、都心でありながら落ち着いた街並みや歴史的な趣が残り、おしゃれで質の高い**ハウススタジオ（レンタル撮影スタジオ）**が多く集まる人気のエリアです。\n\
+    \nポートレート撮影、アパレルECサイト、インタビュー収録、商品撮影、ライフスタイル動画の制作などに適した、神楽坂周辺の代表的なおすすめハウススタジオをスタイル別にご紹介します。\n\n---\n\
+    \n### 1. shucof（シュコフ）神楽坂\n**モルタルとホワイトの無機質な空間 ＆ 都心を見渡せるルーフトップ**\n\n* **特徴**: モルタル床と白壁を基調とした、広さ184㎡の開放的なモダンスタジオです。古材をあしらった雰囲気のある建具や多彩なプロップ（撮影小物）が用意されており、配置を変えることで「クールな工業風」から「温かみのあるインテリア」まで柔軟に演出できます。さらに、**都心の空抜け撮影ができる屋上（ルーフトップ）**も合わせて利用できるのが大きな魅力です。\n\
+    * **アクセス**: 「神楽坂駅」1番出口より徒歩7分 / 「江戸川橋駅」4番出口より徒歩7分\n* **おすすめの用途**: ファッション・アパレル撮影、カタログ撮影、ポートレート、ミュージックビデオ（MV）\n\
+    \n### 2. ARIGATO Living（アリガトリビング）\n**北欧名作家具とたっぷりの自然光が差し込む上質ライフスタイル空間**\n\n* **特徴**: 遮るもののない6階に位置し、東面と南面の大きな窓から降り注ぐ**豊富で安定した自然光**が自慢のスタジオです。無垢のウッドフローリングに、フリット・ハンセンなどの北欧名作デザイナーズ家具、観葉植物、こだわりの雑貨が並びます。カウンターキッチンも完備されており、料理シーンや朝のモーニングルティーンの撮影にも最適です。\n\
+    * **アクセス**: 「神楽坂駅」より徒歩3分\n* **おすすめの用途**: インタビュー・対談動画、ライフスタイル誌・Web撮影、コスメ等の物撮り、料理撮影\n\n### 3. 神楽坂スタジオ\n\
+    **多様な表情を持つ壁面と、高い天井が魅力のマルチスタジオ**\n\n* **特徴**: 天井高3.3m、約80㎡のゆとりある空間を誇るスタジオです。**「漆喰壁」「コンクリート壁」「アンティークレンガ壁」「外国風の壁」**など、表情豊かな異なるテイストの壁面が揃っており、1つのスタジオ内で何パターンものシチュエーションを撮影できます。床面もリバーシブル仕様になっており、背景づくりにこだわりたい現場に最適です。\n\
+    * **アクセス**: 「神楽坂駅」より徒歩5分\n* **おすすめの用途**: ポートレート、ECサイトの着用モデル撮影、インタビュー、YouTubeやダンス動画の収録\n\n### 4. BASK\
+    \ Edogawabashi（バスク エドガワバシ）\n**インテリア好きに響く、北欧モダン＆移動式キッチン付きスタジオ**\n\n* **特徴**: 神楽坂から少し下った江戸川橋エリア（神田川沿い）に位置する、130㎡のスタジオです。大きな南向きの窓から1日中明るい光が差し込みます。グレーやブラックのアクセントを取り入れた北欧家具スタイリングが非常におしゃれです。ベッド、**位置を自由に移動できるキャスター付きのキッチンと洗面台**が備わっており、「一人暮らし・二人暮らしのリアルな生活シーン」の撮影がスムーズに行えます。\n\
+    * **アクセス**: 「江戸川橋駅」より徒歩4分（神楽坂からも徒歩圏内）\n* **おすすめの用途**: CM・Webドラマ撮影、カタログ・雑誌のライフスタイルカット、商品使用シーン撮影\n\n\
+    ### 5. 古民家~Kori~（こり）\n**和モダンな趣。金屏風や竹垣のある一棟貸し古民家スタジオ**\n\n* **特徴**: 神楽坂らしい情緒を求めるならここがおすすめ。伝統的な和の要素とモダンな洋室が融合した一棟貸しハウススタジオです。金屏風や竹垣を設えた本格的な和室に加え、大きな姿見のある洋風な空間も備えており、神楽坂の静かで和モダンな世界観を表現するのに最適です。\n\
+    * **アクセス**: 「神楽坂駅」より徒歩1分\n* **おすすめの用途**: 着物・浴衣などの和装撮影、伝統的なプロモーション映像、レトロ・モダンテイストのポートレート\n\n---\n\n\
+    ### \U0001F4A1 神楽坂エリアでスタジオを選ぶ際のポイント\n\n1. **自然光の入り方**: \n   ビルの階数や窓の向きによって光の差し込む時間帯が変わります。明るく透明感のある絵を作りたい場合は、南向き・東向きに大きな窓がある\
+    \ **ARIGATO Living** や **BASK Edogawabashi** のような高層階・日当たりの良いスタジオが適しています。\n2. **ムービー（同録・音声収録）の可否**:\n\
+    \   スタジオによっては、周囲の環境音や上の階の音の兼ね合いで「スチール撮影のみ可能」「同録は要相談（または完全遮音ではない）」という規約が設けられている場合があります。動画で音声までしっかりと収録する場合は、事前に「完全同録可能か」をスタジオ側に確認しておくと安心です。\n\
+    3. **搬入経路の確認**:\n   神楽坂は「坂の上」や「路地の奥」に位置するスタジオもあります。機材が多い場合、エレベーターの有無、機材搬入用の駐車スペース（または近隣コインパーキングの空き状況）を事前に確認することをおすすめします。"
+  notes: ''
+- query_id: q2
+  query: 神楽坂 撮影スタジオ
+  engine: gemini
+  brand_mentioned: true
+  mention_position: listed
+  mention_text: "「江戸川橋駅」より徒歩7分\n* **おすすめ用途:** ファッション・アパレルのルックブック、インタビュー・対談、商品撮影、展示会\n\n#### ■ ARIGATO\
+    \ Living 神楽坂\n* **特徴:** \n  南・東の2面にある大きな窓から安定した自然光が差し込む、明るく開放感のあるハウススタジ"
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5-XZvE3WNalb0KpzhmIykigk3PwNWHGPR15HzXjcEEKacLIXMGahDiYeGHEvV7r2Tn9GfR0zemJgNMm--VMeHP_OdO326kp8=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkB_we7PLEhjgDBYBkDEajo-2Or8O86nOnHW6D2SPp2BKH6OUY37bhcmzUouxvU0w2CXQ5dX0PzbR71u_hncFfbOfqnzjjaRJKOWhdn7s9ueT1MN55CAKXC-GapmlzPF6vhI7cUuSKI_Uc2IAEiiKyz2bbDqlTe9CgpJrA0iZOyablnTedAeodCMdf6qdXHUK3sOd_GTJXrV-hRg4Bp99AdT1qlRPyq9jZeV4ik8KUVKsAEWtTuc0MSY9ocavo28IBch_BuT2cGZRh9IdW1dB8KUwuOPCSLs6J9IiGmt4FIdmDecK04LeqQdWRRPcgLOlsfo2AiuLhmRDeY_kYuvVvopyYroBTUlFJRIZnABHC4Y0NWtx--ARE_nzdGFU=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCkK7N8icuVgyRuo8lrNbnJ3Px4WCSMF4mgePtPjSVwx29n3RMcGVO2UNY9ZJUHKVPsJtEeFdI14JAUuc9LJ26ja774ZdQJ1_lOcM0bHdDenm_MEug8laQ5m7aFWGQznE=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHS2bByg0W66JNDpuKlPG_TmDwS-_dA4wWL-sDnL-3EhFZxS5xxfACWXZBCsRcG0DtZTJcOIaq4XugusdnaDsjJ-kQmgfFE41PZG8YHZE-nr0Vnl0v-HleZWaLcNNbB
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE1I1VwwelwDJiG7dRPsIznlKtcsjbY16jRP0L8KhJXFz9Z3J5t_QupxTF0tqk7ibYmR3W6zwBJlxZjPhjt20OMzqObkhI3E9EKgr046xF6kMYGAn-tIIi9KgcEY1E=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCkMwcVb9Q5rxhnwfqPzwqkfXDkIEfBVIOHdgv2qcNEg1UhXZ0j3t4deD-odcZ6sEU6EHonvbX6jD0oB0fcQULpYITsu1T7Bdz2ofhoj65Z-VI8w==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaxK4nVuBWHqVYFKJ4NV6O8rAy0JILKRnvAP09w6jow2biwAHuqOi-NCmSfJTGYdlB63kpr0T_BBpbHBXHUC2k9Svb6nIsEvRskaPiCxcrOl6vmTXCX_O2eeq6aRbmE3MLt5k4fUa3vmOanY8=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHvIKpVcCsC8F_CyrElakiUCXsr2V25QNeyhs9zVXKzOzkCA08yAmEwHUq9VuJHGEKned8_CMG8MzWiL-kDyAxRoHrg2UN6ZpazEr_t-52DyAc-sCnWXWhC7FDJb4W7200b1pt8eXO63aIBBER0f41YWOKOreVpbP_IJHSmHe1PyEdgB9sYiIQzTR1wNvSJnyYm34Q0CpI=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwQzfPZMR-DHTRqD0TCHlVCQUz651RlH_quQxVUMMaU7E9XsNKAB8pABoNL2eEfM3mi6_-OTd3a_z2q70GZta9HyQzt5XSQ2s-DbD716I4ByS0rY4agA==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDamKvbxJsU7mi9qqIef1UidbehzO6K2gJU8U5tOLrRLzwMUijDzfnBwpTHyqzmarhuAMp3sgMIk97yzPu2xR2Q0cbDuwfniMN7tnrIvwbcyL7OtU0
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7CEmlvne2LO-eAwaj9KnEHm_r83K7dMTEhEMIXssi1zjoOe2HkCJ9JOvjs_KTU8qlLIlMGij8V9mmlFptWjALzopx_tUgGF0FXRKYEzxiJ3F1b2DK
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmxs5GdT-M74RkxbyEPIqjiER5mjZzWWe2kW79RjRv23tNN1Oudyj2i7nf-z1K68e365TuEJN2NijVPL5OXsfL13Vh1AdRTtE5lPKf6UQxXqQbOiqaD3PJhmne7MoN5OwrV95GfY3cG4c=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEu3sO9P7_xEStl9tfx6MMQd6RovgwTOcSSsOCYRw4wWMcaJbMKxHEmHyp1rKuqnEDCmPFDIDf565GzdRJmrbQH7xXovqvTuqFDNxb0YqS0DWBC198jgsJXlAzmV84=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaykjfWsrv8_k0TDWU37CBnMAk2UdGVEMYxauPX5-axeVikKPvWJWG0cyB9dTw3IHVx0zgg10Qa-CVjIiPXctvy_bDl0u1gjkmzdgmKTvV_GVOuo3prRh9nQSCxVAUd2karA7m3MqJR1s=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXrPgZamKAmt3_I942HZqa92n_bx88TZ1ySLphxicw9UP4H77EJczkff78tiurJV_pHGc8mcza8bHP9tpOv6chUYgNI8wl7kepvPvEkrmcF75jJKG5bwdLkTw9d0U3sA==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE20bPW56qt-Zf_qnHoPNXANoHAjQl5YFSM2CRS7BEBXXPfWE8PsSiKK6F0lZEoEL3cpwdl5QGBbfzylo0pHLkOCOEMFs6AUX3nlEZIlTLsWohmjAmt9mZxTjf5pMkD
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEm0jUNdedrK9MdQMm8zAp0-gdxBZSX_c79I1fpsGZpDOTBhNrRqL3r0wpLfjqC3Hd7Ry7ND9t4TDaYiUDTfghoFLyOhILhTtVKgin6TqedCj5MeXqY70m2izoobZOyJh3H
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQSX0-LFmbAmMhaP0gnbfaeISpinjXZ0hx8STL9nZgqepBvh_NP0WUlfuzKTI7wRKLRSZ1GchN4iQSMfhdTA5b6wla8tGfrYE76tPCnw==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDOWLbSoGo1-Rg2VvoNkenND07WTOdAc1yCaVw_7LQCh5ydvzfEQ-MVqYdKkuzwHCtlIPfM1ZLCxIYgap3wYZx3KnOLpiHjcGjt67VzjXsjVi0
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQGAo0b5AeIURTneOrC4xy54EnzJgY9SBr0vSxa_FYlmqvHYBHaJI58jOAHNO5suw8OYsVM5xaoq7Su9E0KJobjj_ld_I0EnpwX5es-eBToz6tTevDR7mh4Gl4mORpwqjpsQfCH6_0BmM=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFt1gJ5N433WFVzMPHzeyDkWyBpHqBocEwl7afexT_iyVL7naBg9pKvSW0zzOMvGQh-NM39iX0ZwEpChnddumdk7_eZLQhp6gL7ACu9oaRferjwA==
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - shucof神楽坂
+  answer_text: "神楽坂エリア（神楽坂・牛込神楽坂・江戸川橋周辺）には、おしゃれな街並みにふさわしい**自然光が入るハウススタジオ**から、物撮りや宣材写真に適した**白ホリスタジオ**、さらにはクリエイター向けの**多目的スタジオ**まで、バリエーション豊かな撮影スタジオが揃っています。\n\
+    \n用途に合わせて選びやすいよう、特徴別に厳選したおすすめの撮影スタジオをご紹介します。\n\n---\n\n### 1. 自然光・ハウススタジオ（ファッション・ブランドカタログ・対談に）\n\n\
+    #### ■ shucof（シュコフ）神楽坂\n* **特徴:** \n  184㎡の広々とした空間に、モルタルとホワイトを基調とした無機質なエリアと、古材やアンティークガラスの建具、漆喰壁を配した温かみのあるエリアが融合した人気のハウススタジオです。さらに、**都心の景色を望めるビル屋上（ルーフトップ）**での屋外ロケも同時に行えるため、非常に撮影効率が高いのが魅力です。\n\
+    * **アクセス:** 東京メトロ「神楽坂駅」1番出口より徒歩7分 / 「江戸川橋駅」より徒歩7分\n* **おすすめ用途:** ファッション・アパレルのルックブック、インタビュー・対談、商品撮影、展示会\n\
+    \n#### ■ ARIGATO Living 神楽坂\n* **特徴:** \n  南・東の2面にある大きな窓から安定した自然光が差し込む、明るく開放感のあるハウススタジオです。無垢材のフローリングに、北欧のデザイナーズ家具（フリッツ・ハンセンなど）やおしゃれなインテリア雑貨が常備されています。カウンターキッチンもあり、生活シーンの撮影に最適です。また、同ビル7Fの別運営スタジオ「swamp\
+    \ gallery 神楽坂」とセットで借りるプランもあります。\n* **アクセス:** 東京メトロ東西線「神楽坂駅」より徒歩3分\n* **おすすめ用途:** ライフスタイル撮影、レシピ・料理撮影、インタビュー、WEB動画\n\
+    \n---\n\n### 2. 白ホリ・宣材写真・コスプレ・物撮りスタジオ（背景作り込みやポートレートに）\n\n#### ■ 神楽坂スタジオ\n* **特徴:** \n  天井高3.3m、広さ80㎡の使い勝手の良い定番ハウススタジオです。自然光が入る白壁のほか、コンクリート壁、漆喰壁、バックペーパー（背景紙）での撮影も可能で、床もリバーシブル仕様になっています。無料の撮影機材も豊富に用意されており、都心でありながら比較的リーズナブルな価格設定も魅力です。\n\
+    * **アクセス:** 東西線「神楽坂駅」2番出口より徒歩3分 / 大江戸線「牛込神楽坂駅」より徒歩5分\n* **おすすめ用途:** ポートレート、宣材写真、アパレルスチール撮影、商品・物撮り\n\
+    \n#### ■ 撮影スタジオPico神楽坂\n* **特徴:** \n  コンパクトながら、本格的な**4面Rホリゾント（白ホリ）**を備えた白基調の撮影スタジオです。高性能なARRIなどの照明機材が格安で利用でき、ライティングにこだわりたいスチール・動画撮影に向いています。\n\
+    * **アクセス:** 東西線「神楽坂駅」より徒歩5分 / 有楽町線「江戸川橋駅」より徒歩7分\n* **おすすめ用途:** ECサイトの商品撮影、コスプレ撮影、モデル・アイドルのポートレート、宣材写真\n\
+    \n---\n\n### 3. 多目的・クリエイター向けスタジオ（動画配信・稽古・収録に）\n\n#### ■ アプレ神楽坂スタジオ\n* **特徴:** \n  俳優マネジメント会社が運営する、稽古・公演・ワークショップ・撮影に対応した複合型スタジオです。2Fのスタジオスペースは白を基調として天井高4.6mの抜け感があり、1Fにはプロ仕様のメイクミラーを完備したホテルライクな控室（メイクルーム）を備えています。直予約ができるため手数料がかからず、適格請求書（インボイス）にも対応しています。\n\
+    * **アクセス:** 大江戸線「牛込神楽坂駅」より徒歩6分 / 都営新宿線・東京メトロ各線が利用可能\n* **おすすめ用途:** オーディション映像・演技の撮影、動画配信、ワークショップを兼ねたイベント、芝居の稽古\n\
+    \n---\n\n### スタジオ選びのポイント\n* **「自然光」や「おしゃれなインテリア」を重視する場合：** **shucof** や **ARIGATO Living** が一押しです。\n\
+    * **「機材の充実度」や「コストパフォーマンス」を重視する場合：** **神楽坂スタジオ** や **Pico神楽坂** が使いやすくおすすめです。\n* **「動画の同録（音声収録）」や「大人数での控室利用」を重視する場合：**\
+    \ **アプレ神楽坂スタジオ** など防音性や導線、控室がしっかり確保されているスタジオを検討すると安心です。"
+  notes: ''
+- query_id: q3
+  query: 神楽坂 スタジオ
+  engine: gemini
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-sm-cwvuy_7qS1fWWMaiHqGdF2eOYyPNscRDZB8StvdheYjQLNIJWKvW8GBw4Kkug_w24W51lYmz8RCazGnxQ3BcL_-KkL6OAkkhILDS5uht6WQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkWMX8d_BEjuANMDcRhZvJWwvKiQQp43gROHKRXlF04J_m3Q8oxraDHUP5yLb6CyrYyRJP97kJlDxZCn3FflFihlDHudWv7f6RM3m91VKPpBquJbIGXIwFvY9kb07wLs1NOoF-dFtIBdVX
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHpSvwXLJqG50AX7oJlEIl2BmtfoqlemanXeZdr-WM2XH24Ki_Ab-Zo3jvaXUD_nyu73QET93TtW9gtIXtBGnTrZywai3_taOXQxyW7cQQRdB6dmTJMb85XXhqw5QtaobLqtihPDkgRJ-OdTQ0xUk2CUrf5CerMRkYpU8wvm-M6PRh-CNcH_pNHYBOZwN56MPLDeVvkUTwJ
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAxYl5B7zCzYyWAKnDsF-W4RKbBOZLdFlejIDIaogH5tI7Q1KbjedXXBNTS2p45rEsk7QiVc7-HvRt2EsaQR5EOHzDKMQFnJduS6UQLzd_2bi675fwYg==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJY6I8zQd5m0C_Zmxh35MONwUGJokUV_yZUc7qSunKeOrduNIHL8KLv8qzqBDmscCeLFMNo-8ujkMHceaFHEvTnzIRlFBD2Rc=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNppwji2KDVAaXVqOlTIaFz0iJlQ1lwa-V946iX7cXA1QFXSChSHaODtUmU-TvWLU8bSO-uBftAQ9WKGrGPrkdkKFOVMECCMLcuLahGwRbELVip2MVEnwlVg==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjr_N-gPZ6_d_zhHshKIkD0M89np2PkryK_yTY5GHrAY-Dp-BEQBf7dSrFN7cahBj4yTsbzt29X3gWZDzhF4pk1BgrJdFQqZDNc12-x37X49OsocdQ6bcc9hEW6U9l
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFi45CPRr7AZUXSvXrJ-Vthv0Ph62EADeKyedvzXzhQxuxrxXkesrxA8Mw-55GDpKLuUrfOvUQwWue94ps10FBPuIqAlLgOx4vdZ64si3rL0g==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_RmZnAQ_8k_t7Lyk2BR4JGBJTIok4rXNoN4mcEuZmvq-5Oollj1TjhD0cC1s6xYwE6jeJxsCPalWMuASza5nSAVY5-LPDg-Hbax-YLfLEZAGu1v48qeoqeV0vlvdoCCyVv1Tdo0wJpRZBL71OfSs9bfmNxzaO9lSug7tifW2fRbM=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9uYdEVemDBmBGf_Hcak78rwuwDU5rbF-PrmWcmgHCjZpPUpDU9TmWXmaynfun_SE3ZMvAhEwvXbZLvPOorI3l_aOb6qqKXbj4BX_GjJOCfVejtc5OwMkjMXw=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIrmCIpm3Pjmo3uFJvbTOHMVChqKy4BpeDaBbGwrdALUHRUBGkWSfnBSH73SJFJUYKV7aG7FyUdgI59qpPdI0Suu89LOIhrI9MIrSyK7MA_5LhNb0VI8g3wwxGo-SDwzwX3SrJp_s=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFksCbf3mQo_sjd1jawoSUPnCJ5mWgXCLBo20rFOvA4xNThvIhyXCRRV-HAFzosJ3XPEOBUWGBbnIFbYx0hKBxnYp1sb3WJehM323MAaOTvsRF4cNx-AL2k82_Z4D6HjhrWPToZzxaRNII=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8ecURT5NwJ6Sd7qfFyFQe3Wq-DsMfN0y-yW1d5QdPwnE6Wla55AMJ3KSOlfj1FRcT2MaLYMb54VyxOxKfmwTqmMvcu6maypfUhftEdTKWyR6m
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDU-ZezGcpdxiHg4WCjHHf5hVg0xsf1uED_unjgpXysU8axeLh1ocpjnFUX8PsdiyfS5G05SOwGyPkuN5tIUZYQkp4SriHDVAl9yvARJL4yQxIsyiQC3FgAwm8rxd9Gd8sNao2xudg
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPM0zDWW3PfgqmAqBrA-Q09fJKOKTagOIhA4-0I-U3dhGukHzq_a7nTJFaxmv2h_0SmsZ06Z6UI91VglFllj7l69RSg3l8MGMd7kAvlQpO9IEU_lvoWPEXIYd_RvNhbA==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAfEjMjkKJp820vajT96xOW4b_0DkOCjiLvZgk-NPbdRwNDUow3rdSXm6YTMYDh2YafypEl9j15sQtU5l94phAzYGhv-KrvBDzXbmurF7ZSeRXA0D9eb4qntQBUQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3RAFYJcdWX8NfQoZ5BB-FQUTLUHcFwzf9cTfanAA7ll97vMjkfwfon3OabdmmQ18aFFBOZM0CvpU3yKEvmd0IsFWBogRxlinVKoaSJTQODMEI
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9wD9CDGdwhY3vQCEnaX4G9915DmfpQo5RDJHBwWGnWjLt7Z96CcMbCUFm4BSPO4lr9LF3vc7_4pUuyALcZklBXZD9VnDU0_mjyTSFPiwMgdzr7Dl6HtADBzs=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFD_qx8ssDK8xIg1l-EUfuCbJa9Fi2FbG1hUCsgQ_8nyGgw7r-G-RMKDRzzujN7epV7imK3cx3uPi66EjOU6S_1UyoYnH8vOBnL5H36ZdLgV50lZQscclQTP_A=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEtegIkEoZMo5grNjC478bcOy_DrMk6nzdL3N3auvV6R9oDpRo-424GB5qsqun-YSjgakZ79fDDoT06MU-my82S4EoizKJyv27n-XLKJerTKF3E31HwSA==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQ7Lk9ZKZIxRP68srAATI2F2mjthyJp6806TsajMC4orI_ablMN3dwczeRcNYdAEWscSC_MZLv2qUS3F2IhdNrmOQ-p0HH_r378zyGMwr1
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHOTruZeuf2Ktk3a59BMaRnKeRSM_-8nw18939R4-YZQ8Q06RofGPMPqdhSPZkTelVsx5O_WZW75Mnj4pLFC3rqGjh0BuTzBu2hHUw4bbZH_apc98_FFDdaR8mIQAqQhj99a7BuiP7j-g==
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - shucof神楽坂
+  - 神楽坂オンラインスタジオ
+  - 神楽坂セッションハウス
+  answer_text: "神楽坂エリアには、さまざまな用途に対応した「スタジオ」が数多く存在します。目的別に代表的なスタジオをまとめましたので、用途に合わせて参考にしてください。\n\n---\n\n\
+    ### 1. 撮影・フォト・動画配信スタジオ\nスチール撮影、商品撮影、動画収録、ライブ配信などに利用できるスタジオです。\n\n*   **神楽坂スタジオ**\n    *   **特徴**:\
+    \ 天井高3.3m、広さ80㎡の広々としたおしゃれなハウススタジオです。アンティーク調の家具や漆喰壁、コンクリート壁、レンガ壁など多彩な背景があり、自然光も入ります。ファッション撮影、インタビュー収録、YouTube撮影などに人気です。\n\
+    \    *   **アクセス**: 東西線「神楽坂駅」より徒歩5分。\n*   **shucof（シュコフ）**\n    *   **特徴**: モルタルと白を基調とした、モダンで無機質な空間が広がるフォトスタジオです。古材を使用した建具や多様なプロップ（小道具）に加え、ルーフトップでの開放的な撮影も可能です。\n\
+    \    *   **アクセス**: 神楽坂エリア。\n*   **神楽坂オンラインスタジオ**\n    *   **特徴**: LEDディスプレイや最新のXR（バーチャルプロダクション）技術を導入した配信・収録特化型スタジオです。背景映像をリアルタイムで変更できるため、高品質なオンラインイベントや番組制作が可能です。\n\
+    \    *   **アクセス**: 飯田橋駅・神楽坂駅から徒歩5分。\n*   **撮影スタジオPico神楽坂**\n    *   **特徴**: 4面Rホリゾント（白ホリ）を完備した本格的なスタジオで、ポートレートや商品撮影、動画撮影に最適です。\n\
+    \n---\n\n### 2. ダンス・演劇・マルチレンタルスタジオ\nダンスの個人練習やレッスン、演劇・バレエの稽古などに使えるスタジオです。\n\n*   **神楽坂セッションハウス**\n\
+    \    *   **特徴**: コンテンポラリーダンスの聖地として知られる老舗スタジオです。平日はバレエやダンスのオープンクラスが開講され、週末はダンス・演劇の公演が行われる小劇場・ギャラリーとして機能しています。\n\
+    \    *   **アクセス**: 東西線「神楽坂駅」徒歩すぐ。\n*   **カグラハウス B1スタジオ**\n    *   **特徴**: 広さ70㎡、衝撃を吸収する「桜材」を使用した足に優しい床が特徴のレンタルスタジオです。大型鏡や音響設備があり、社交ダンス、バレエ、ピラティス、演劇ワークショップなどに利用されています。\n\
+    \    *   **アクセス**: 東西線「神楽坂駅」徒歩3分、大江戸線「牛込神楽坂駅」徒歩5分。\n*   **神楽坂レンタルスタジオ・アドレ**\n    *   **特徴**: 壁一面に鏡が設置された、24時間利用可能な格安レンタルスタジオです。少人数でのダンス練習やヨガ、撮影などに便利です。\n\
+    \    *   **アクセス**: 大江戸線「牛込神楽坂駅」徒歩1分。\n\n---\n\n### 3. ヨガ・ピラティススタジオ\n神楽坂周辺はヨガやピラティスのスタジオも激戦区です。\n\n\
+    *   **ホットヨガスタジオ CALDO（カルド）神楽坂**\n    *   **特徴**: 神楽坂通りの中心（1Fが有名パン屋のPAUL）にある大型ホットヨガスタジオです。予約不要で通える気軽さや、施設が広く初心者向けのレッスンが豊富なのが特徴です。\n\
+    \    *   **アクセス**: 東西線「神楽坂駅」1a出口から徒歩すぐ。\n*   **YARD（ヤード）神楽坂スタジオ**\n    *   **特徴**: ヨガ・ピラティスの専門スタジオです。大きな窓から自然光が差し込む明るくスタイリッシュな空間で、初心者向けクラスも充実しています。\n\
+    \    *   **アクセス**: 神楽坂駅からアクセス良好。\n*   **神楽坂ヨガ (Kagurazaka Yoga)**\n    *   **特徴**: 入会金や月会費がなく、1回（60分）ごとに料金を支払う都度払い制（ドロップイン）の少人数ヨガスタジオです。自分のペースで気軽に通いたい方に選ばれています。\n\
+    \    *   **アクセス**: 東西線「神楽坂駅」徒歩3分。\n\n---\n\n### 4. 音楽・レコーディングスタジオ\nバンド練習や個人での楽器練習、レコーディング用のスタジオです。\n\
+    \n*   **WAO亭 Studio**\n    *   **特徴**: リハーサル（最大ビッグバンドも収容可能）やハイエンドなレコーディング、動画撮影、生配信ができる本格的なスタジオです。\n\
+    \    *   **アクセス**: 神楽坂エリア。\n*   **ミュージックスタジオユニバース**\n    *   **特徴**: 音楽教室が併設されたミュージックスタジオで、ピアノやボーカル、各種楽器の個人練習やレコーディングスタジオとしてレンタル利用が可能です。\n\
+    *   **ケイコバ音楽スタジオ（飯田橋）**\n    *   **特徴**: 24時間利用可能な防音音楽スタジオです。グランドピアノを完備しており、月額定額プランや時間貸しプランなどがあり、じっくり個人練習を行いたい方に最適です。\n\
+    \n---\n\nもし特定の目的（例：「ポートレートを撮るための自然光スタジオを探している」「深夜にダンス練習ができる場所が知りたい」など）がございましたら、さらに絞り込んでご提案いたしますので、お気軽にお申し付けください！"
+  notes: ''
+- query_id: q4
+  query: 東京 ハウススタジオ 自然光
+  engine: gemini
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEN7923yLUE5qUpyl3TFUzOyU4iXXVZYwc_TGPkYdHh2XH2mwF1npIvw2Mjf5to_kFmH6b6ldQUScG1k3OsYBgGFvdjBi_FCiZy-NzhA96puZU6N7N8Lyiz
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFI_Sd9PdFCUVAgfv5cDGefFOO7KwmP9-HzG0WfOAlV59gxn8EdbAmx2GRxuDXpylkZ6h8_lrMvv7r0VzzYSZGMCsiCv3b51q6K3a5WsBshG9Z3dx-HXwESRZr_1JSRhg==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFq3m4VWX502hAaZekixw34jLOaPMuExVZIE0G7QUAtCSXiw2dlMP2jZR2m3vtrnxl4B7y4Gf5vUc07hw8_St8mjISDhmM8bZHGCKdknMfD3Gz4sAK3gRtKBVFg
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGeGRlvajxsGKzmd0H3gGP9EYTfpqzT45bIiryUJCjbBAA7c2PbC2jWwHOXvtPkLfxky0glI03yOfoI2ygoN2yCFWI620wayJ23pkMPB6sdkdm76yO5oOfBmh38kbGyQJwJl7bfBA==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHk-uOu3TESyWzwHB-ZioQ6K7woFeBi4S7IPWOrk1f7lT0Dj6T3SZ-cb7_PIelFLbAV6NgwWMmEAhilAMGkGAPf3pqNvMVyJ9OPvCDdB40fU-KtvGVfI_zZSbP4BB5fHXF86j-dAuulNJX2V_R50Z-Bm2fHB-WhVd-NvtYqdT0VT2quz8diu_CBGQZqGddHvYHB1-vDyCxdrMfxyXZ7sL_7nBl8Q9AW3w58cKmF4uD8xAr7m-MXIPrOH19ANA7Ho0EtBq7L0iQe9Rn7zr6ZOruhOLyXIXTR_aJQz5i1EumO
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXWox3EnfvGzjwpCE6DcXtTSqhIPFYi8iQbpb5h4OzwftJh6JrvlsIQo1EWSMAYIpkR2Rk0eq9kEohXb7qBArF6OfQIO_hv7FMVnN3tjHjFPbGSteuuRe4GGkG7Ywih6iQ1r0=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHyIUQ4wHgOJgg1PNcMVD2kMH7N6SQf1sjauJIl_IHy26FGD3z4T0uZaAo79Wv4C6pdDr2AWic77zSsjV4VHuCN0WLYiLEQ_THVZwBQV2UuPqz-G4TwgCBztyhbgFKuA6aNZ4QDuskQvXIl_A==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQES2nmruxyehECMwuWOgDVYrVietnjB3ubgkLxpJGccTw6dTw9xoLL47JikVfIlN8Lqgx5PlaKrGSFWri-Zd_RfuUyzjnIn-zxyjB9G4ESGctxncC4ud0-sAJgWfg0ga_BvRG5s75ffE-BKvrouFVkn
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjyZcKIGoadxLf7XllfKiB7v0BL6CWcitxqr0zm--A5zl_ZTLLwfMxpqDEEfuC3GmtTz-byxL7_PAIeWpF6J_KbqMC3Lc4oltzoneZsxUuYcN9C9o_TxjvufEjNc0jzf1SYCHx0K-gR5UhZ_DRAo1F
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: "東京都内で自然光（ナチュラルライト）が美しく入るハウススタジオは、ポートレート、アパレル（ファッション）撮影、ライフスタイルや家族の日常シーン、対談・インタビュー動画など、幅広い用途で非常に人気があります。\n\
+    \n本記事では、**「テイスト別の厳選おすすめスタジオ」**と、都内で自然光スタジオを予約する際の**「選び方のコツ・注意点」**をわかりやすくまとめました。\n\n---\n\n### 1. 【テイスト別】都内でおすすめの自然光ハウススタジオ\n\
+    \n#### ① 【白基調・明るく開放的】アパレルやビューティー撮影に\nシンプルで洗練された白い空間に、大きな窓からたっぷりと光が降り注ぐスタジオです。\n\n*   **表参道・青山 ART\
+    \ WORKS（渋谷区神宮前）**\n    *   **特徴**: 「SKY」と「WHITE」の2つのスタジオがあります。特に「WHITE」は南一面7.6mの大きな窓があり、窓の外には約6000坪の緑の森が広がる開放的な空間です。天窓（トップライト）もあり、終日明るく、美しい光と影のグラデーションを作ることができます。\n\
+    \    *   **最寄駅**: 明治神宮前駅、表参道駅\n*   **GO-SEES PREMIER（渋谷区恵比寿南）**\n    *   **特徴**: 大型ホリゾント（白壁）でありながら、巨大な窓から豊かな自然光が差し込むハイブリッドスタジオ。自然光を活かしたハイクオリティな広告・アパレルスチール撮影に最適です。\n\
+    \    *   **最寄駅**: 恵比寿駅\n\n#### ② 【一軒家・ライフスタイル】生活シーンやインタビュー、家族設定に\nキッチンやリビング、庭、寝室などがあり、自然な「暮らしの風景」を演出できるスタジオです。\n\
+    \n*   **Haku Studio / THE HOUSE（世田谷区下馬）**\n    *   **特徴**: 芝生の庭に面した南向きの大きな窓があり、1日を通して柔らかく上品な光が入ります。2階の窓は美術館のように美しく切り取られており、シンプルながら温かみのあるモダンな写真が撮影できます。\n\
+    \    *   **最寄駅**: 学芸大学駅、三軒茶屋駅\n*   **ヒカリノイエ目黒（目黒区）**\n    *   **特徴**: 3面採光で自然光がたっぷり入る4LDKの戸建てスタジオ。広々としたLDKを中心に、寝室や書斎、子供部屋など、リアルな「家族の日常」をマルチに撮影できます。高級キッチン設備も充実しています。\n\
+    \    *   **最寄駅**: 目黒エリア\n*   **下北沢 スタジオレナード（世田谷区代沢）**\n    *   **特徴**: 全面天窓（トップライト）が特徴的な、日当たり抜群の一戸建てスタジオ。1日中明るい光が均一に降り注ぎ、ウッド調の家具やヴィンテージ感のあるリビングが、ナチュラルな撮影に最適です。\n\
+    \    *   **最寄駅**: 下北沢駅\n\n#### ③ 【アンティーク・シャビーシック】洋風でクラシック、ドラマチックな世界観に\nヨーロッパのヴィンテージ家具や、質感のある壁、庭などを活かしたお洒落なスタジオです。\n\
+    \n*   **ミモザハウス（渋谷区神山町）**\n    *   **特徴**: 奥渋エリアにある、緑豊かな庭とアンティークな内装が人気の一軒家スタジオ。「ナチュラル」「シャビーシック」「カントリー」など複数の棟・フロアがあり、サンルームからの美しい光や、緑越しに差し込む木漏れ日が魅力です。\n\
+    \    *   **最寄駅**: 代々木公園駅、渋谷駅\n*   **Le CAVE STUDIO（渋谷区神南/神山町付近）**\n    *   **特徴**: 古き良きヨーロッパの邸宅を思わせる、洋風の隠れ家ハウススタジオ。独特の陰影を生み出す窓からの光と、アンティーク建具が融合した深みのある撮影が可能です。\n\
+    \n---\n\n### 2. 自然光スタジオを選ぶ際の「4つのコツ」\n\n都内はビルやマンションが隣接していることも多いため、以下のポイントを事前に確認しておくと失敗しません。\n\n####\
+    \ ① 「窓の方角」と「撮影時間帯」を合わせる\n*   **南向き（南東・南西含む）**: 1日を通して安定して明るい光が入ります。最も失敗が少ない向きです。\n*   **東向き**: 午前中に強い光が入ります。朝食シーンや爽やかな「朝の光」を演出したい場合におすすめです。\n\
+    *   **西向き**: 午後から夕方にかけてドラマチックな強い光（西日・斜光）が入ります。エモーショナルな雰囲気作りに最適です。\n\n#### ② 「天窓（トップライト）」や「サンルーム」のあるスタジオは曇りでも強い\n\
+    東京は天気が読めない日も多いですが、**天窓**や**全面ガラス張りのサンルーム**があるスタジオは、曇りの日でも上部から均一で明るい光を確保しやすいため非常に重宝します。\n\n#### ③ 「ロケハン（下見）」または「過去の撮影サンプル」の確認\n\
+    都心のスタジオの中には、季節や時間帯によって「隣のマンションの影」が入ってしまう場所があります。予約前に、スタッフへ「○月の○時頃の光の入り具合はどんな感じか」と確認するか、Webサイトの「光の見え方サンプル」を確認しましょう。\n\
+    \n#### ④ スタジオ独自の予約システム（キープ制度）に注意\nプロ向けのハウススタジオの多くは、**「第1キープ（仮予約）」「第2キープ」**という制度をとっています。\n利用の数日前〜1週間前までに「決定（本予約）」の判断を求められることが多いので、撮影スケジュールが決まったら早めにキープを入れましょう。\n\
+    \n---\n\n### 3. 自然光スタジオを探すのにおすすめの検索サイト\n\nさらに多くの選択肢から探したい場合は、以下のポータルサイトで「エリア：東京都内」「こだわり：自然光」で絞り込むのが便利です。\n\
+    \n*   **[R]studio（アールスタジオ）**：プロのフォトグラファーも愛用する、上質で自然光豊かなスタジオを厳選して掲載しているサイト。\n*   **SHOOTEST（シューテスト）**：おしゃれなライフスタイル系やクリエイティブなスタジオの掲載数が豊富。\n\
+    *   **インスタベース / スペースマーケット**：1時間あたり数千円〜の格安なスタジオや、個人撮影・小規模撮影向きのスペースが豊富に見つかります。"
+  notes: ''
+- query_id: q5
+  query: ハウススタジオ 北欧家具 撮影
+  engine: gemini
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcrQTcxPRo09Hf4oXvKlWVqDDkQ7-hXIU3J2MTUAes3hB7lYtT8gosldTdNyzzTBj8ufBr8wxGz4Wl3vDKR-19YRAKFVpupqsNuGRsyOdNH3DW9zVKr3ob_XipATRj_bgMygQzHV0gRNg23OwmRTx1Tbfoo58LGgc=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFI5P9jtQNynmL_4iV1U5oN4u5S3gRIQRA6PE42qC9ySe7FdEoWTOQdPKikkKl8R3rZhf-wM2fROVamhUxG03FO-mWUYYfnmH4g7inqoIJF6j2hhHYXfBAvmiZ_2R4=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmkny5pjYuBFv1elyRMgD9VIjycCti9YgcYJBZTGiP9z_1UaO3GiITWvinaRH9Mk51hAeIDGbye4PtJ5SPrPobm6K2eSqmYeDS0xb4ExPLU7a05-u4il5ZPYwhY6Mg0m1jgEiJwwOpTiPALczcygJs9jL1smk5r-MbCjfsPC9tDAVQ05QYyiEl9QlN6a1PwSkUxaDTJRzsF513Plhn88FG33WuSVX5cEdIy97hr7VbsxPQm3FZ2vD6MrFPhSsJ3mXB-Oa2EWU-9Tb-hoL6UCaPPYHhw92Z7ln8J3nHNS8cJkKD5Twp4kUSr7F3pFheVMKCYQeVEuSjTUW6UABaThUh
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGG1bAvBQTHFASwPpQbrjxo7gciuBCQIHugX5ygTVNpBcq_xBnTL6hZHmceqQNXEyKecjhMSu7yLiAMX2sYyC1SpI2L8zwTy66PHgyW582RzYZRfOQaATmsMv7x
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQjMxjTZQ7yz6ba15WE2JZunZRXHQQu3Ey67oMRdWsMOYfflL8sJNTCltpMLJQFsJ4gWs0mxXpLmm8bE0smFH52BmwWNOQBurl_LoWOh8G1yjlVsyTEDkMIXfAG4n2mQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfiHRgY7RKsWgmojHitcCUApA5eJYQdmitGsIZZVNp32HdY5AwyjzijecYY7LJAZivU5idNDvI4MroO3Wkoltq1iy7754nrzMF92Hb3LKNRDXeGq5P7KAPcvVM_jBH
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0YwigqJg_LJKsgbTuBBOBB0c2Lt0f-lBFiy5yhixY7JaPGTAdSuXuY6erHztI6FVFh0RVl-oGhPu1UbFR18Tde37nVDlUJYotj3pFFuhn9cV2DGM8xRj9jZN5g0sd_RNGK1HGweHcZdoxR_ih
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCCAZtSkdl0Niio7vIaIXZHclgyOyJGFBKtAYIIc0ftP8bYWjdHtvxarjkasqLdC19Mbh91fIRGSH5n_lNO0vE0L48onjTIwjrmH74ETp9e78I7ZSbQkJPzccP
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFKVdRGrlNRWDtXafxjShsa4T7VA0HMp9Z4_u4k1lc6vxRnvZA9RVlbRTnH_pEl-F2f8pVw3J3HPbCxyBxhmSwcgRukCniBPa1nukn8XVitzcQBxwb57_lXN7KroCd1Xk1xLDwhrGDkuKcISH-vzR5ogAciUKbP4M-xKShfIX-s6KnfOxqFW7wU01QAtWij1F_bPMd-7AXiPgP2i7P_-VDR9pMHEbpYc33e3_ChC1x9gE8
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEYRQXNUUj5yqLSp8SmAkYMdyXhZojB6tue6HkznHydx7jrXALdt6RH8NlncbM4U8KjNuND5Bcb9-BaDG_CTV3OuLOFqnQaskiqUiEu4pqOaR7NJzxIxlsaFi91WU47WFrdFtMoM47Wxzv5EsT57fr1A7KYy4GvLykm0sy4XKbza5ZPs8y4Elf15UuHlmNYroq_qqS7HOfd_fJM-_cRNm19hDYvcHyqoLoSKjFlEM6U26qb7wMv19QlTFG_1M2BvDGqzOlbjN1ldcV8bsj6Sr5uByg910GtiHKa9ay8YSjff7eQSRhjd7TF0-c=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLA7NzXyorJHp7WrJQ8k8ho0dRp8IQxi5qZIgEZJFrVRUPz5CR5ydILo_KfaD8W6VY169ru6Vb_3f2GFap_mR_Np8dMGE5pU9M3p-D8fXr61_tMYi9jF_Pvc61LQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGq6lFPKP9Sr8Y2ZNlsHoR6Gl9xr5o9rKecJK4TXRwKsUiIjpWO5B6rOFJ4Tqur1wKp7tlJQ5m4zwNRxUMGKNUFN4tfL1rue3G-9vIBVfjuRTe1VcrWF3DKM4_6beb1eO8loGFQ4wt49QageOrN
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHagl6sdmLer9EC3qL6UxSQ7HklbZZHUs1x878vZUqSGnNVXZH9_R3fQgGy3b_gbH7OatbcNcIYJLg-3NXi5l5Wi5A5ymWPe1PsENBc3IILQqu2Zt0WFZzW2LBqfR3scTAb85zcE8t-HC6OSnVCcPwt41nPoRZeKRCRGxZE6jgqqtd3AWf2iX2JXUdwHr9IFiQ4wG2QKWj2O_cqct3iZJAZViP8pNDQ9XQhhTacqXqlNU0z0xnWrkma6SpFC7zzRKGyNb4n7jNxEB1rAmpUi9Sx-myIw4s
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEv3p1_wyIWOq3PvI9KF6TD0QGuCtz8H-Sl4mHAKj13YqKtHWICZLfvtlwb4BG025_x5NMpV3tBltOcbBv3aV8EU4KSY1RpsZH2wRG_lAmsb-Mbvvk4Zu2PqwGaoh-8Jyhj3SlKQFFjEtmQUStUFM7P6qPSWtHe7bdFWWTQ_bqvRVLNg6jMGubHYNjPZOKa7ENlEZKypn7RIlFIKyTCTh_In6j525JNdeTCqGD6kGmNWcY=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWg6qi6F0HpRy9EM677kQiADEnGPpUPmhnhv9Diec6Yr_T0cnqDIzcybN4Mw-7z9F2WOh00Q075mGaQw1DpPLsxfkd9eeX3Q3fesbkLQctIuSZodQhx61RnQZ3JLUjYr7rMRkF-m0=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjy-PSWbWO17x4mS6YRjl7oY5gRm5vALLQ1-T39ipzz51vZ5nxSYS4kou7rk07sDA-bpxJsHlhq3L-BZzii6VzEXrAi5fEpagr5NNmU2qP-5ZvcdR8WYkutMVMEMVZQmWd745z6UlO
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWv8_LXg41I3ZagmQyHbncFcwI1q5kx7aO1WhDoZXobboQE371AvRhLsQCi0bX0TYFWYAaBoxPAes29TX8vO5pu1PHgD-Zske_KnZjZWws6sQ1NQWax77Jq3dSww==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHEnJvhXbzlaFgVKL9nt6qqbOu7DXEnKZsHC4m6MBJ-j5I7h3X__GuuTXzf_QrtE44KVoH3z-tUqWklG5pcVXZ9atfzJnlmygiGzh9suRQn4zELnKpKFUpiIL6t9nh-2zpW5KO6AZ4UFYrd8UdlQmHLJH4vNNLM0bPUusG14WM89LZNdVW9p02zh8hW7t66es6ZWhVIWrRCfcG7zRrUCyavt6BV7P4lDsvbvjzLJe6-vIjitc_-Rd-8QNUVJ3j8CxkyG-a6xn1KtSU7Z7ucHXysc8BtqoD2MqRL-FeYdR3l7Zw=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFI5P9jtQNynmL_4iV1U5oN4u5S3gRIQRA6PE42qC9ySe7FdEoWTOQdPKikkKl8R3rZhf-wM2fROVamhUxG03FO-mWUYYfnmH4g7inqoIJF6j2hhHYXfBAvmiZ_2R4=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeriqCJtrfNNZjLo08A6OZFMcAYxsMJSsTB9v8mR0GxxXL2iTijbkSQtngUlkcSnTEBQRMvzEsYLmiyJmR0Sxsu9YX4r0U3RwKdJ8KhNNFiZ_kcirN6KoZwfE=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmlYidn-YQOBMKdJHEqRvCA5zPLOFqmLBQ1cSNygelAIsByF7y8eIjJySNM2XYg1j1WbWhHkliGT0h8qN6zmZ4aHK3H86tMODV1lLnTmGKFOX8BHq-3xiP7f0IGlqEhoU=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGIZAhUfd3icn0YHyqKrRz9G80FCMABx4fcvYf1vzhTjYlNOuFbRBQlbsW44yWzQSYhZKcvkKPFs3SLJYJWOA1U_9VybNjEJZl7-3I8YskpGB4tbWRFE05fmdyeOmGzNuUqUHgqTTiOaM_Z3Vc02Fbq3SAxC0DBQWm11gG5AVql_jVsaE_8_IY0XW6upVrIEkYJIeb-7ptNv4MYA0LM5EBdeCSq-7BRoldmzycNjb50xDlaQBzsiYby5HLtb9sohWeOWj-62MzacmS9BQfepnMDwcgLNN1r-QYc5RgvT1Q5_FgbRdYMXSCS196JajjUbDuE1cZE8ESjeirNuy3ygvBZzwt-tjj4aFR4zPUpBTni7ck7hkmzAw==
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: "北欧家具を活かした撮影ができるハウススタジオは、求められている**「家具のクオリティ（本物のデザイナーズか）」**や**「撮影したい生活シーン（ファミリー、一人暮らし、モダンなど）」**によって選択肢が大きく変わります。\n\
+    \nテイストや目的に合わせて分類したおすすめのハウススタジオをご紹介します。\n\n---\n\n### 1. 本物の北欧ヴィンテージ＆デザイナーズ家具が主役のスタジオ\nハンス・J・ウェグナーやフィン・ユールといった、歴史的な名作北欧家具を贅沢に使用した本格的なスタジオです。アパレルのルック、高級インテリアのカタログ、上質なポートレート撮影などに最適です。\n\
+    \n#### **旧海岸スタジオ シリーズ（都内・川崎）**\nヴィンテージ家具のショールームを兼ねたスタジオなど、本物の北欧モダン家具で構成されたハイエンドなスタジオを展開しています。\n* \
+    \  **旧海岸第十二スタジオ（台東区・浅草/蔵前エリア）**\n    *   **特徴:** 陽当たりの良い空間に、フィン・ユールのコーヒーテーブルやウェグナーのダブルベッド、デンマークの生地で張り替えたヴィンテージソファなどが贅沢に配置されています。壁や棚はイギリスの老舗ペンキメーカー「Farrow&Ball」の柔らかいカラーで塗装されており、北欧インテリアが非常に美しく映えます。\n\
+    *   **旧海岸第九スタジオ（墨田区）**\n    *   **特徴:** ハンス・J・ウェグナーのベッド、ソファ、本棚、ロッキングチェアなどを中心に構成されたキッチン付きスタジオ。チーク材のフローリングなど、木の温もりをダイレクトに感じられる上質な空間です。\n\
+    \n---\n\n### 2. リアルな生活シーンが撮れる「一軒家・一棟」スタジオ\nファミリー層向け、同棲・夫婦の日常、生活雑貨や家電のプロモーションなど、リアリティのある暮らしを表現したい場合におすすめの一軒家スタジオです。\n\
+    \n#### **SANCHA HOUSE（世田谷区・三軒茶屋）**\n*   **特徴:** 住宅街に佇む3階建ての一軒家ハウススタジオ。北欧テイストの家具が並ぶ温かみのあるリビングダイニングを中心に、広いオープンキッチン、ベッドルーム、洗面、ウッドデッキまで揃っています。\n\
+    *   **おすすめの撮影:** 生活の動線を意識したシームレスな撮影、料理シーン、アットホームなファミリーシーン。\n\n#### **Sister狛江（狛江市）**\n*   **特徴:**\
+    \ 芝生の庭がある、自然光がたっぷり入る一戸建てのスタジオです。一角に「北欧家具でまとめられたモダンな部屋」があり、緑豊かな外観・庭と組み合わせたストーリー性のある撮影が可能です。\n*   **おすすめの撮影:**\
+    \ カタログ、CM、雑誌、ライフスタイル商品。\n\n---\n\n### 3. トレンドを取り入れたニュアンスデザイン空間\n「北欧×韓国モダン」などのインテリアトレンドや、シンプルで清潔感のあるワンルームなど、おしゃれな空気感を演出できるスタジオです。\n\
+    \n#### **kotka 池尻大橋（世田谷区）**\n*   **特徴:** 池尻大橋駅から徒歩3分。白壁やアール（曲線）壁、くすみカラーのカーテンなど、ニュアンスのある背景が魅力。家具や小物は「北欧ヴィンテージ」と「韓国モダン」「ミッドセンチュリー」をミックスした、非常に洗練されたセレクトになっています。\n\
+    *   **おすすめの撮影:** コスメ・ビューティー、アパレル、WEB広告、インタビュー。\n\n#### **スタジオロイネ（品川区・大井町）**\n*   **特徴:** 「おしゃれな女性の一人暮らし」を再現したワンルーム型スタジオ。白壁とコンクリート打ちっぱなしのシンプルな空間に、ナチュラルな木製北欧家具が置かれています。\n\
+    *   **おすすめの撮影:** 一人暮らしのライフスタイル、MV、ドラマ撮影、個人ポートレート。\n\n---\n\n### 北欧家具スタジオを選ぶ際の注意点（チェックリスト）\n\n1.  **家具の移動制限・着席制限の有無**\n\
+    \    *   ヴィンテージやデザイナーズの1点もの家具があるスタジオでは、**「家具の移動禁止」「ベッドやチェアへの着席禁止」**といったルールが設けられていることがあります。モデルを座らせたい場合や、レイアウトを大きく変えたい場合は、事前に利用規約を確認しましょう。\n\
+    2.  **家具の入れ替わりの確認**\n    *   家具ショールームを兼ねているスタジオ（旧海岸スタジオなど）の場合、展示されている家具が販売されて随時入れ替わることがあります。「写真に写っているこのウェグナーの椅子をどうしても使いたい」という特定の希望がある場合は、予約時にスタジオへ確認が必要です。\n\
+    3.  **持ち込み家具（建て込み）との相性**\n    *   自社で扱う北欧家具などのインテリアカタログ撮影を行う場合は、「搬入のしやすさ（1階か、エレベーターはあるか）」や「床材の種類（モルタル、古材、カーペットなど）」を重視して選ぶと、商品がより引き立ちます。"
+  notes: ''
+- query_id: q6
+  query: ARIGATO Living
+  engine: gemini
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: The term **"ARIGATO Living"** primarily refers to two entirely different but well-known
+    concepts. Depending on the context, you are likely looking for
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmqjluzlO0pLEH7tSLaAtgiMszTcxoON5pCn0XhpIJ_CFCQ-s8S2CqoyPpU4kwTJIKCpKtWr5IgXPGQFev6hgjh2WeltpOezZlbsZ5Hve-
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgiGVN0yuxXrFIBwZ4nxrR3AWX6toYjFCp63-XdA3ROPQMS6nUygiI6CfIVALwGNANggjR-rqvJCpv71eTtCUk6OWP1qSbu_xRqads-JoeCPhIuf6eMSYP1qJobgFwYGM=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRhi36jWb81q4TA5BygVp857JvxwyMQO6kptxwNhRgaY_oapWW9jTTXPFruaL-kUQnEaYCsUitvMSN5hLLuNfdfyGHW4UgHuxZqlH5lJNLJoS7QnyCY_1O3EOg4jgZr-qB-CEozOf_m4lIMhrpnrLLGGkohYBDpHN-WDDlmV82YOjOjLpZW_gm-nEPEEp5tHHQTTQFqnUQffXh2C7qdLzF
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEo1NcW_Z4Un8eGnCdnt6bEYs3ga6w5hfzlgwSdnXKYvJSU-xk-m0P14WLSWIpx_zpbtphqK3lp_WhYG3zKv1UIG5ffpLD8NTm3k_PC_2kwk5gsz6yHagrzivtIJBOEckFxLKw1fBc8cbdS
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQv2I1UmFpJD3kCAp49CaXKytTJawboluciHg9UObQz1PTr5ZFZkuolVMMuwyrT4Oj9Kgy9LEDBo_JFJX61mw829QU8-OCoMDtvGCzLhp2pAS6fw==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHTsNPtBw-lufRYozf_-Zr-HBePrJ3UIn2ErZyVZGZEBvMnhN7Dj462vN0AOvEed1q2I_FudKgMIsv31Qyb_XL_YRJ7UWy3joL9yexFTZKvdqZvmo43NkOLU8Z8BQ-Iwk_WccGwOaUc9O2Z3re3D3DkNPUNF3ld0hyBny139JBKyBmfS0lnlXf1o6UElnLimmgKDUaKy9X
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRkYWqLtQYqAfd_cNitfwETiubrUdM9opNbrqtY1A2PgOT-UDmnXOLIU0R8Kf_zufvZ9szETekUdIv62I2M_8LMLv3CFt1kfJ0BJnB0_9S5ObN-DgbxvL42gaemLE-7xWTg-enmaUQbswOEbyY6LBlEHg-1Tx-bwY4jHEwYXw=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDNF_0mxb7aGutiI8aVHJrthu6WCdVValjkv-ZLt5Ej-gmnhinuOGKrB-Jn_c7F1ig_IZfmpt_sdaKXY22EQF0YQGAPSZIR5agx12zf13nh-2zSpF0jNqwLQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZF9qNZBIHCuo8dCuGzlXAEpSWfYZFqEtsjcfGoCDih5Ziv9F70L8gCZWg_bA0qGoFkFOQ6opLWNYBm-81Z89hSTVnDHRZWyMCdp5Yl0Rc45ZKZphjQbe1J3QeJeU=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcblbawR_YTnQ_VEapeU4qK3kZSErTArNyiScNDnWcEMO_8ZHzvlqpCiA5KcBHAmtORsK9ekjanTyie3-EbcqdM08vU-9uWqFICrysDp63J-AsgxFA_zHH_U0=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxtXwoPFuhzMUeB4UGjeoFWjL6eXlnVlj4nwxM6X6V0Wd7PlVJb9HaTk_c3voWjF-9XE-xAbHKjIi4JZ6CH22Xqm4HsuZWwUMSHsNI7QhaH9nLIX399uGfS2J08Q0u
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: "The term **\"ARIGATO Living\"** primarily refers to two entirely different but well-known\
+    \ concepts. Depending on the context, you are likely looking for one of the following:\n\n---\n\n\
+    ### 1. The Arigato Living Community (by Ken Honda)\nCreated by **Ken Honda** (often referred to as\
+    \ the \"Zen Millionaire\"), the bestselling author of *Happy Money: The Japanese Art of Making Peace\
+    \ with Your Money*. \n\n* **What it is:** A global online personal development and financial psychology\
+    \ community. \n* **The Philosophy:** The community is centered around Honda's philosophy of **\"Money\
+    \ EQ\"** (emotional intelligence with money). It encourages members to cultivate deep gratitude (using\
+    \ the Japanese word *\"Arigato\"*, meaning thank you). A core practice taught within the community\
+    \ is **\"Arigato In, Arigato Out\"**—the habit of expressing gratitude both when money flows in (e.g.,\
+    \ getting paid) and when it flows out (e.g., paying bills or buying goods) to foster an abundance\
+    \ mindset.\n* **How it works:** Members join through Ken Honda's dedicated \"Happy Money\" app or\
+    \ private online forums (like their Facebook group). The community hosts global events, challenges,\
+    \ and group sessions designed to help members dissolve money blocks, find their true purpose (*Ikigai*),\
+    \ and share their personal journeys of transformation.\n\n---\n\n### 2. ARIGATO Living House Studios\
+    \ (by Casokdo)\nA high-end, multi-purpose design and rental studio project based in Japan.\n\n* **What\
+    \ it is:** A collection of highly curated, beautiful rental spaces and house studios operated by the\
+    \ Japanese PR agency **Casokdo**. \n* **The Locations:** They operate three main locations in Japan:\
+    \ **Kagurazaka** (Shinjuku, Tokyo), **Ginza** (Chuo, Tokyo), and a private riverside villa in **Isumi**\
+    \ (Chiba Prefecture).\n* **Design & Concept:** The flagship Shinjuku space was designed by the renowned\
+    \ design firm *STUDIO COHAKU*. Drawing inspiration from traditional Japanese *fusuma* (sliding screen)\
+    \ room dividers, the studio utilizes a continuous, flowing curtain track system to divide the space.\
+    \ The interiors combine rich natural light, organic materials, and classic Scandinavian designer furniture.\n\
+    * **Usage:** It is rented out for photography and video shoots, press conferences, corporate seminars,\
+    \ private exhibitions, and luxury workshops."
+  notes: ''
+- query_id: q7
+  query: 神楽坂でおすすめの撮影スタジオを教えてください
+  engine: gemini
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: 'トに合わせて選べる、おすすめの撮影スタジオをジャンル別にご紹介します。
+
+
+    ---
+
+
+    ### 1. ナチュラル・ライフスタイル・対談向け
+
+    #### **ARIGATO Living（アリガト リビング）神楽坂**
+
+    PRエージェンシーが手がける、上質で温かみのある北欧モダンなハウススタジオです。
+
+    * *'
+  cited: true
+  cited_sources:
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXeRsUau_up6D0hyEx5NT1Nkh5LPJzMdXxVJvGd4CSMQxR7deIao904TRM761Mw3C5HMNtHqGcD68Ra9e5_DQGHm15bqVUfUXZS_G5MDBsidIwKHOKawBosfA=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtjZVK9uVD55qLzsIkZrfzeyC9NoHUXZDpgqUkdgBntTmhRRPhMnPiBKa-mYrwW0h53W51OzB2wxOwIjRhHvX9wJIuI1-5UTSfx2z2olZRVOmNUe-BvHLGubhqMrcF
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEET8L_lv7DcBuJOvtNalrPZPKZRjMAUQIaLy3YsMp34mgiqcmD0vbODFZw_2NB8nbqPegViQgCAiIH6MkM9zi6B-TqrpshiZddBzFS1EyW0rHQjArZ4UTZDf3UbfSV-OUPKRNN0fNcy2jVhr2D
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoyqVb-27oOxtm_jKRzBomVq3roRC_FWcRA51U2xunUyU8Kuc0I6wDSGNE8wKEKqDmpAViQTK_l3WILXvQ3w2L2YlGwxklbXAIWWcjSqAEH9zZkvdiNBxw7wBZ-CY3qoMj
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwR8zktiktB4kFB4gQ0eoBN0Rm7OVAY0XnrwmiUpuZdIr_OKQi6A7oFZxFSjKr8Etw5HB3dQ5n-NqVSOG0aD9j6SmfSw5t9So9qKTU0L1l6ZhlZZTfkag=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1sXpGbZlOs5g6927PRZTzle2I487dazeumLWDI3kwzgF9HlR5sAvjGt9knGQGdeAyfWalV_rlKejay_JyzdscRRKGn9qikQajxj6bw04K1o67z3VZf4JrmCLeoNZQ3q2i
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoxd9T28lZT23GnaSK7ArSyZ0pTpdhryTecugI9WgTjH_VAkMH7qQ1H8VQnZ8kSx7Sesu2f7i7RJMgj-TiL-jSe_qmbvP2xOzB2FUurbmR4t3elwDMIgITnuxkFG_o1A==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSJJD6P1KKZ_DTxrOeG5TfutqLvRHkGv6HcvpwjPIvIEbvitROlbvFLZcMckvOAlHoHfLivap_KPVWpK1JQ5Oyhk8xP9JGoPml4EHMvUiOCRg9EMKxPIU=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFSho4TiAWxXE5tfsDMu1Cohy-kcSbpPy7ct4USusrDvVscDDC1b3Ws7kldwNgYlI9wBZurGC9AXHhc5OP2_iY07prLqiKhdvhS-ituZ_LyALEi6CssqUJDY48=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFME0EmMQUBj-gPqG0oLR2t0z6SW5if2rlPN9EXqzMeYjBdhQnmTW9LdAyjs-MyDzEDS8DSkC859pTYwcAF6_uoHcADnhIEc_tw4PRopR_cbqvYTCD3hpgxWASlFs8R1UoEB4qCYrOhwxi
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8tn2b0np1mguWaqayYPlOU3DPikTDByBRdAQs8a4vL6acBmCdJEEhd7LGNoo-WzWBsorvF_X8ygpIp_LzI7aVU0brqAETuqCQwVeE-ddDW6-OKW8983L5upVKS0tm7haQvHoGb6BQ_oBrphLIa6clb1zCVu6YOL6_7mpFOV06ZyDAXGBa9waE4Wl5Clreek042tVDwvs7gCSPk41tG5yAsB1_KbkkuXfRBp3WlF1kTLA=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp5gDZ4_4G-yOAv6ygUwvKiAyElSfcH5maTpx82hMVSWuWcVMjSFnKN4eLeBrpD16BxKL335CQwVapzbLGy3fdlMU5U7YzALyz8zxYptKL
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjrYgjA3pkqx9UqWvQQpX4AyJoCvOKZVTxMN-s0GT_nb-azrnsejLUmDCteek93ErlI5Lt1iZkrcoGXtig-hm146F3BL2tHFZz4T67rXubzgeaGNRYr-prjg2Hm9Z6Ncy_gm5FT_NI3piTSMaC0A==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRT0lkBycxqT79-BtJQKfF5YzO9hrQhQY69xfNld_HcVzHXRhnaE_bpYpdqnaCcCOD3bHf8vVreXqTOQ8B7o3zxh2_NtlXURsnuwpAbF_Dpw==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGM0OOi0JaX-1aHRD8Q8bAX_xc2AZhTDAlK8kq3pDg2GUhqI-AdJAaZfIs6a0AXOmTazDAImthQZFphBSz_cgfDe9TJbqQWtnwMbuzXaVmU0w==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAaJWN8enZ0DJ1J9oX2s3OQo4_n57CrsU7MFLHi4bsf5e0e7dNS70j67SM5wdhxkemeYYdH6ghS2NIu1O8Xfwws3eb3w9rajjNnOstCWo1Vua54zqhac6zLVKgrKKl9g==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfs99Or5I6LhfT-NqBHCKKYo876uiJCLHjRoHp11sEJMHo1P-IvEbWuQbYorxIH2KDA5A5VXjCuAvX98BMihwZzT3bc3XfQFVJ87e6XkMUhiQKMwwYzVc=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZMZt9fgml3H0MqtWSgP13ZuvL3OhtWzIB0ozFG16ko7EsHXjTHApGl2yPFsv02zHbcs0Kt-Nf9RUTcsAO0oiD7rbOn2YFp5_IgUU9Be-oGTif_k6ITnxlhgFZEOp9Qo6hN1FAFPO9
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYUg8fTtnPf32XORJaIHqNbEXV6rQzFBtlt-wqjXcglSlIaoHCMTAjBelAt6_yb5pRW_kNHkY8D1CFT3TrCSYOuFa8UzW6MmYKWkH2qDEIrCucjXlNmIGsr7LbACYXT-2L
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQm_BsZ71q9mQNn7Z3ctNTC7o_0MHqhnbddc5oopXAGrdFl57tIxABvi8pXjmDHW1Bmfhd_QNWE8M2j3vFnSKhGv7T-P9tnYRl8ZYTPEU7sAVwseplDi1gzDM9HJ3rgR_Q8cj8kFGraSNIdi3ZePLz
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIzlTGF1Msju3fln8lzOgH6xEvPnUQJxhqxlzYqie8Hd8hM8amqDTq27Sto4KJRtrMIxIevIO0AZxntxUe13Nb9p5GA13itekt995-1QbD6nXQaUFumQSv9OY0cqbHF_A=
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZb5b9QKamkMT9jk8OlTA3F5h2sEoIt6kO8c5cwqyFxOvftcY-_aqa_J_gSKgGKpzVL58bnag3oAmWm7Dlv9zQGktUvtEFMj2GoNm_1q9-Z_VTZQ==
+  - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1FmMYvnRWWRVdYn8e8y3dSYlW_Jwc0AyxfJ4KyXt4IMyv_jNrzMNErAQnrFVxfD8Mi2whtRhT-X-Y_U4mlKuHUhWepKfIAQBPGIXLKvY=
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  answer_text: "神楽坂エリア（牛込神楽坂、江戸川橋、山吹町などの周辺エリアを含む）には、落ち着いた雰囲気のハウススタジオから、本格的な機材を備えた白壁スタジオ、さらには水撮影ができる個性派スタジオまで、多彩な撮影スタジオが集まっています。\n\
+    \n目的や好みのテイストに合わせて選べる、おすすめの撮影スタジオをジャンル別にご紹介します。\n\n---\n\n### 1. ナチュラル・ライフスタイル・対談向け\n#### **ARIGATO\
+    \ Living（アリガト リビング）神楽坂**\nPRエージェンシーが手がける、上質で温かみのある北欧モダンなハウススタジオです。\n* **特徴**:\n  * 東・南の2面窓から豊かな**自然光**がたっぷり差し込む明るい空間。\n\
+    \  * 無垢材の床に、北欧の一流ブランド「フリッツ・ハンセン」のソファやテーブルが配され、シンプルながら洗練されたインテリアが特徴。\n  * レシピ撮影に適した**カウンターキッチン**や、スキンケア商品の撮影に使えるモダンな洗面台を完備。\n\
+    * **おすすめの用途**: インタビュー・対談動画、ライフスタイルシーン、アパレルEC撮影、料理風景。\n* **アクセス**: 東京メトロ東西線「神楽坂駅」徒歩3〜6分。\n* **広さ**:\
+    \ 約89㎡。\n\n---\n\n### 2. 豊富な背景・本格ポートレート向け\n#### **神楽坂スタジオ**\n閑静な住宅街にある、天井高3.3mの広々としたマルチ背景ハウススタジオです。\n\
+    * **特徴**:\n  * **漆喰壁、コンクリート壁、レンガ壁、リバーシブルな木床**など、1つのスタジオ内で何パターンものシチュエーション撮影が可能。\n  * ワイド幅の白バックペーパーも常設されており、白ホリゾントの代用としても使用できます。\n\
+    \  * 室内灯がフリッカーレス仕様になっており、特別な照明を使わなくてもスマートフォンでのスローモーションや動画撮影が綺麗に行えます。\n  * 専用駐車場が1台分完備されているのも大きなメリットです。\n\
+    * **おすすめの用途**: アパレル・ファッション撮影、ポートレート、コスプレ撮影、レッスン動画・YouTube収録。\n* **アクセス**: 東西線「神楽坂駅」2番出口から徒歩5分、大江戸線「牛込神楽坂駅」徒歩8分。\n\
+    * **広さ**: 約80㎡。\n\n---\n\n### 3. ヴィンテージ・アパレルEC向け\n#### **スタジオミームリンク（memelink）**\nニュアンスの異なる2つのオシャレな部屋（Room\
+    \ A・Room B）を使い分けられるマンションタイプのハウススタジオです。\n* **特徴**:\n  * **Room A**: インダストリアル（工業的）な空間で、ヴィンテージブリック（レンガ）やコンクリート風の壁、レザーソファなど男前でクラシックな雰囲気を演出できます。\n\
+    \  * **Room B**: 白を基調としたシャビーシックな空間。差し込む自然光の調節もしやすく、優しく洗練された雰囲気が撮れます。\n* **おすすめの用途**: アパレルのモデル撮影、商品物撮り、アーティスト写真、雰囲気のあるインタビュー撮影。\n\
+    * **アクセス**: 都営大江戸線「牛込神楽坂駅」から徒歩3分、東西線「神楽坂駅」徒歩6分。\n* **広さ**: 96㎡。\n\n---\n\n### 4. 大掛かりな収録・配信・白壁\n####\
+    \ **CheeredSTUDIO（チアードスタジオ）**\n天井高が最大3.8mあり、引きも9.7m取れる、シンプルかつ非常に開放的な撮影スタジオです。\n* **特徴**:\n  * 白を基調としたシンプルなメインスペースで、家具や小物は自由に変更・レイアウトが可能。\n\
+    \  * **機材（映像・音響・照明）が無料で使い放題**。グリーンバックも用意されているため、クロマキー合成撮影にも対応しています。\n  * 控室（女優ミラー完備）が最大5部屋使えるため、モデルや演者の多い大掛かりな撮影でも安心です。10ギガの高速インターネット回線（有線LAN対応）も備わっています。\n\
+    * **おすすめの用途**: MV・PV撮影、番組の収録、対談、クロマキー合成を要するスチール・動画、生配信。\n* **アクセス**: 東京メトロ有楽町線「江戸川橋駅」徒歩5分、東西線「神楽坂駅」徒歩8分。\n\
+    * **広さ**: 80㎡。\n\n---\n\n### 5. 幻想的な「水撮影」やコスプレ・創作向け\n#### **Studio Garden Quartz（スタジオガーデンクォーツ）**\n\
+    都内でも大変珍しい、本格的な**「水撮影」**ができる個性派マルチフロアスタジオです。\n* **特徴**:\n  * 最大5トンの水をため、水深最大30cmまで水を張った幻想的な撮影（温水・冷水両方可）が可能です。\n\
+    \  * ガーデンウェディング風のスペース、絵本のようなファンタジーな世界観のエリアなど、3フロア＋屋上の全エリアで異なるコンセプチュアルな撮影が楽しめます。\n* **おすすめの用途**: コスプレ撮影、アーティストのMV、ファンタジー系のアート写真、ウェディングの前撮り。\n\
+    * **アクセス**: 有楽町線「江戸川橋駅」徒歩2分、東西線「神楽坂駅」徒歩10分。\n\n---\n\n### 6. クリエイター・舞台稽古・配信向け\n#### **アプレ神楽坂スタジオ**\n\
+    「俳優とクリエイターのためのスタジオ」として運営されている多目的・複合型のスタジオです。\n* **特徴**:\n  * 白を基調とした広い「Studio 2F」は、撮影のほかに演劇の稽古、ワークショップ、少人数イベントにも対応しています。\n\
+    \  * 1Fには鏡や洗面台、アイロンを完備した本格的なメイク・着付けルームがあり、控室としても利用可能です。\n  * 高速Wi-Fiが無料で利用でき、配信撮影にも向いています。\n* **おすすめの用途**:\
+    \ 各種オーディション用撮影、ポートレート、配信イベント、ワークショップを兼ねた収録。\n* **アクセス**: 東京メトロ「神楽坂駅」を含む、複数路線（飯田橋駅、牛込神楽坂駅など）からアクセス可能な神楽坂エリア。\n\
+    \n---\n\n### \U0001F4A1 撮影スタジオを選ぶ際のワンポイント\n* **「自然光」を重視するなら**: 午前中〜昼にかけて安定した綺麗な光が入る **ARIGATO Living**\
+    \ や **スタジオミームリンク (Room B)** が最適です。\n* **「機材の多さやコスト」を重視するなら**: 機材使用料が無料プランに含まれる **CheeredSTUDIO** が、手ぶらに近い形で本格的な撮影・配信ができるためお得です。\n\
+    * **「複数パターンの衣装や構図」を試すなら**: レンガ・コンクリート・白壁・木床が共存する **神楽坂スタジオ** や **スタジオミームリンク** を選ぶと、移動の手間なくバリエーション豊かな絵作りができます。"
+  notes: ''
