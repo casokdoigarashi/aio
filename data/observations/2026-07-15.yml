@@ -1,0 +1,49 @@
+# ベースライン観測（施策開始前の初回スナップショット）
+# Google検索AIモードのスクリーンショットから記録
+# スクショ保管先: https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK
+date: 2026-07-15
+method: manual_screenshot
+source: "Google AIモード（手動スクリーンショット）"
+queries:
+  - query_id: q1
+    query: "神楽坂 ハウススタジオ"
+    engine: google_ai_mode
+    brand_mentioned: true
+    # featured=筆頭で紹介 / listed=リスト内で言及 / cited_only=引用リンクのみ / none=なし
+    mention_position: featured
+    mention_text: >-
+      「ナチュラル・スタイリッシュ（自然光デザイン家具）」カテゴリの筆頭で紹介。
+      「東面・南面の大きな窓から日中を通してたっぷりと自然光が降り注ぐ、ナチュラル
+      モダンな最上階スタジオ。無垢の床材、フリッツハンセンなどの名作デザイナーズ家具」
+      と特徴が正確に説明されている。
+    cited: true
+    cited_sources:
+      - "shootest.jp（【神楽坂】ナチュラルなハウススタジオ | ARIGATO Living）"
+    own_site_cited: false
+    related_cited: true
+    competitors_mentioned:
+      - "アン・デオール神楽坂"
+      - "坂ノ上スタジオ"
+      - "shucof神楽坂"
+    notes: >-
+      引用元パネルは「26件のサイト」。自社公式サイト(a-ms2.com)ではなく
+      SHOOTESTの掲載ページが引用元になっている点が改善ポイント。
+  - query_id: q3
+    query: "神楽坂 スタジオ"
+    engine: google_ai_mode
+    brand_mentioned: false
+    mention_position: none
+    mention_text: ""
+    cited: false
+    cited_sources: []
+    own_site_cited: false
+    related_cited: false
+    competitors_mentioned:
+      - "神楽坂スタジオ"
+      - "神楽坂オンラインスタジオ"
+      - "神楽坂セッションハウス"
+      - "shucof神楽坂"
+    notes: >-
+      音楽・ダンス・演劇スタジオ中心の回答構成（引用元「36件のサイト」）。
+      「撮影」の意図が含まれないため、ハウススタジオ枠でも神楽坂スタジオ・
+      shucofが紹介されARIGATO Livingは登場せず。

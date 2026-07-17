@@ -1,0 +1,80 @@
+# =============================================================
+# AIO 定点観測 設定ファイル
+# ブランド情報・観測クエリ・競合をここで一元管理する
+# =============================================================
+
+brand:
+  name: "ARIGATO Living"
+  # AI回答の中で「自社言及」と判定する表記ゆれ
+  aliases:
+    - "ARIGATO Living"
+    - "ARIGATO LIVING"
+    - "アリガトリビング"
+    - "アリガト リビング"
+    - "アリガト・リビング"
+  # 自社ドメイン（引用元に出たら「自社サイト引用」）
+  own_domains:
+    - "a-ms2.com"
+  # 自社が情報を発信・掲載しているメディア（引用元に出たら「関連メディア引用」）
+  # note 開設・Yahoo! PR 出稿後にドメインを追記していく
+  related_domains:
+    - "shootest.jp"
+    - "hau-sta.com"
+    - "studio-press.com"
+    - "whitepanda.jp"
+    - "rstudio.co.jp"
+    - "studiomall.jp"
+    - "spacee.jp"
+    # - "note.com"        # note開設後に有効化（可能ならアカウントURLをnotesに記録）
+    # - "news.yahoo.co.jp" # Yahoo!ニュース掲載後に有効化
+
+# 競合（AI回答に登場したら記録する）
+competitors:
+  - name: "神楽坂スタジオ"
+    domains: ["kagurazakastudio.com"]
+  - name: "アン・デオール神楽坂"
+    aliases: ["アンデオール神楽坂"]
+  - name: "坂ノ上スタジオ"
+  - name: "shucof神楽坂"
+    aliases: ["shucof", "シュコフ"]
+    domains: ["studio.powerpage.jp"]
+  - name: "神楽坂オンラインスタジオ"
+    domains: ["kagurazakaonlinestudio.com"]
+  - name: "神楽坂セッションハウス"
+    domains: ["session-house.net"]
+
+# 定点観測クエリ
+# id は変えない（週次の時系列比較のキーになる）
+queries:
+  - id: q1
+    text: "神楽坂 ハウススタジオ"
+    intent: "エリア×業態（最重要ターゲットクエリ）"
+  - id: q2
+    text: "神楽坂 撮影スタジオ"
+    intent: "エリア×広義業態"
+  - id: q3
+    text: "神楽坂 スタジオ"
+    intent: "広義（音楽・ダンス等も混在するクエリ）"
+  - id: q4
+    text: "東京 ハウススタジオ 自然光"
+    intent: "特徴軸（自然光）"
+  - id: q5
+    text: "ハウススタジオ 北欧家具 撮影"
+    intent: "特徴軸（北欧家具・デザイナーズ）"
+  - id: q6
+    text: "ARIGATO Living"
+    intent: "指名検索（AIがブランドを正確に説明できるか）"
+  - id: q7
+    text: "神楽坂でおすすめの撮影スタジオを教えてください"
+    intent: "対話型AI向けの自然文クエリ"
+
+# 観測エンジン
+engines:
+  # 手動観測（スクリーンショット→記録）
+  manual:
+    - google_ai_mode
+  # scripts/auto_check.py が使うAPI（キーが設定されているものだけ実行される）
+  auto:
+    - perplexity      # PERPLEXITY_API_KEY
+    - gemini          # GEMINI_API_KEY（Google検索グラウンディング＝AIモードの近似）
+    - serpapi_google  # SERPAPI_KEY（AI Overview + オーガニック順位）

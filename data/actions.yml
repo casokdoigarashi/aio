@@ -1,0 +1,29 @@
+# =============================================================
+# 施策ログ
+# 1次情報の発信（note記事・Yahoo! PR・サイト更新など）を行ったら
+# ここに1件追記する。analyze.py がレポートの時系列に重ねて表示し、
+# 「どの施策の後にAI検索の結果が変化したか」を追えるようにする。
+# =============================================================
+# type の例: note記事 / Yahoo!PR / プレスリリース / サイト更新 / SNS / その他
+
+actions:
+  - date: 2026-07-15
+    type: 観測開始
+    title: "定点観測ベースライン取得（Google AIモード スクリーンショット）"
+    url: "https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK"
+    target_queries: [q1, q3]
+    notes: "施策実施前の初期状態を記録"
+
+  # --- 以下、実施したら日付・URLを入れて追記 ---
+  # - date: 2026-07-XX
+  #   type: note記事
+  #   title: "note開設・初回記事「〇〇」公開"
+  #   url: "https://note.com/xxxx/n/xxxx"
+  #   target_queries: [q1, q4, q5]
+  #   notes: ""
+  # - date: 2026-07-XX
+  #   type: Yahoo!PR
+  #   title: "Yahoo!ニュース PR記事出稿"
+  #   url: ""
+  #   target_queries: [q1, q2]
+  #   notes: ""

@@ -1,0 +1,48 @@
+# 毎週火曜 9:00 JST に自動観測とレポート生成を実行し、結果をコミットする。
+# APIキー（任意）はリポジトリの Settings > Secrets and variables > Actions に登録:
+#   PERPLEXITY_API_KEY / GEMINI_API_KEY / SERPAPI_KEY
+# キーが未設定の場合、自動観測はスキップされレポート再生成のみ行われる。
+name: Weekly AIO Check
+
+on:
+  schedule:
+    - cron: "0 0 * * 2" # 火曜 00:00 UTC = 09:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  observe-and-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run automated AI search observation
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/auto_check.py
+
+      - name: Generate reports
+        run: python scripts/analyze.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data reports
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "chore: 週次AIO観測 $(date +%Y-%m-%d)"
+            git push
+          fi
