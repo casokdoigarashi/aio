@@ -109,10 +109,13 @@ def check_gemini(query: str, api_key: str) -> dict:
             },
             timeout=TIMEOUT,
         )
-        if resp.status_code == 429:
-            print(f"  ({model} はクォータ切れ。次の候補を試します)")
+        if resp.status_code in (404, 429):
+            reason = "クォータ切れ" if resp.status_code == 429 else "利用不可"
+            print(f"  ({model} は{reason}。次の候補を試します)")
             _gemini_exhausted.add(model)
-            last_exc = requests.HTTPError(f"429 for {model}", response=resp)
+            last_exc = requests.HTTPError(
+                f"{resp.status_code} for {model}", response=resp
+            )
             continue
         resp.raise_for_status()
         data = resp.json()
