@@ -1,0 +1,776 @@
+<title>クラウドファンディング実施計画｜見積レビュー・媒体比較・準備計画</title>
+
+<style>
+:root{
+  --teal:#3AAFA9; --teal-deep:#1B5F5B; --mint:#5BC8AF; --pale:#DCEEEA;
+  --ink:#22323A; --slate:#5D717B; --faint:#8DA0A8;
+  --paper:#F6FAF9; --card:#FFFFFF; --rule:#DFE9E7; --rule-soft:#EDF4F2;
+  --amber:#B9760B; --amber-bg:#FDF3E2; --rust:#A83E26; --rust-bg:#FBEDE8;
+  --ok:#1B7A6E; --ok-bg:#E4F2EF;
+  --on-accent:#FFFFFF;
+  --sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  --serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Times New Roman",serif;
+  --shadow:0 1px 2px rgba(34,50,58,.04),0 8px 24px -12px rgba(34,50,58,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --teal:#5BC8AF; --teal-deep:#8FDCC9; --mint:#5BC8AF; --pale:#1F3733;
+    --ink:#E2ECEA; --slate:#A2B5B7; --faint:#71888D;
+    --paper:#11181A; --card:#182225; --rule:#2B3A3D; --rule-soft:#212D30;
+    --amber:#E8B45F; --amber-bg:#2E2617; --rust:#E89478; --rust-bg:#2E1D18;
+    --ok:#6FD3BC; --ok-bg:#17302C;
+    --on-accent:#0E1618;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --teal:#5BC8AF; --teal-deep:#8FDCC9; --mint:#5BC8AF; --pale:#1F3733;
+  --ink:#E2ECEA; --slate:#A2B5B7; --faint:#71888D;
+  --paper:#11181A; --card:#182225; --rule:#2B3A3D; --rule-soft:#212D30;
+  --amber:#E8B45F; --amber-bg:#2E2617; --rust:#E89478; --rust-bg:#2E1D18;
+  --ok:#6FD3BC; --ok-bg:#17302C;
+  --on-accent:#0E1618;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+:root[data-theme="light"]{
+  --teal:#3AAFA9; --teal-deep:#1B5F5B; --mint:#5BC8AF; --pale:#DCEEEA;
+  --ink:#22323A; --slate:#5D717B; --faint:#8DA0A8;
+  --paper:#F6FAF9; --card:#FFFFFF; --rule:#DFE9E7; --rule-soft:#EDF4F2;
+  --amber:#B9760B; --amber-bg:#FDF3E2; --rust:#A83E26; --rust-bg:#FBEDE8;
+  --ok:#1B7A6E; --ok-bg:#E4F2EF;
+  --on-accent:#FFFFFF;
+  --shadow:0 1px 2px rgba(34,50,58,.04),0 8px 24px -12px rgba(34,50,58,.10);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px 96px;}
+p{margin:0 0 1em;}
+a{color:var(--teal-deep);}
+strong{font-weight:700;}
+
+/* ---- cover ---- */
+.cover{padding:88px 0 56px;border-bottom:1px solid var(--rule);}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:0 0 22px;}
+.cover h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.6vw,50px);line-height:1.3;letter-spacing:.01em;margin:0 0 20px;text-wrap:balance;max-width:22em;}
+.cover h1 em{font-style:normal;color:var(--teal-deep);}
+.lede{font-size:16px;color:var(--slate);max-width:40em;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:34px;font-size:12.5px;color:var(--faint);}
+.meta b{color:var(--slate);font-weight:600;}
+
+/* ---- nav ---- */
+nav.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:40px 0 8px;}
+nav.toc a{background:var(--card);padding:16px 18px;text-decoration:none;color:var(--ink);display:block;transition:background .15s;}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--pale);outline:none;}
+nav.toc .n{font-family:var(--serif);font-size:12px;color:var(--teal);display:block;letter-spacing:.1em;}
+nav.toc .t{font-weight:700;font-size:14px;display:block;margin-top:2px;}
+nav.toc .s{font-size:11.5px;color:var(--faint);display:block;line-height:1.6;}
+
+/* ---- section ---- */
+section{padding-top:72px;}
+.part{display:flex;align-items:baseline;gap:18px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:34px;}
+.part .num{font-family:var(--serif);font-size:44px;line-height:1;color:var(--teal);font-weight:700;}
+.part h2{font-size:clamp(19px,2.4vw,25px);margin:0;font-weight:700;letter-spacing:.01em;}
+.part .sub{margin-left:auto;font-size:11.5px;color:var(--faint);letter-spacing:.06em;white-space:nowrap;}
+h3{font-size:17px;margin:52px 0 14px;padding-left:12px;border-left:3px solid var(--teal);line-height:1.5;}
+h4{font-size:14px;margin:32px 0 10px;color:var(--teal-deep);letter-spacing:.02em;}
+.note{font-size:12.5px;color:var(--faint);line-height:1.75;margin:10px 0 0;}
+.note b{color:var(--slate);}
+
+/* ---- callout ---- */
+.callout{background:var(--card);border:1px solid var(--rule);padding:22px 24px;margin:26px 0;box-shadow:var(--shadow);}
+.callout .label{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--teal);margin:0 0 10px;}
+.callout p:last-child{margin-bottom:0;}
+.callout.hi{background:var(--pale);border-color:var(--teal);}
+.callout.hi .label{color:var(--teal-deep);}
+
+/* ---- KPI strip ---- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0;}
+.strip div{background:var(--card);padding:18px 20px;}
+.strip .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700;}
+.strip .v{font-size:24px;font-weight:700;line-height:1.3;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+.strip .v small{font-size:13px;font-weight:600;color:var(--slate);}
+.strip .d{font-size:11.5px;color:var(--faint);line-height:1.6;margin-top:2px;}
+
+/* ---- table ---- */
+.scroll{overflow-x:auto;margin:20px 0;border:1px solid var(--rule);background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px;}
+caption{text-align:left;font-size:12px;color:var(--faint);padding:12px 16px 0;caption-side:top;}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-soft);line-height:1.7;}
+thead th{background:var(--teal-deep);color:var(--on-accent);font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:none;}
+td .note,th .note{display:block;margin-top:4px;}
+.cl h5 i{font-style:normal;font-size:10px;letter-spacing:.08em;border:1px solid currentColor;padding:1px 6px;margin-left:auto;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+tbody th{font-weight:600;background:var(--rule-soft);white-space:nowrap;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+col.hi{background:var(--pale);}
+tfoot td,tfoot th{background:var(--rule-soft);font-weight:700;border-top:2px solid var(--teal);}
+.mk{color:var(--teal-deep);font-weight:700;}
+.xx{color:var(--faint);}
+
+/* ---- findings ---- */
+.finds{margin:22px 0;border:1px solid var(--rule);background:var(--card);}
+.find{padding:20px 24px;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:auto 1fr;gap:4px 16px;}
+.find:last-child{border-bottom:none;}
+.find .id{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--faint);grid-row:span 3;padding-top:2px;font-variant-numeric:tabular-nums;}
+.find .head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.find .head b{font-size:14.5px;}
+.find .body{font-size:13.5px;color:var(--slate);line-height:1.8;}
+.find .fix{font-size:13px;background:var(--rule-soft);padding:10px 14px;margin-top:8px;border-left:2px solid var(--teal);}
+.find .fix b{color:var(--teal-deep);}
+.chip{font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 9px;border:1px solid currentColor;white-space:nowrap;}
+.chip.c1{color:var(--rust);background:var(--rust-bg);}
+.chip.c2{color:var(--amber);background:var(--amber-bg);}
+.chip.c3{color:var(--ok);background:var(--ok-bg);}
+
+/* ---- timeline ---- */
+.tl{margin:24px 0;border-left:2px solid var(--rule);padding-left:0;list-style:none;}
+.tl li{position:relative;padding:0 0 30px 30px;}
+.tl li::before{content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;background:var(--teal);border:2px solid var(--paper);border-radius:50%;}
+.tl li.key::before{background:var(--rust);width:12px;height:12px;left:-7px;}
+.tl .wk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;}
+.tl .dt{font-weight:700;font-size:14.5px;margin:1px 0 6px;font-variant-numeric:tabular-nums;}
+.tl ul{margin:0;padding-left:1.15em;font-size:13.5px;color:var(--slate);}
+.tl ul li{padding:0 0 3px 0;}
+.tl ul li::before{display:none;}
+
+/* ---- checklist ---- */
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));background:var(--card);border:1px solid var(--rule);margin:22px 0;}
+.cl > div{background:var(--card);padding:20px 22px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.cl h5{margin:0 0 12px;font-size:13px;letter-spacing:.04em;color:var(--teal-deep);display:flex;align-items:center;gap:8px;}
+.cl h5 span{font-family:var(--serif);color:var(--faint);font-size:12px;}
+.cl ul{margin:0;padding:0;list-style:none;font-size:13px;}
+.cl li{padding:5px 0 5px 22px;position:relative;color:var(--slate);line-height:1.7;border-top:1px solid var(--rule-soft);}
+.cl li:first-child{border-top:none;}
+.cl li::before{content:"";position:absolute;left:0;top:12px;width:11px;height:11px;border:1.5px solid var(--teal);}
+.cl li b{color:var(--ink);font-weight:600;}
+.cl li i{font-style:normal;font-size:10.5px;letter-spacing:.06em;color:var(--faint);border:1px solid var(--rule);padding:1px 6px;margin-left:6px;white-space:nowrap;}
+
+hr{border:none;border-top:1px solid var(--rule);margin:56px 0 0;}
+.foot{padding-top:28px;font-size:12px;color:var(--faint);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+@media (max-width:640px){
+  .cover{padding:56px 0 40px;}
+  .part{flex-wrap:wrap;} .part .sub{margin-left:0;width:100%;}
+  .find{grid-template-columns:1fr;} .find .id{grid-row:auto;}
+}
+</style>
+
+<div class="wrap">
+
+<header class="cover">
+  <p class="eyebrow">Crowdfunding Preparation Review — 2026.11 Launch</p>
+  <h1>見積の穴を塞ぎ、媒体を決め、<em>11月公開まで逆算する</em>。</h1>
+  <p class="lede">新商品（家電・ガジェット）の国内クラウドファンディングについて、①お見積内容のレビューと追加項目、②Makuake単独と「きびだんご × GREEN FUNDING 併催」の比較、③公開までの準備計画を1本にまとめました。</p>
+  <div class="meta">
+    <span><b>作成</b> 2026年7月30日</span>
+    <span><b>想定公開</b> 2026年11月中旬</span>
+    <span><b>運営体制</b> 自社（Casokdo）一括請負</span>
+    <span><b>第一希望</b> きびだんご × GREEN FUNDING 共同開催</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#p1"><span class="n">PART 01</span><span class="t">お見積のレビュー</span><span class="s">至急3件・要修正5件・追加推奨26項目</span></a>
+  <a href="#p2"><span class="n">PART 02</span><span class="t">媒体比較</span><span class="s">Makuake / きびだんご / GF併催</span></a>
+  <a href="#p3"><span class="n">PART 03</span><span class="t">公開までの準備計画</span><span class="s">逆算スケジュールとTODO</span></a>
+  <a href="#p4"><span class="n">PART 04</span><span class="t">次のアクション</span><span class="s">8月10日までに決めること</span></a>
+</nav>
+
+<!-- ============ PART 1 ============ -->
+<section id="p1">
+  <div class="part"><span class="num">01</span><h2>お見積のレビュー</h2><span class="sub">lipro_見積_0730 / 税抜 ¥5,610,000</span></div>
+
+  <p>項目の切り方（手続き → 商品設計 → 撮影 → ページ → ポップアップ → 広告）は、クラファン案件の流れに沿っていて筋が通っています。ポップアップと事前体験会を先に置き、ティザーLPで受け皿を作ってから公開に入る設計も、家電ガジェットの立ち上げとして正しい順序です。<strong>構成は変える必要はありません。</strong>直すべきは「金額の入っていない行」と「実費と見積本体の境界」、それに<strong>クラファン後半〜終了後の工数がまだ載っていない</strong>点です。</p>
+
+  <div class="strip">
+    <div><div class="k">現状合計（税抜）</div><div class="v">¥5,610,000</div><div class="d">税込 ¥6,171,000</div></div>
+    <div><div class="k">うち広告予算</div><div class="v">¥3,000,000</div><div class="d">全体の53.5%</div></div>
+    <div><div class="k">制作・運営フィー</div><div class="v">¥2,610,000</div><div class="d">広告予算を除いた実額</div></div>
+    <div><div class="k">金額未記入の行</div><div class="v" style="color:var(--rust)">7<small> 行</small></div><div class="d">撮影・素材制作が全て空欄</div></div>
+  </div>
+
+  <h3>現状の構成（セクション別）</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>セクション</th><th>行数</th><th class="num">小計（税抜）</th><th class="num">構成比</th><th>所見</th></tr></thead>
+    <tbody>
+      <tr><th>手続き・契約・基本設計</th><td>1</td><td class="num">¥50,000</td><td class="num">0.9%</td><td>2媒体併催なら窓口が2つになる。工数を見直し</td></tr>
+      <tr><th>商品・コンテンツ設計</th><td>2</td><td class="num">¥30,000</td><td class="num">0.5%</td><td><span class="chip c2">安すぎ</span> 価格・目標金額の逆算設計が実質含まれていない</td></tr>
+      <tr><th>撮影・素材制作</th><td>7</td><td class="num" style="color:var(--rust);font-weight:700">¥0</td><td class="num">0.0%</td><td><span class="chip c1">未記入</span> 7行すべて数量・単価が空欄</td></tr>
+      <tr><th>ページ制作</th><td>4</td><td class="num">¥260,000</td><td class="num">4.6%</td><td>1媒体分のみ。GREEN FUNDING側のページが未計上</td></tr>
+      <tr><th>ポップアップ活動費</th><td>5</td><td class="num">¥520,000</td><td class="num">9.3%</td><td>2行が0円のまま（運営オペ・会場デコ）</td></tr>
+      <tr><th>広告・運用</th><td>9</td><td class="num">¥4,750,000</td><td class="num">84.7%</td><td>うち¥3,000,000が広告実費。見積本体と混在</td></tr>
+    </tbody>
+    <tfoot><tr><th>合計</th><td>28</td><td class="num">¥5,610,000</td><td class="num">100%</td><td>税込 ¥6,171,000</td></tr></tfoot>
+  </table>
+  </div>
+
+  <h3>至急対応（このまま提出すると事故になる）</h3>
+  <div class="finds">
+    <div class="find">
+      <span class="id">A1</span>
+      <div class="head"><span class="chip c1">至急</span><b>「撮影・素材制作」7行が全て金額未記入 = 合計0円</b></div>
+      <div class="body">物撮り／シーン撮影／メイン動画（1〜2分）／スタジオ8時間／短尺15〜30秒／動画編集／図解3枚——項目名だけが並び、数量・単価・金額が空欄です。合計額にも1円も乗っていません。クラファンで最も支援率を左右するのが動画と1枚目のビジュアルなので、ここが空欄のまま先方に出ると「後から数百万の追加請求が来る見積」に見えてしまいます。</div>
+      <div class="fix"><b>対応：</b>下記の参考レンジで一度埋め、撮影会社・スタジオの相見積を取って確定させる。仕様（カット数・モデル有無・尺・納品本数）を各行の備考に必ず書く。</div>
+    </div>
+    <div class="find">
+      <span class="id">A2</span>
+      <div class="head"><span class="chip c1">至急</span><b>広告費が「見積本体」と「実費注記」で二重に見える</b></div>
+      <div class="body">見積内に「事前広告費 ¥1,000,000」「開催中広告費 ¥2,000,000」が計上されている一方、脚注には「web、SNS広告費（google、Instagram等）は実費で発生」と書かれています。読み手には二重計上か、実費なのか判断できません。合計¥5,610,000の53.5%が広告費なので、ここの見え方は総額の説得力に直結します。</div>
+      <div class="fix"><b>対応：</b>見積を<b>【A】制作・運営フィー（確定）</b>と<b>【B】広告予算枠（実費精算・上限管理）</b>の2ブロックに分ける。Bは「予算上限¥3,000,000／実費精算／超過時は書面承認」と明記。運用費25%はBの実績額に対して請求する旨も併記。</div>
+    </div>
+    <div class="find">
+      <span class="id">A3</span>
+      <div class="head"><span class="chip c1">至急</span><b>2媒体併催なのにページ制作が1本分しかない</b></div>
+      <div class="body">第一希望が「きびだんご × GREEN FUNDING 共同開催」であるのに対し、ページ制作は構成設計・原稿・制作・修正の各1式のみ。GREEN FUNDINGはフォーマットもリターン設定画面も別で、原稿の流用はできても組み直しと審査対応は別工数が発生します。きびだんごの資料でも「GREEN FUNDINGページ作成」はサポート項目として独立して挙げられています。</div>
+      <div class="fix"><b>対応：</b>「GREEN FUNDINGページ制作費（2媒体目・原稿流用）¥150,000」と「媒体審査対応・修正（2媒体分）¥50,000」を追加。あわせて修正回数の前提「3回」がどちらの媒体を指すのかを明記。</div>
+    </div>
+  </div>
+
+  <h3>要修正（表記・前提の整理）</h3>
+  <div class="finds">
+    <div class="find"><span class="id">B1</span>
+      <div class="head"><span class="chip c2">要修正</span><b>0円で載っている2行（運営・オペレーション費／会場デコレーション手配）</b></div>
+      <div class="body">「¥0」と書かれていると無償提供の約束と読まれます。とくに会場デコレーションは「各アイテム展示 未定」と備考にあり、確定していないだけです。</div>
+      <div class="fix"><b>対応：</b>金額欄を空欄にして単位を「別途見積」に変更、または「¥0（本見積では計上せず／確定後に別途お見積）」と明記。</div>
+    </div>
+    <div class="find"><span class="id">B2</span>
+      <div class="head"><span class="chip c2">要修正</span><b>広告運用費の計算式が読み取れない</b></div>
+      <div class="body">「事前広告企画・設定、運用費（運用費用の25%想定）」の行が <b>数量25／単位％／単価¥750,000／金額¥750,000</b> となっており、素直に読むと 25×750,000 = ¥18,750,000 に見えます。</div>
+      <div class="fix"><b>対応：</b>数量1／単位「式」／単価¥750,000 に直し、品名を「広告運用費（広告予算¥3,000,000 × 25%）」と算式込みで書く。</div>
+    </div>
+    <div class="find"><span class="id">B3</span>
+      <div class="head"><span class="chip c2">要修正</span><b>納期・見積有効期限が空欄</b></div>
+      <div class="body">「納　期」欄が空、有効期限の記載もありません。11月公開を前提にした見積なので、その前提が書かれていないと後から日程がずれた際の根拠がなくなります。</div>
+      <div class="fix"><b>対応：</b>「納期：2026年11月中旬プロジェクト公開（別途スケジュール参照）」「本見積有効期限：発行日より30日」「本見積は2026年8月10日までのご発注を前提とした日程です」を追記。</div>
+    </div>
+    <div class="find"><span class="id">B4</span>
+      <div class="head"><span class="chip c2">要修正</span><b>プラットフォーム手数料の率と課税ベースが書かれていない</b></div>
+      <div class="body">脚注に「プラットフォーム手数料」は実費として挙がっていますが、率がありません。きびだんご単独15%／GREEN FUNDING併催20%（いずれも税抜）で、かつ<b>送料・税金を含む支援総額</b>に対して掛かります。支援1,000万円なら200万円で、見積本体の3分の1以上に相当する金額です。</div>
+      <div class="fix"><b>対応：</b>脚注に「プラットフォーム手数料：支援総額（送料・消費税込）の20%＋消費税（きびだんご・GREEN FUNDING併催時）。支援金からの相殺」と明記。</div>
+    </div>
+    <div class="find"><span class="id">B5</span>
+      <div class="head"><span class="chip c2">要修正</span><b>キャンセル規定・立替の扱いが未定義</b></div>
+      <div class="body">蔦屋家電＋は「お申込み以降のキャンセル時は所定の料金が発生」と明記されています。また支払条件は「末締め翌末」ですが、広告費・出展費の立替可否と立替手数料が決まっていません。GREEN FUNDINGは支援金相殺での支払いに対応しています。</div>
+      <div class="fix"><b>対応：</b>「発注後のキャンセル：媒体・会場の規定に準じ、既発生分＋所定のキャンセル料を実費請求」「広告費・出展費の立替：可／立替手数料5%」等を条件欄に追記。</div>
+    </div>
+  </div>
+
+  <h3>追加を推奨する項目</h3>
+  <p>現在の見積は「公開までを作る費用」がよく整理されている一方、<strong>公開してから終わるまで、そして終わってから届けるまで</strong>の工数がほぼ入っていません。運営を一括で請け負う前提なら、ここが実際に一番人手を食うところです。金額は相場ベースの参考レンジで、確定は要相談です。</p>
+
+  <h4>① 撮影・素材制作 — A1で空欄になっている7行を埋める</h4>
+  <div class="scroll">
+  <table>
+    <caption>参考レンジ。仕様（カット数・尺・本数・モデル有無）を確定させてから相見積を取ること。</caption>
+    <thead><tr><th>項目</th><th>前提の明記例</th><th class="num">参考レンジ（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>写真撮影 物撮り</td><td>白背景＋質感カット 計10カット／レタッチ込</td><td class="num">¥100,000〜150,000</td></tr>
+      <tr><td>写真撮影 シーン撮影</td><td>使用シーン 10カット／モデル1名（費用は実費別）</td><td class="num">¥120,000〜180,000</td></tr>
+      <tr><td>動画撮影 メイン動画</td><td>1〜2分／1日／構成台本・ナレーション別</td><td class="num">¥250,000〜400,000</td></tr>
+      <tr><td>スタジオ費</td><td>8時間／機材・照明込</td><td class="num">¥80,000〜150,000</td></tr>
+      <tr><td>SNS・広告用短尺</td><td>15〜30秒 × 3本（縦横比3種書き出し）</td><td class="num">¥120,000〜200,000</td></tr>
+      <tr><td>動画編集費</td><td>メイン1本＋短尺3本／字幕・BGM込／修正2回</td><td class="num">¥200,000〜300,000</td></tr>
+      <tr><td>図解・インフォグラフィック</td><td>3枚（AI活用制作）</td><td class="num">¥45,000〜90,000</td></tr>
+    </tbody>
+    <tfoot><tr><th>小計</th><td>—</td><td class="num">¥915,000〜1,470,000</td></tr></tfoot>
+  </table>
+  </div>
+
+  <h4>② 企画・設計 — 「価格と目標金額を決める仕事」が抜けている</h4>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>なぜ必要か</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>競合クラファン調査・着地シミュレーション</td><td>同カテゴリの類似案件の着地額・リターン価格帯・支援者数から目標金額の妥当性を検証する。広告300万を投下する判断の前提</td><td class="num">¥50,000〜80,000</td></tr>
+      <tr><td>価格・リターン構成設計（逆算）</td><td>原価・手数料20%・送料・関税から逆算して支援価格を決める作業。現「リターン設計 ¥15,000」では収まらない</td><td class="num">¥50,000</td></tr>
+      <tr><td>KPI設計・広告シミュレーション</td><td>目標支援者数／許容CPA／週次の判断基準を先に決める。決めずに300万を投下するのが最大のリスク</td><td class="num">¥50,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>③ 法務・規制対応 — 家電ガジェットで最も落としやすい</h4>
+  <div class="callout" style="border-color:var(--rust)">
+    <p class="label" style="color:var(--rust)">最重要</p>
+    <p>無線機能があれば<strong>技適（電波法）</strong>、ACアダプタ・充電器・リチウム電池を伴えば<strong>PSE（電気用品安全法）</strong>が必要です。海外製品の場合、CEやFCCを取得していても日本国内では効力がありません。未取得のまま販売・譲渡すると法令違反になり、プラットフォームの審査でも止まります。取得には数週間〜数ヶ月かかるため、<strong>今週から着手すべき唯一の項目</strong>です。</p>
+  </div>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>内容</th><th>担当想定</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>認証状況の棚卸し・確認整理</td><td>技適／PSE／電気用品安全法の届出。取得済みか、番号の表示方法、取扱説明書への記載</td><td>クライアント主管＋Casokdo確認</td><td class="num">¥50,000</td></tr>
+      <tr><td>ページ表現の法規チェック</td><td>景品表示法（優良誤認・No.1表記・「業界初」）、薬機法（健康・美容訴求がある場合）、特定商取引法表記</td><td>Casokdo</td><td class="num">¥50,000</td></tr>
+      <tr><td>知財の確認</td><td>クラファン公開は「公知」になるため、意匠・特許の出願はページ公開前に。商標の使用可否も確認</td><td>クライアント</td><td class="num">実費</td></tr>
+      <tr><td>PL保険（生産物賠償）</td><td>家電は事故時の賠償リスクがある。加入有無を確認</td><td>クライアント</td><td class="num">実費</td></tr>
+      <tr><td>輸入品の場合</td><td>関税・輸入通関、輸入者としての責任、日本語取扱説明書の整備</td><td>クライアント</td><td class="num">実費</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>④ 期間中の運営 — 実際に一番人手を食う</h4>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>内容と工数目安</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>活動報告（新着情報）制作・投稿</td><td>週1〜2本 × 45日 ＝ 8〜10本。2媒体に投稿。支援の中盤の落ち込みを支える主要施策</td><td class="num">¥120,000〜160,000</td></tr>
+      <tr><td>コメント・問い合わせ一次対応</td><td>ガジェットは仕様・互換性・技適の技術質問が集中する。2媒体分＋LP経由の問い合わせ</td><td class="num">¥200,000</td></tr>
+      <tr><td>追加リターン・価格改定の途中投入</td><td>数量限定枠の追加、セット組みの追加投入（中盤テコ入れの定番）</td><td class="num">¥50,000</td></tr>
+      <tr><td>SNS（Instagram）投稿制作・運用</td><td>ティザーでInstagramへ誘導する設計なのに運用費が未計上。3ヶ月／週2投稿想定</td><td class="num">¥240,000〜360,000</td></tr>
+      <tr><td>週次レポート・広告効果検証</td><td>週次でCPA・流入元・リターン別を可視化し、投下配分を組み替える</td><td class="num">¥100,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>⑤ PR — プレスリリースが1行も入っていない</h4>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>内容</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>プレスリリース制作</td><td>公開日朝配信用。ガジェット系メディア（家電Watch・Engadget系・ギズモード等）を想定した書き方に</td><td class="num">¥100,000</td></tr>
+      <tr><td>配信費（PR TIMES等）</td><td>1配信あたり約¥30,000〜。公開時／中間／達成時の3回想定</td><td class="num">実費 ¥30,000/回</td></tr>
+      <tr><td>メディアリスト作成・アタック</td><td>事前体験会（既に¥150,000＋¥100,000＋¥450,000で計上済）への招集と個別フォロー</td><td class="num">¥150,000</td></tr>
+      <tr><td>GREEN FUNDING公式メニュー</td><td>GREENティザー ¥82,500〜／New Gadgetレビュー動画 ¥165,000／バイラル動画3本 ¥110,000／LINE配信 ¥55,000（いずれも税込・支援金相殺可）</td><td class="num">実費 ¥250,000〜450,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>⑥ 計測・デジタル基盤</h4>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>内容</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>計測環境構築</td><td>GA4／Meta Pixel／UTM設計。広告300万を投下するなら必須。プラットフォーム側にタグを入れられない前提で、LP側で計測設計を組む</td><td class="num">¥80,000</td></tr>
+      <tr><td>広告クリエイティブ制作</td><td>バナー・動画の初期セット5〜8本＋期間中の差し替え。「動画編集費」に含むのか別建てか要明示</td><td class="num">¥200,000</td></tr>
+      <tr><td>ティザーLP周辺費</td><td>ドメイン・サーバー・事前登録フォームツール（3ヶ月）</td><td class="num">実費 ¥30,000程度</td></tr>
+      <tr><td>LINE公式アカウント運用</td><td>自社側の事前登録リスト運用（GF公式LINE配信とは別）</td><td class="num">¥80,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>⑦ 終了後 — リターンを届けるまでが案件</h4>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>追加項目</th><th>内容</th><th class="num">参考（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td>支援者リスト整備・住所不備対応</td><td>2媒体分をマージ、重複・不備の名寄せ、配送データ整形</td><td class="num">¥80,000</td></tr>
+      <tr><td>同梱物制作</td><td>取扱説明書・保証書・サンクスカード。家電は説明書と保証書が必須</td><td class="num">¥150,000〜250,000</td></tr>
+      <tr><td>発送代行手配・梱包設計</td><td>倉庫選定、梱包資材設計、出荷指示。配送費・資材費は実費別</td><td class="num">¥100,000</td></tr>
+      <tr><td>遅延・不良・返品対応フロー設計</td><td>生産遅延時の告知文テンプレ、交換対応の窓口設計。クラファンで最も信用を落とすポイント</td><td class="num">¥50,000</td></tr>
+      <tr><td>本販売への移行設計</td><td>自社EC／Amazonへの導線、クラファン支援者への配慮（価格・特典）</td><td class="num">別途</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>改定後の総額イメージ</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>ブロック</th><th>内容</th><th class="num">金額（税抜）</th></tr></thead>
+    <tbody>
+      <tr><td><b>【A】制作・運営フィー</b></td><td>現行の制作・運営分（広告予算を除く）¥2,610,000<br>＋ ① 撮影・素材制作の空欄を充当 ¥915,000〜1,470,000<br>＋ ②〜⑦ 追加推奨項目 ¥2,150,000〜2,565,000</td><td class="num">¥5,675,000〜6,645,000</td></tr>
+      <tr><td><b>【B】広告予算枠</b></td><td>事前¥1,000,000＋開催中¥2,000,000（実費精算・上限管理）</td><td class="num">¥3,000,000</td></tr>
+      <tr><td><b>【C】実費</b></td><td>PR配信3回・GFオプション・LP周辺費（モデル費・交通配送費・知財・保険は発生時実費）</td><td class="num">¥370,000〜570,000</td></tr>
+      <tr><td><b>【D】プラットフォーム手数料</b></td><td>支援総額（送料・消費税込）の20%＋消費税／支援金から相殺のため本合計には含まない</td><td class="num">支援額連動</td></tr>
+    </tbody>
+    <tfoot><tr><th>A＋B＋C（税抜）</th><td>税込 ¥9,949,500〜11,236,500</td><td class="num">¥9,045,000〜10,215,000</td></tr></tfoot>
+  </table>
+  </div>
+  <p class="note"><b>※</b>あくまで「必要な項目を全部立てたらこうなる」という上限側の姿です。実際には⑥⑦の一部をクライアント側に寄せる、SNS運用を絞る、PR配信を1回にする等で調整できます。重要なのは、<b>削るという判断を先方と合意した上で削る</b>ことです。</p>
+
+  <div class="callout hi">
+    <p class="label">この数字が意味すること — 目標金額の下限</p>
+    <p>施策費を仮に¥9,000,000（税抜）、プラットフォーム手数料20%とすると、支援総額 S に対する手残りは <b>S × 0.80 −（原価）− 9,000,000</b> です。原価率別の損益分岐点は次のとおりで、<strong>11月のクラファンは「1,500万〜2,200万円を取りにいく規模の企画」として設計する必要があります</strong>。目標金額を数百万円に置いた企画に対して施策費900万は明らかに過大なので、まずここを先方と揃えるべきです。</p>
+    <div class="scroll" style="margin-bottom:0">
+    <table style="min-width:420px">
+      <thead><tr><th>原価率</th><th class="num">損益分岐となる支援総額</th><th class="num">必要支援者数（平均単価3万円）</th></tr></thead>
+      <tbody>
+        <tr><td>20%</td><td class="num">¥15,000,000</td><td class="num">約500人</td></tr>
+        <tr><td>30%</td><td class="num">¥18,000,000</td><td class="num">約600人</td></tr>
+        <tr><td>40%</td><td class="num">¥22,500,000</td><td class="num">約750人</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note" style="margin-top:12px">前提：施策費¥9,000,000（税抜）／手数料20%（税抜）／送料は支援価格に内包。参考として GREEN FUNDING の1プロジェクト平均支援額は約392万円、きびだんご自社運営案件では5,000万〜8,500万円規模の実績があります。</p>
+  </div>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section id="p2">
+  <div class="part"><span class="num">02</span><h2>媒体比較：Makuake単独 vs きびだんご×GREEN FUNDING併催</h2><span class="sub">支援1,000万円想定での試算つき</span></div>
+
+  <div class="callout hi">
+    <p class="label">結論</p>
+    <p><strong>第一希望どおり「きびだんご × GREEN FUNDING 併催」で進めるのが妥当です。</strong>手数料は併催20%（税抜）で<strong>Makuake単独とまったく同率</strong>なので、コストは判断軸になりません。決め手は3つ：(1) 家電・ガジェットにとって<strong>蔦屋家電＋のリアル体験接点</strong>が効く、(2) GREEN FUNDINGは<strong>SNS広告の運用手数料0%・クリエイティブ制作無料・リターゲティングは媒体負担</strong>で、300万の広告予算をそのまま配信に回せる、(3) 2媒体の露出が<strong>+6.25%</strong>を超えて積み上がれば、きびだんご単独（15%）より手残りが増える。ViXion01の実績ではGREEN FUNDING側が総額の37%を占めており、この閾値は十分に超える見込みがあります。</p>
+    <p style="margin-bottom:0">ただし<strong>Makuakeは候補から完全に外さず、8月上旬に一度打診しておくこと</strong>を推奨します。理由はPART 2末尾の「注意点」に記載します。</p>
+  </div>
+
+  <h3>3案の比較</h3>
+  <div class="scroll">
+  <table>
+    <colgroup><col><col><col><col class="hi"></colgroup>
+    <thead><tr><th>比較項目</th><th>Makuake 単独</th><th>きびだんご 単独</th><th>きびだんご × GREEN FUNDING 併催<br><span style="font-weight:400;font-size:11px">◎ 第一希望</span></th></tr></thead>
+    <tbody>
+      <tr><th>プラットフォーム手数料</th><td>20%（税抜）／22%（税込）<br>決済手数料込</td><td class="mk">15%（税抜）</td><td><b>20%（税抜）</b><br>きびだんご窓口で2媒体合算</td></tr>
+      <tr><th>掲載費・初期費用</th><td>無料</td><td>無料</td><td>無料<br><span class="note" style="margin:0">※GF単独契約なら Standard 18.2%（税抜）／Partner 11.9%＋初期費用¥1,300,000</span></td></tr>
+      <tr><th>調達方式</th><td class="mk">All-in / All-or-Nothing 選択可</td><td>All-or-Nothing</td><td>All-or-Nothing<br>（GFはAll-in未採用）</td></tr>
+      <tr><th>実行者への入金</th><td class="mk">終了月の翌月25日</td><td>要確認</td><td>GF：終了月末締め → 翌月末振込</td></tr>
+      <tr><th>リーチ・規模</th><td class="mk">サポーター330万人超。ガジェット案件の国内最大手</td><td>非公開（プロジェクト成立率80%）</td><td>CCCグループ V会員1億5,400万人／GFメルマガ30万人超・開封率約30%／成功率85.8%／1PJ平均支援額約392万円</td></tr>
+      <tr><th>伴走支援</th><td class="mk">専任キュレーターの伴走が手数料内に含まれる</td><td>場とノウハウの提供が中心<br><span class="note" style="margin:0">プレミアムサポートは総支援額25%または¥500,000の高い方</span></td><td>きびだんごが窓口／GFはページ制作アドバイス＋広告運用代行</td></tr>
+      <tr><th>SNS広告支援</th><td>自社運用（別途）</td><td>自社運用（別途）</td><td class="mk"><b>運用手数料0%・クリエイティブ制作費無料</b>／GF公式アカウントから実購買データを使って配信／リターゲティングはGF負担／日予算¥5,000〜・最低7日</td></tr>
+      <tr><th>事前告知（ティザー）</th><td>Coming Soon枠</td><td class="xx">—</td><td class="mk">GREENティザー ¥82,500〜（税込）＋広告費。GF内にティザーページ＋LINE1万通配信</td></tr>
+      <tr><th>リアル体験接点</th><td>Makuake SHOP等</td><td class="xx">—</td><td class="mk"><b>蔦屋家電＋（二子玉川）で常設展示・タッチ＆トライ</b><br>年間来館600万人／平日15,000人・休日20,000人／15km圏内が73%<br>通常区画 ¥250,000/30日、大型区画 ¥270,000〜330,000/30日、Visual Presentation Point ¥500,000/30日<br>AIカメラ解析データ・接客ログ・製品ページ作成込／委託販売可（売上100%還元）</td></tr>
+      <tr><th>動画・インフルエンサー</th><td>別途手配</td><td>別途手配</td><td>GREEN New Gadgetレビュー ¥165,000（公開まで3〜4週）／バイラル動画3本 ¥110,000〜／YouTuberキャスティング別見積</td></tr>
+      <tr><th>カテゴリ相性</th><td class="mk">◎ ガジェット案件の集積が最も厚い</td><td>○ ものづくり・雑貨に強い</td><td class="mk">◎ 家電・ガジェット＋リアル展示の組み合わせが刺さる</td></tr>
+      <tr><th>他媒体との併用</th><td>GREEN FUNDINGとは相互に不可（同時・後追いいずれも）<span class="note" style="margin:0">※各社への書面確認は必須</span></td><td>GFとの併催が公式メニュー</td><td class="mk">◎ 公式に同時開催に対応</td></tr>
+      <tr><th>運営工数（自社運営前提）</th><td class="mk">1媒体分</td><td class="mk">1媒体分</td><td>2媒体分。ページ2本／CS2窓口／在庫按分／発送2系統／活動報告2媒体投稿</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>手数料シミュレーション</h3>
+  <div class="scroll">
+  <table>
+    <caption>支援総額（送料・消費税込）に対する手数料。手数料には別途消費税が加算されます。</caption>
+    <thead><tr><th>案</th><th class="num">手数料率（税抜）</th><th class="num">支援 1,000万円</th><th class="num">支援 1,800万円</th><th class="num">実行者手残り率</th></tr></thead>
+    <tbody>
+      <tr><td>Makuake 単独</td><td class="num">20%</td><td class="num">¥2,000,000</td><td class="num">¥3,600,000</td><td class="num">80%</td></tr>
+      <tr><td>きびだんご 単独</td><td class="num">15%</td><td class="num">¥1,500,000</td><td class="num">¥2,700,000</td><td class="num">85%</td></tr>
+      <tr><td>GREEN FUNDING 単独（Standard）</td><td class="num">18.2%</td><td class="num">¥1,820,000</td><td class="num">¥3,276,000</td><td class="num">81.8%</td></tr>
+      <tr style="background:var(--pale)"><td><b>きびだんご × GF 併催</b></td><td class="num"><b>20%</b></td><td class="num"><b>¥2,000,000</b></td><td class="num"><b>¥3,600,000</b></td><td class="num"><b>80%</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <p class="label">損益分岐 — 併催が単独を上回る条件</p>
+    <p>きびだんご単独（15%）と併催（20%）で手残りが同額になるのは、<strong>併催によって支援総額が +6.25% 増えたとき</strong>です（S × 0.85 = S′ × 0.80 → S′ = 1.0625 S）。</p>
+    <p style="margin-bottom:0">参考実績：ViXion株式会社「ViXion01」は総支援額 ¥425,191,377 のうち、きびだんご ¥267,146,577（63%）／GREEN FUNDING ¥158,044,800（<strong>37%</strong>）という配分でした。GF側が純粋な上乗せだったと仮定すれば、上乗せ幅は閾値の6.25%を大きく超えます。<strong>併催の手数料5ポイント増は、露出増で十分に回収できる構造です。</strong></p>
+  </div>
+
+  <h3>Makuakeを選ぶとしたら、どこで判断が変わるか</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>観点</th><th>Makuakeが優位になる条件</th><th>今回の状況</th></tr></thead>
+    <tbody>
+      <tr><td>伴走支援の価値</td><td>社内にクラファン運営リソースがなく、キュレーターの伴走に手数料を払う価値が高い場合</td><td class="xx">運営は自社（Casokdo）一括請負。伴走の価値は相対的に低い → <b>併催有利</b></td></tr>
+      <tr><td>調達方式の柔軟性</td><td>目標未達でも支援金を受け取りたい（All-in を選びたい）場合</td><td>GF・きびだんごはAll-or-Nothingのみ。生産ロットの最低数量が高く「未達でも走りたい」なら <b>Makuake有利</b></td></tr>
+      <tr><td>キャッシュフロー</td><td>入金を1日でも早めたい場合</td><td>Makuake は終了月の翌月25日。GFは終了月末締め→翌月末 → <b>Makuakeがやや早い</b></td></tr>
+      <tr><td>純粋な集客力</td><td>1媒体で最大の支援額を狙う場合</td><td>ガジェット領域の集積はMakuakeが最厚。ただし競合案件も最も多い → <b>引き分け</b></td></tr>
+      <tr><td>リアル体験の必要性</td><td>店頭で触ってもらわないと価値が伝わらない商品</td><td class="mk">家電ガジェットで体験会もポップアップも既に企画済 → <b>併催が明確に有利</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout" style="border-color:var(--amber)">
+    <p class="label" style="color:var(--amber)">注意点 — 8月上旬に確認しておくこと</p>
+    <p>MakuakeとGREEN FUNDINGは、<strong>同時開催も、片方を終えてからの「おかわり」開催も、相互に不可</strong>とされています。つまり<strong>併催で走ると決めた時点で、この商品でMakuakeを使う道はほぼ閉じます</strong>（シリーズ第2弾を将来Makuakeでやりたい、という構想があるなら影響します）。</p>
+    <p style="margin-bottom:0">この点は各社の運用ルール次第で例外もあり得るため、<strong>8月上旬の媒体打診時に、きびだんご・GREEN FUNDING・Makuakeの3社へ書面（メール）で確認</strong>してください。あわせてきびだんご側の入金サイト、および「併催20%」が2媒体の支援総額合算に対する率であることも文面で取ってください。この文書内で「要確認」としている項目は次の3点です。</p>
+    <ul style="margin:10px 0 0;font-size:13.5px;color:var(--slate)">
+      <li>きびだんごの実行者への入金タイミング</li>
+      <li>併催手数料20%の課税ベース（2媒体合算か、媒体別か）</li>
+      <li>Makuake / GREEN FUNDING の相互排他ルールの正確な範囲</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section id="p3">
+  <div class="part"><span class="num">03</span><h2>公開までの準備計画</h2><span class="sub">2026/11/11 公開・12/25 終了（45日間）モデル</span></div>
+
+  <p>公開日を <strong>2026年11月11日（水）</strong>、終了を <strong>12月25日（金）・45日間</strong>と置いて逆算します。この日程を推奨する理由は、年末ギフト需要の立ち上がりを丸ごと捉えられること、年始の物流混雑を避けられること、支援金の入金が1月末で生産発注を早く回せることの3点です。今日（7/30）から公開まで <strong>残り15週</strong>です。</p>
+
+  <div class="strip">
+    <div><div class="k">公開まで</div><div class="v">15<small> 週</small></div><div class="d">2026/7/30 → 11/11</div></div>
+    <div><div class="k">クリティカルパス</div><div class="v" style="font-size:17px;color:var(--rust)">認証 ＆ デモ機</div><div class="d">技適・PSE／撮影用実機</div></div>
+    <div><div class="k">最も早い締切</div><div class="v" style="font-size:17px">9/14</div><div class="d">蔦屋家電＋ 出展申込</div></div>
+    <div><div class="k">目標支援額の目安</div><div class="v">1,800<small> 万円</small></div><div class="d">原価率30%想定の損益分岐</div></div>
+  </div>
+
+  <h3>リードタイムから決まる締切</h3>
+  <p>各媒体の公式リードタイムから逆算した「絶対に守る日付」です。この表が今回のスケジュールの背骨になります。</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>施策</th><th>公式リードタイム</th><th class="num">11/11公開なら締切</th><th>出典</th></tr></thead>
+    <tbody>
+      <tr><td><b>技適・PSE等の認証確認</b></td><td>数週間〜数ヶ月</td><td class="num" style="color:var(--rust);font-weight:700">今週着手／9月末完了</td><td>電波法・電気用品安全法</td></tr>
+      <tr><td><b>蔦屋家電＋ 出展申込</b></td><td>出展1ヶ月前／事前エントリー・審査制／枠は申込先着順</td><td class="num" style="font-weight:700">9/14 申込<br>9/30 提出物締切</td><td>蔦屋家電＋ご案内 Ver.8.3</td></tr>
+      <tr><td>撮影（実機必須）</td><td>デモ機・量産試作の確保が前提</td><td class="num" style="font-weight:700">8/31 実機入手<br>9/7〜9/18 撮影</td><td>—</td></tr>
+      <tr><td>GREEN FUNDING 相談・審査</td><td>3〜7営業日</td><td class="num">8/10 相談開始</td><td>GREEN FUNDING ver3.0.1</td></tr>
+      <tr><td>GF プロジェクト準備期間</td><td>約3〜5週間</td><td class="num">10/7 ページ着手完了</td><td>同上</td></tr>
+      <tr><td>GREENティザー</td><td>申込〜開始14日前後／公開予定日の3〜4週前に相談</td><td class="num" style="font-weight:700">10/14 相談<br>10/28 ティザー公開</td><td>同上</td></tr>
+      <tr><td>GREEN New Gadgetレビュー</td><td>公開まで3〜4週（収録→公開は7〜14日後）</td><td class="num">10/14 申込／10/26週 収録</td><td>同上</td></tr>
+      <tr><td>GF SNS広告運用</td><td>申込〜開始10日前後</td><td class="num">10/30 申込</td><td>同上</td></tr>
+      <tr><td>GF ページ審査</td><td>3〜7営業日</td><td class="num">10/28 審査申請</td><td>同上</td></tr>
+      <tr><td>プレスリリース</td><td>配信2週間前に原稿FIX</td><td class="num">10/28 原稿FIX／11/11 朝配信</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note"><b>※</b>きびだんご側の審査リードタイムは資料に記載がないため、8月上旬の打診時に確認してください。GREEN FUNDINGと同等（3〜7営業日）と仮定して組んでいます。</p>
+
+  <h3>逆算スケジュール</h3>
+  <ul class="tl">
+    <li class="key">
+      <div class="wk">Week 1–2 ／ D−15</div>
+      <div class="dt">7/30 〜 8/9 — 意思決定と法規制の着手</div>
+      <ul>
+        <li><b>媒体を確定</b>し、きびだんご・GREEN FUNDING・Makuakeの3社へ打診＋要確認3点をメールで取る</li>
+        <li><b>技適／PSEの認証状況を棚卸し</b>。未取得なら即着手（ここだけは遅れが取り返せない）</li>
+        <li>原価・目標金額・支援価格の逆算設計。損益分岐（1,500〜2,200万円）を先方と合意</li>
+        <li>見積の改定版を確定（PART 1のA1〜A3・B1〜B5を反映）し、発注をもらう</li>
+        <li>デモ機・量産試作の入手日を確約させる（8/31デッドライン）</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">Week 3–4 ／ D−13</div>
+      <div class="dt">8/10 〜 8/23 — 媒体申請と撮影設計</div>
+      <ul>
+        <li>両媒体へプロジェクト相談・審査申請、アカウント作成／ページ払い出し申請</li>
+        <li>リターン構成・価格・数量の確定（早割／数量限定／セット組み／中盤投入用の追加枠を先に設計）</li>
+        <li>撮影企画・絵コンテ・撮影台本の確定、撮影会社／スタジオの相見積と押さえ</li>
+        <li>競合クラファン調査（同カテゴリの着地額・価格帯・支援者数）</li>
+        <li>蔦屋家電＋の出展プランを決定（通常区画 / 大型区画 / VPP、30日 or 60日）してエントリー準備</li>
+      </ul>
+    </li>
+    <li class="key">
+      <div class="wk">Week 5–6 ／ D−11</div>
+      <div class="dt">8/24 〜 9/6 — 実機入手と認証完了</div>
+      <ul>
+        <li><b>8/31：デモ機・量産試作を入手（絶対死守）</b></li>
+        <li>認証（技適・PSE）の確認完了、表示・取扱説明書への記載方法を確定</li>
+        <li>ページ原稿の骨子（訴求順・比較・スペック表・FAQ）を作成</li>
+        <li>ティザーLPのワイヤー・デザイン着手、事前登録フォーム／計測環境（GA4・Pixel・UTM）の設計</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">Week 7–8 ／ D−9</div>
+      <div class="dt">9/7 〜 9/20 — 撮影と原稿</div>
+      <ul>
+        <li><b>撮影実施</b>：物撮り／シーン撮影／メイン動画（1〜2分）／短尺3本。スタジオ8時間</li>
+        <li>ページ原稿執筆（5,000字想定）、図解・インフォグラフィック3枚</li>
+        <li><b>9/14：蔦屋家電＋ 出展申込書を提出</b>（10/14出展開始の場合）</li>
+        <li>プレスリリースの構成着手、メディアリスト作成</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">Week 9–10 ／ D−7</div>
+      <div class="dt">9/21 〜 10/4 — ページ制作とティザー立ち上げ</div>
+      <ul>
+        <li>動画編集（メイン＋短尺）、広告クリエイティブ初期セット5〜8本の制作</li>
+        <li><b>ティザーLP公開・事前登録の受付開始</b>、Instagram運用スタート</li>
+        <li>両媒体のページを制作（きびだんご＋GREEN FUNDING の2本）</li>
+        <li><b>9/30：蔦屋家電＋ 提出物締切</b>（口座登録・記入シート・タブレット表示用データ・展示物原稿の事前確認）</li>
+        <li>ページ表現の法規チェック（景表法・薬機法・特商法表記）</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">Week 11–12 ／ D−5</div>
+      <div class="dt">10/5 〜 10/18 — 審査申込と体験会準備</div>
+      <ul>
+        <li><b>10/7：ページ着手完了</b>（GF準備期間3〜5週間の逆算）</li>
+        <li><b>10/14：GREENティザー・New Gadgetレビューを申込</b></li>
+        <li><b>10/14：蔦屋家電＋ 展示開始</b>（勉強会は数日前）。AIカメラ解析・接客ログの取得開始</li>
+        <li>事前体験会の会場・什器・スタッフを確定、招待メディア／インフルエンサーへ案内発送</li>
+        <li>ポップアップの設営図・什器・デコレーション確定</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">Week 13–14 ／ D−3</div>
+      <div class="dt">10/19 〜 11/1 — ティザー公開と初動の仕込み</div>
+      <ul>
+        <li><b>10/28：両媒体へページ審査申請</b>（3〜7営業日）</li>
+        <li><b>10/28：GREENティザー公開</b>＋LINE1万通配信、GF Coming Soon枠掲載</li>
+        <li><b>10/28：プレスリリース原稿FIX</b>、配信予約</li>
+        <li>SNS広告のテスト配信でクリエイティブの当たりを事前検証（日予算¥5,000〜）</li>
+        <li>事前体験会・ポップアップ開催、その場で撮った素材を広告に二次利用</li>
+        <li><b>10/30：GF SNS広告運用を申込</b></li>
+      </ul>
+    </li>
+    <li class="key">
+      <div class="wk">Week 15 ／ D−1</div>
+      <div class="dt">11/2 〜 11/10 — 最終確認</div>
+      <ul>
+        <li>審査通過、公開設定・リターン在庫数・配送予定時期の最終確認（2媒体で表記を完全一致させる）</li>
+        <li><b>初動48時間のシナリオを確定</b>：広告投下配分・LINE／メール一斉配信の時刻・活動報告#1の下書き</li>
+        <li>週次の判断基準（許容CPA・撤退ライン・追加投下ライン）を数値で決めておく</li>
+        <li>CS体制の確立：FAQ整備、2媒体＋LPの問い合わせ窓口、一次回答テンプレ</li>
+      </ul>
+    </li>
+    <li class="key">
+      <div class="wk">Launch</div>
+      <div class="dt">11/11（水） — 公開</div>
+      <ul>
+        <li>朝：プレスリリース配信、事前登録者へLINE／メール一斉配信、SNS一斉投稿</li>
+        <li><b>初動48時間に広告を集中投下</b>（ランキング掲載・ランキングメルマガ掲載の可能性が高まる）</li>
+        <li>活動報告#1を公開当日に投稿</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">In-Flight</div>
+      <div class="dt">11/12 〜 12/24 — 期間中の運営</div>
+      <ul>
+        <li>活動報告を週1〜2本（計8〜10本）、2媒体に投稿</li>
+        <li>週次で広告効果を検証し配分を組み替え（GFは1週間単位で総費用と効果を確認できる）</li>
+        <li>中盤（11月末〜12月上旬）に追加リターン・数量限定枠を投入してテコ入れ</li>
+        <li>New Gadgetレビュー動画・バイラル動画を中押しのタイミングで公開</li>
+        <li>コメント・問い合わせ対応（仕様・互換性・技適の質問が集中する想定）</li>
+        <li>ラスト3日はカウントダウン配信＋広告再投下</li>
+      </ul>
+    </li>
+    <li>
+      <div class="wk">After</div>
+      <div class="dt">12/25 終了 〜 2027/2 — 集計・入金・発送</div>
+      <ul>
+        <li>12/25 終了 → 支援者リストを2媒体分マージ、住所不備の名寄せ</li>
+        <li>1月末：GREEN FUNDING より入金（終了月末締め→翌月末）／きびだんご側は要確認</li>
+        <li>生産発注、同梱物（取扱説明書・保証書・サンクスカード）の制作</li>
+        <li>発送代行・梱包資材の手配、出荷指示。<b>遅延が出たら必ず活動報告で先に告知</b></li>
+        <li>不良・返品・交換の受付フロー稼働</li>
+        <li>本販売（自社EC／Amazon）へ移行。支援者への価格・特典の配慮を設計</li>
+        <li>蔦屋家電＋のレポート（AIカメラ解析・接客ログ）を本販売の訴求に転用</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>準備TODO（担当別）</h3>
+  <div class="cl">
+    <div>
+      <h5><span>01</span>意思決定・契約</h5>
+      <ul>
+        <li>媒体の最終決定（併催 or Makuake）<i>8/9まで</i></li>
+        <li>要確認3点を各社から書面で取得<i>8/9まで</i></li>
+        <li>改定見積の承認・発注<i>8/9まで</i></li>
+        <li>公開日・期間の確定（11/11〜12/25）<i>8/9まで</i></li>
+        <li>キャンセル規定・立替条件の合意<i>8/9まで</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>02</span>法務・認証 <i style="color:var(--rust);border-color:var(--rust)">最優先</i></h5>
+      <ul>
+        <li>技適（電波法）の取得状況確認<i>クライアント</i></li>
+        <li>PSE（電気用品安全法）の確認<i>クライアント</i></li>
+        <li>意匠・特許の出願（公開前）<i>クライアント</i></li>
+        <li>PL保険の加入確認<i>クライアント</i></li>
+        <li>景表法・薬機法の表現チェック<i>Casokdo</i></li>
+        <li>特商法表記・返品条件の整備<i>Casokdo</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>03</span>数値設計</h5>
+      <ul>
+        <li>原価・送料・関税の確定<i>クライアント</i></li>
+        <li>支援価格・リターン構成の逆算<i>Casokdo</i></li>
+        <li>目標金額と損益分岐の合意<i>両者</i></li>
+        <li>KPI・許容CPA・撤退ラインの設定<i>Casokdo</i></li>
+        <li>競合クラファン調査<i>Casokdo</i></li>
+        <li>生産ロット・最低数量の確認<i>クライアント</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>04</span>素材制作</h5>
+      <ul>
+        <li>デモ機・量産試作の確保<i>8/31必達</i></li>
+        <li>撮影台本・絵コンテ<i>8/23まで</i></li>
+        <li>物撮り・シーン撮影<i>9月上旬</i></li>
+        <li>メイン動画（1〜2分）<i>9月上旬</i></li>
+        <li>短尺3本・広告クリエイティブ<i>9月下旬</i></li>
+        <li>図解・インフォグラフィック3枚<i>9月中旬</i></li>
+        <li>ページ原稿5,000字<i>9月中旬</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>05</span>媒体・ページ</h5>
+      <ul>
+        <li>きびだんごページ制作<i>10/7</i></li>
+        <li>GREEN FUNDINGページ制作<i>10/7</i></li>
+        <li>リターン・在庫数・配送予定の設定<i>2媒体で表記統一</i></li>
+        <li>審査申請と修正対応<i>10/28</i></li>
+        <li>GREENティザー申込<i>10/14</i></li>
+        <li>GF SNS広告運用申込<i>10/30</i></li>
+        <li>New Gadgetレビュー申込<i>10/14</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>06</span>リアル接点</h5>
+      <ul>
+        <li>蔦屋家電＋ 出展プラン決定<i>8/23まで</i></li>
+        <li>出展申込書の提出<i>9/14</i></li>
+        <li>提出物一式（記入シート・タブレット用データ・展示物原稿）<i>9/30</i></li>
+        <li>勉強会の受講<i>10月上旬</i></li>
+        <li>事前体験会の会場・什器・スタッフ<i>10月中旬</i></li>
+        <li>ポップアップ設営図・デコレーション<i>10月中旬</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>07</span>集客・PR</h5>
+      <ul>
+        <li>ティザーLP（企画・デザイン・実装）<i>9月下旬公開</i></li>
+        <li>事前登録フォーム・LINE公式開設<i>9月下旬</i></li>
+        <li>計測環境（GA4・Pixel・UTM）<i>9月中旬</i></li>
+        <li>Instagram運用開始<i>9月下旬</i></li>
+        <li>プレスリリース制作・配信予約<i>10/28 FIX</i></li>
+        <li>メディアリスト作成・アタック<i>9月下旬〜</i></li>
+        <li>広告テスト配信<i>10月下旬</i></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span>08</span>運営・CS・物流</h5>
+      <ul>
+        <li>FAQ整備・一次回答テンプレ<i>11/10まで</i></li>
+        <li>活動報告の年間カレンダー（8〜10本）<i>11/10まで</i></li>
+        <li>問い合わせ窓口の一本化<i>11/10まで</i></li>
+        <li>取扱説明書・保証書の制作<i>12月</i></li>
+        <li>発送代行・梱包資材の手配<i>12月</i></li>
+        <li>遅延告知テンプレの準備<i>12月</i></li>
+        <li>本販売への移行設計<i>1月</i></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>リスクと対策</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>リスク</th><th>影響</th><th>対策</th></tr></thead>
+    <tbody>
+      <tr><td><b>技適・PSEが未取得</b></td><td><span class="chip c1">致命</span> 公開不可。無線機を技適なしで販売すれば電波法違反</td><td>今週着手。取得済みなら番号と表示方法を確認。取得が11月に間に合わないなら公開日そのものを後ろにずらす判断を8月中に行う</td></tr>
+      <tr><td><b>デモ機・量産試作の遅延</b></td><td><span class="chip c1">致命</span> 撮影が全て後ろ倒れ、ページ・広告・ティザーが連鎖遅延</td><td>8/31を確約ラインとして書面で押さえる。遅れる場合はCG・レンダリング素材での代替を9月頭に切り替え判断</td></tr>
+      <tr><td>蔦屋家電＋の審査落ち・枠なし</td><td><span class="chip c2">中</span> リアル体験接点を失い、併催の優位性が減る</td><td>事前エントリー審査制・枠は申込先着順。8月中にプランを決めて9/14より前倒しで申込。落選時は事前体験会とポップアップに予算を振り替え</td></tr>
+      <tr><td>広告CPAが想定を超過</td><td><span class="chip c2">中</span> 300万を消化して目標未達（All-or-Nothingなので全額返金）</td><td>週次の判断基準（許容CPA・撤退ライン）を公開前に数値で決める。GFは1週間単位で検証可。10月下旬のテスト配信で当たりクリエイティブを事前に絞る</td></tr>
+      <tr><td>年末年始の物流・CS混雑</td><td><span class="chip c2">中</span> 配送遅延と問い合わせ増が信用低下につながる</td><td>終了を12/25に置き、配送予定時期は1月以降で2媒体・LP・活動報告すべて表記を統一。年末年始のCS対応時間も事前告知</td></tr>
+      <tr><td>Makuakeを将来使えなくなる</td><td><span class="chip c2">中</span> シリーズ第2弾・後追い開催の選択肢が閉じる</td><td>8月上旬に3社へ書面確認。第2弾構想がある場合は媒体選定の判断材料に含める</td></tr>
+      <tr><td>2媒体運営の工数超過</td><td><span class="chip c3">小</span> ページ2本・CS2窓口・活動報告2媒体投稿で想定工数を超える</td><td>改定見積で2媒体分の工数を計上済み（A3・④）。原稿・素材は共通化し、媒体差分のみ作り分ける運用ルールを先に決める</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ PART 4 ============ -->
+<section id="p4">
+  <div class="part"><span class="num">04</span><h2>次のアクション</h2><span class="sub">8月9日までに決着させること</span></div>
+  <p>11月11日公開を成立させるために、<strong>この5つは8月9日までに決める必要があります</strong>。いずれも後ろにずらすと、撮影と認証というクリティカルパスに直接跳ね返ります。</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th style="width:40px">#</th><th>決めること</th><th>決められないと何が起きるか</th><th>担当</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>技適・PSEの取得状況を確認し、未取得なら着手</b></td><td>公開自体が不可能。日程を組む前提が崩れる</td><td>クライアント</td></tr>
+      <tr><td class="num">2</td><td><b>デモ機・量産試作の入手日を8/31で確約</b></td><td>撮影→ページ→広告→ティザーが全て連鎖遅延</td><td>クライアント</td></tr>
+      <tr><td class="num">3</td><td><b>目標金額の合意</b>（原価率30%なら損益分岐1,800万円）</td><td>施策費900万に対して目標が過小なままだと、企画全体が赤字設計になる</td><td>両者</td></tr>
+      <tr><td class="num">4</td><td><b>媒体の確定と3社への打診</b>（要確認3点を書面で取得）</td><td>審査リードタイム（3〜7営業日）とページ準備（3〜5週間）が確保できない</td><td>Casokdo</td></tr>
+      <tr><td class="num">5</td><td><b>改定見積の承認・発注</b>（A1〜A3・B1〜B5を反映）</td><td>撮影費が空欄のまま進み、後出し請求の構図になる</td><td>両者</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout hi">
+    <p class="label">まとめ</p>
+    <p><strong>見積：</strong>構成は変える必要なし。撮影7行の空欄を埋め、広告費を「制作フィー／広告予算枠」に分離し、GREEN FUNDING分のページ制作と期間中〜終了後の運営工数を追加。総額は¥904万〜1,022万（税抜・プラットフォーム手数料除く）が全部載せの姿。</p>
+    <p><strong>媒体：</strong>第一希望の併催で妥当。手数料はMakuake単独と同率20%（税抜）で、判断軸はコストではなく「蔦屋家電＋のリアル接点」と「広告運用手数料0%」。きびだんご単独比では支援総額+6.25%でイーブンになり、ViXion01の実績（GF側37%）を見れば十分ペイする。</p>
+    <p style="margin-bottom:0"><strong>準備：</strong>11/11公開・12/25終了で残り15週。クリティカルパスは技適／PSEとデモ機（8/31）。最も早い外部締切は蔦屋家電＋の出展申込9/14。</p>
+  </div>
+</section>
+
+<hr>
+<div class="foot">
+  <span>株式会社Casokdo — クラウドファンディング実施計画 / 2026年7月30日</span>
+  <span>出典：GREEN FUNDING ご案内 ver3.0.1／きびだんご プレミアムサポートプランのご案内／二子玉川 蔦屋家電＋ご案内 Ver.8.3／同 v2.0 2025年版／lipro 見積書 0730</span>
+</div>
+
+</div>
