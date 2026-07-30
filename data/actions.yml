@@ -14,12 +14,23 @@ actions:
     target_queries: [q1, q3]
     notes: "施策実施前の初期状態を記録"
 
+  - date: 2026-07-30
+    type: note記事
+    title: "note開設・初回記事公開"
+    url: ""  # TODO: 記事URLを記入
+    target_queries: [q1, q2, q4, q5, q6]
+    notes: >-
+      1次情報発信の第1弾。公開直後は検索インデックス未反映のため、
+      引用元への登場は2〜6週間のラグを見込む。
+      同日 config.yml の related_domains に note.com を追加し、
+      引用元判定の対象にした。
+
   # --- 以下、実施したら日付・URLを入れて追記 ---
   # - date: 2026-07-XX
-  #   type: note記事
-  #   title: "note開設・初回記事「〇〇」公開"
-  #   url: "https://note.com/xxxx/n/xxxx"
-  #   target_queries: [q1, q4, q5]
+  #   type: Yahoo!PR
+  #   title: "Yahoo!ニュース PR記事出稿"
+  #   url: ""
+  #   target_queries: [q1, q2]
   #   notes: ""
   # - date: 2026-07-XX
   #   type: Yahoo!PR

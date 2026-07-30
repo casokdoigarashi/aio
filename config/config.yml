@@ -25,7 +25,7 @@ brand:
     - "rstudio.co.jp"
     - "studiomall.jp"
     - "spacee.jp"
-    # - "note.com"        # note開設後に有効化（可能ならアカウントURLをnotesに記録）
+    - "note.com"          # 2026-07-30 note開設・記事公開により有効化
     # - "news.yahoo.co.jp" # Yahoo!ニュース掲載後に有効化
 
 # 競合（AI回答に登場したら記録する）
