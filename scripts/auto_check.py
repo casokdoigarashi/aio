@@ -4,9 +4,10 @@
 環境変数にAPIキーが設定されているエンジンだけを実行し、
 結果を data/observations/<日付>-auto.yml に保存する。
 
-対応エンジン:
-  - perplexity      : PERPLEXITY_API_KEY（引用付きAI回答）
+対応エンジン（config.yml の engines.auto で有効化するものを指定）:
+  - google_ai_mode  : SERPAPI_KEY（Google AIモードの回答本文＋引用元。スクショ不要）
   - gemini          : GEMINI_API_KEY（Google検索グラウンディング＝AIモードの近似）
+  - perplexity      : PERPLEXITY_API_KEY（引用付きAI回答）
   - serpapi_google  : SERPAPI_KEY（Google AI Overview + オーガニック順位）
 
 使い方:
@@ -19,6 +20,8 @@ import datetime
 import os
 import sys
 import time
+
+from urllib.parse import urlparse
 
 import requests
 import yaml
@@ -170,6 +173,56 @@ def check_serpapi(query: str, api_key: str, own_domains: list[str]) -> dict:
     return {"text": text, "citations": citations, "organic_rank": organic_rank}
 
 
+def _domain(url: str) -> str:
+    """URLからドメイン名を取り出す（引用元の記録・判定用）。"""
+    netloc = urlparse(url).netloc
+    return netloc[4:] if netloc.startswith("www.") else netloc
+
+
+def _flatten_text_blocks(blocks: list) -> list[str]:
+    """SerpApiのtext_blocks（listはネストする）から本文を順に取り出す。"""
+    out = []
+    for block in blocks or []:
+        if block.get("snippet"):
+            out.append(block["snippet"])
+        for key in ("list", "table", "text_blocks"):
+            nested = block.get(key)
+            if isinstance(nested, list):
+                out.extend(_flatten_text_blocks(nested))
+    return out
+
+
+def check_google_ai_mode(query: str, api_key: str) -> dict:
+    """Google AIモードの回答をSerpApi経由で取得する（スクリーンショット不要）。
+
+    東京・日本語・デスクトップに固定し、毎週同条件で観測できるようにする。
+    """
+    resp = requests.get(
+        "https://serpapi.com/search.json",
+        params={
+            "engine": "google_ai_mode",
+            "q": query,
+            "hl": "ja",
+            "gl": "jp",
+            "location": "Tokyo, Japan",
+            "device": "desktop",
+            "no_cache": "true",  # 定点観測なのでキャッシュを使わない
+            "api_key": api_key,
+        },
+        timeout=TIMEOUT,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+
+    text = data.get("reconstructed_markdown") or "\n".join(
+        _flatten_text_blocks(data.get("text_blocks", []))
+    )
+    citations = [
+        _domain(r["link"]) for r in data.get("references", []) if r.get("link")
+    ]
+    return {"text": text, "citations": citations}
+
+
 def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict) -> dict:
     text = raw.get("text", "")
     citations = [c for c in raw.get("citations", []) if c]
@@ -213,18 +266,27 @@ def main() -> None:
     config = load_config()
     own_domains = config["brand"].get("own_domains", [])
 
-    engines = {
-        "perplexity": os.environ.get("PERPLEXITY_API_KEY"),
-        "gemini": os.environ.get("GEMINI_API_KEY"),
-        "serpapi_google": os.environ.get("SERPAPI_KEY"),
+    # エンジン -> 必要な環境変数
+    engine_keys = {
+        "google_ai_mode": "SERPAPI_KEY",
+        "gemini": "GEMINI_API_KEY",
+        "perplexity": "PERPLEXITY_API_KEY",
+        "serpapi_google": "SERPAPI_KEY",
     }
-    active = {name: key for name, key in engines.items() if key}
+    wanted = config.get("engines", {}).get("auto") or list(engine_keys)
+    active = {}
+    for engine in wanted:
+        env_name = engine_keys.get(engine)
+        if not env_name:
+            print(f"未知のエンジン '{engine}' をスキップします（config.yml を確認）")
+            continue
+        key = os.environ.get(env_name)
+        if key:
+            active[engine] = key
+        else:
+            print(f"{env_name} が未設定のため {engine} をスキップします")
     if not active:
-        print(
-            "APIキーが設定されていません "
-            "(PERPLEXITY_API_KEY / GEMINI_API_KEY / SERPAPI_KEY)。"
-            "自動観測をスキップします。"
-        )
+        print("利用可能なAPIキーがありません。自動観測をスキップします。")
         return
 
     entries = []
@@ -233,7 +295,9 @@ def main() -> None:
         for engine, key in active.items():
             print(f"[{engine}] {query}")
             try:
-                if engine == "perplexity":
+                if engine == "google_ai_mode":
+                    raw = check_google_ai_mode(query, key)
+                elif engine == "perplexity":
                     raw = check_perplexity(query, key)
                 elif engine == "gemini":
                     raw = check_gemini(query, key)

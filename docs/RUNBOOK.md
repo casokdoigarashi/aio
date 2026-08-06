@@ -9,9 +9,12 @@
 pip install -r scripts/requirements.txt
 ```
 
-- 自動観測を使う場合は、GitHubリポジトリの Settings > Secrets and variables > Actions に
-  `PERPLEXITY_API_KEY` / `GEMINI_API_KEY` / `SERPAPI_KEY` のうち使うものを登録する
-  （1つだけでも動作します。おすすめは Gemini = Google AIモードに最も近い挙動）。
+- GitHubリポジトリの Settings > Secrets and variables > Actions に、
+  `config/config.yml` の `engines.auto` で有効にしたエンジンのキーを登録する:
+  - `SERPAPI_KEY` … Google AIモード（google_ai_mode）※本命
+  - `GEMINI_API_KEY` … Gemini（Google検索グラウンディング）
+  - `PERPLEXITY_API_KEY` … Perplexity（任意）
+- キーが無いエンジンは自動でスキップされる（1つだけでも動作する）。
 
 ## 1. 自動観測（GitHub Actionsが毎週火曜9時に自動実行）
 
@@ -25,21 +28,24 @@ export GEMINI_API_KEY=...   # 使うキーだけ
 python scripts/auto_check.py
 ```
 
-## 2. Google AIモードのスクリーンショット取得（Manusが毎週火曜10:00に自動実行）
+## 2. Google AIモードもAPIで取得（スクリーンショット不要）
 
-Google AIモードそのものはAPIが無いため、スクリーンショットで観測する。
-この取得作業は Manus のブラウザ自動化タスクで週次自動化済み:
+Google AIモードの回答本文と引用元は SerpApi の `google_ai_mode` エンジンで
+JSONとして取得できるため、**スクリーンショットもブラウザ操作も不要**。
+手順1の自動観測に含まれており、同じワークフローで一緒に実行される。
 
-- 毎週火曜 10:00 JST に q1〜q6 を検索し、AIモードの回答を
-  [Driveフォルダ「検索結果画面」](https://drive.google.com/drive/folders/1HVmHHnTvWpLEiG3JTV6MOdoPDyBHtZcK)
-  へ `YYYY-MM-DD_q1_01.png` 形式で保存（回答が長い場合は複数枚 _01, _02, …）
-- ログイン要求・CAPTCHA・AIモード未表示のクエリは「未取得」として報告される
+観測条件はAPIパラメータで固定してあるので、毎週まったく同じ条件で取得される:
 
-スクショが揃ったら、**データ化**を行う（撮っただけではレポートに反映されない）:
+| パラメータ | 値 |
+|---|---|
+| location | Tokyo, Japan |
+| hl / gl | ja / jp |
+| device | desktop |
+| no_cache | true（キャッシュを使わず毎回取得） |
 
-- Claude に「今週のスクショをデータ化して」と依頼する、または
-  `docs/PROMPT_screenshot_to_data.md` のプロンプトを他のAIに渡す
-- 手で記入する場合は `python scripts/new_observation.py` でテンプレートを生成して記入
+> スクリーンショットでの観測は不要になったが、AIモードの画面そのものを
+> 資料として残したい場合のみ手動で撮る。その場合のデータ化手順は
+> `docs/PROMPT_screenshot_to_data.md`（現在は任意運用）。
 
 ## 3. 施策を実施したら記録
 

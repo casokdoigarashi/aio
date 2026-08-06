@@ -69,12 +69,11 @@ queries:
     intent: "対話型AI向けの自然文クエリ"
 
 # 観測エンジン
+# ここに書いたエンジンを scripts/auto_check.py が実行する
+# （対応する環境変数が設定されているものだけ動く。すべてAPI取得＝スクショ不要）
 engines:
-  # 手動観測（スクリーンショット→記録）
-  manual:
-    - google_ai_mode
-  # scripts/auto_check.py が使うAPI（キーが設定されているものだけ実行される）
   auto:
-    - perplexity      # PERPLEXITY_API_KEY
-    - gemini          # GEMINI_API_KEY（Google検索グラウンディング＝AIモードの近似）
-    - serpapi_google  # SERPAPI_KEY（AI Overview + オーガニック順位）
+    - google_ai_mode  # SERPAPI_KEY（Google AIモードの回答本文＋引用元）
+    - gemini          # GEMINI_API_KEY（Google検索グラウンディング）
+    # - perplexity      # PERPLEXITY_API_KEY
+    # - serpapi_google  # SERPAPI_KEY（AI Overview + オーガニック順位。別課金になるので任意）

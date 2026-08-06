@@ -23,7 +23,7 @@ from lib_common import (
 )
 
 ENGINE_LABELS = {
-    "google_ai_mode": "Google AIモード（手動）",
+    "google_ai_mode": "Google AIモード",
     "perplexity": "Perplexity",
     "gemini": "Gemini（Google検索グラウンディング）",
     "serpapi_google": "Google AI Overview + 通常検索（SerpAPI）",
@@ -47,7 +47,17 @@ def collect(observations: list[dict]):
             engine = entry.get("engine", "unknown")
             if engine not in engines:
                 engines.append(engine)
-            index[(engine, entry.get("query_id") or entry["query"], date)] = entry
+            key = (engine, entry.get("query_id") or entry["query"], date)
+            if key in index:
+                # 同日・同クエリ・同エンジンが重複（手動観測とAPI観測が併存した等）。
+                # 目視で判定した手動観測を優先し、取りこぼしに気づけるよう警告する。
+                existing_manual = index[key].get("_method") == "manual_screenshot"
+                print(f"警告: 観測が重複しています {key}。"
+                      f"{'手動' if existing_manual else '後勝ち'}の値を採用します")
+                if existing_manual:
+                    continue
+            entry["_method"] = obs.get("method")
+            index[key] = entry
     return index, dates, engines
 
 

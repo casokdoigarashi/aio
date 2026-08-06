@@ -8,11 +8,11 @@ AI検索（Google AIモード・Perplexity・Gemini等）での露出を週次�
 ## 仕組みの全体像
 
 ```
-┌─ 施策 ──────────────┐      ┌─ 週次観測（毎週火曜） ─────────────┐
-│ note記事 / Yahoo!PR │      │ 自動: auto_check.py (GitHub Actions)│
-│ サイト更新 など      │      │   Perplexity / Gemini / SerpAPI    │
-│  → data/actions.yml │      │ 手動: Google AIモードのスクショ      │
-└─────────┬──────────┘      │   → new_observation.py で記録       │
+┌─ 施策 ──────────────┐      ┌─ 週次観測（毎週火曜・全自動） ───────┐
+│ note記事 / Yahoo!PR │      │ auto_check.py (GitHub Actions)      │
+│ サイト更新 など      │      │   Google AIモード (SerpApi)         │
+│  → data/actions.yml │      │   Gemini / Perplexity              │
+└─────────┬──────────┘      │   ※スクリーンショット不要           │
           │                  └────────────┬───────────────────┘
           │                               │ data/observations/*.yml
           └───────────┬───────────────────┘
@@ -30,8 +30,8 @@ AI検索（Google AIモード・Perplexity・Gemini等）での露出を週次�
 | `config/config.yml` | ブランド表記ゆれ・観測クエリ・競合・引用元ドメインの定義 |
 | `data/observations/` | 週次の観測データ（1観測=1ファイル、YAML） |
 | `data/actions.yml` | 施策ログ（note公開・PR出稿などを都度追記） |
-| `scripts/auto_check.py` | AI検索APIによる自動観測 |
-| `scripts/new_observation.py` | 手動観測（スクショ記録）用テンプレート生成 |
+| `scripts/auto_check.py` | AI検索APIによる自動観測（Google AIモード含む） |
+| `scripts/new_observation.py` | 手動観測（スクショ記録）用テンプレート生成 ※任意 |
 | `scripts/analyze.py` | レポート生成 |
 | `reports/` | 生成されたレポート（summary + 週次） |
 | `docs/RUNBOOK.md` | 週次運用手順 |
