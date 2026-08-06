@@ -11,7 +11,7 @@
 from __future__ import annotations
 
 import datetime
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 from lib_common import (
     POSITION_LABELS,
@@ -63,6 +63,132 @@ def collect(observations: list[dict]):
     return index, dates, engines
 
 
+def _domain_class(domain: str, config: dict) -> str:
+    """引用元ドメインを 自社 / 関連メディア / その他 に分類する。"""
+    own = config["brand"].get("own_domains", [])
+    related = config["brand"].get("related_domains", [])
+    if any(d in domain for d in own):
+        return "自社"
+    if any(d in domain for d in related):
+        return "関連メディア"
+    return "その他"
+
+
+def build_citation_ranking(entries: list[dict], config: dict, date) -> list[str]:
+    """引用元ドメインのランキング。どの媒体を強化すべきかの判断材料。"""
+    counter = Counter()
+    for entry in entries:
+        # 同一回答内の重複はまとめ、「何クエリで引用されたか」を数える
+        for domain in set(str(s) for s in entry.get("cited_sources", []) if s):
+            counter[domain] += 1
+    lines = [f"## 引用元ランキング（{date}）", ""]
+    if not counter:
+        return lines + ["（引用元データなし）", ""]
+    lines += [
+        "AIが情報源にしている媒体。上位ほど「AIが読んでいる場所」なので、",
+        "掲載内容の改善が効きやすい。",
+        "",
+        "| 媒体 | 引用されたクエリ数 | 区分 |",
+        "|---|---|---|",
+    ]
+    for domain, count in counter.most_common(15):
+        lines.append(f"| {domain} | {count} | {_domain_class(domain, config)} |")
+    return lines + [""]
+
+
+def build_share_of_voice(entries: list[dict], config: dict, date) -> list[str]:
+    """自社と競合の登場回数を並べる（絶対評価では立ち位置が分からないため）。"""
+    brand = config["brand"]["name"]
+    counts = Counter()
+    total = len(entries)
+    for entry in entries:
+        if entry.get("brand_mentioned"):
+            counts[brand] += 1
+        for comp in entry.get("competitors_mentioned", []):
+            counts[comp] += 1
+    lines = [f"## シェア・オブ・ボイス（{date}）", ""]
+    if not total:
+        return lines + ["（データなし）", ""]
+    lines += [
+        f"全{total}回答（クエリ×エンジン）のうち、各スタジオが言及された回数。",
+        "",
+        "| スタジオ | 言及回数 | 占有率 |",
+        "|---|---|---|",
+    ]
+    for name, count in counts.most_common():
+        mark = " ★自社" if name == brand else ""
+        lines.append(f"| {name}{mark} | {count} | {count / total * 100:.0f}% |")
+    return lines + [""]
+
+
+def build_opportunity_loss(index, queries, engines, date) -> list[str]:
+    """機会損失＝自社の情報源は引用されたのに、名前は競合だけが挙がったケース。
+
+    「掲載はされているのにAIが名前を拾わない」という、最も改善余地の大きい状態。
+    """
+    rows = []
+    for q in queries:
+        for engine in engines:
+            entry = index.get((engine, q["id"], date))
+            if not entry:
+                continue
+            cited = entry.get("own_site_cited") or entry.get("related_cited")
+            comps = entry.get("competitors_mentioned", [])
+            if cited and not entry.get("brand_mentioned") and comps:
+                rows.append(
+                    f"| {q['text']} | {ENGINE_LABELS.get(engine, engine)} | "
+                    f"{'、'.join(comps)} |"
+                )
+    lines = [f"## 機会損失クエリ（{date}）", ""]
+    if not rows:
+        return lines + ["該当なし。", ""]
+    lines += [
+        "自社が載っている媒体をAIが読んでいるのに、回答で名前が挙がったのは競合だけ、",
+        "というクエリ。掲載ページの書き方を直せば取り返せる可能性が高い。",
+        "",
+        "| クエリ | エンジン | 代わりに挙がった競合 |",
+        "|---|---|---|",
+        *rows,
+    ]
+    return lines + [""]
+
+
+def build_accuracy_check(index, queries, engines, date) -> list[str]:
+    """AIの説明が事実として正しいかを人が確認するためのセクション。
+
+    自動判定はできないため、言及内容と誤参照リスクを一覧化して目視に回す。
+    """
+    lines = [f"## 事実確認（{date}）", "", "AIの説明に誤りがないか目視で確認する。", ""]
+    risky, excerpts = [], []
+    for q in queries:
+        for engine in engines:
+            entry = index.get((engine, q["id"], date))
+            if not entry or not entry.get("brand_mentioned"):
+                continue
+            label = ENGINE_LABELS.get(engine, engine)
+            # 自社・関連メディアを一切引用せずに語っている＝誤情報の温床
+            if not (entry.get("own_site_cited") or entry.get("related_cited")):
+                srcs = ", ".join(str(s) for s in entry.get("cited_sources", [])[:5])
+                risky.append(f"| {q['text']} | {label} | {srcs or '(引用元なし)'} |")
+            if entry.get("mention_text"):
+                excerpts.append(f"- **{q['text']}**（{label}）: {entry['mention_text']}")
+    if risky:
+        lines += [
+            "### ⚠ 誤参照リスク",
+            "",
+            "自社サイトも掲載メディアも引用せずにブランドを語っているケース。",
+            "他社との混同や古い情報が混ざりやすい。",
+            "",
+            "| クエリ | エンジン | 実際の引用元 |",
+            "|---|---|---|",
+            *risky,
+            "",
+        ]
+    if excerpts:
+        lines += ["### AIによる説明（要確認）", "", *excerpts, ""]
+    return lines
+
+
 def build_summary(config, observations, actions) -> str:
     index, dates, engines = collect(observations)
     queries = config["queries"]
@@ -94,21 +220,36 @@ def build_summary(config, observations, actions) -> str:
             lines.append(f"| {q['text']} | " + " | ".join(cells) + " |")
         lines.append("")
 
-    # 観測日ごとの言及率
-    lines += ["## 言及率の推移", ""]
-    lines += ["| 観測日 | 言及あり／観測数 | 言及率 | 自社サイト引用 | 関連メディア引用 |", "|---|---|---|---|---|"]
-    per_date = defaultdict(list)
-    for (engine, qid, date), entry in index.items():
-        per_date[date].append(entry)
-    for date in dates:
-        entries = per_date[date]
-        total = len(entries)
-        mentioned = sum(1 for e in entries if e.get("brand_mentioned"))
-        own = sum(1 for e in entries if e.get("own_site_cited"))
-        related = sum(1 for e in entries if e.get("related_cited"))
-        rate = f"{mentioned / total * 100:.0f}%" if total else "-"
-        lines.append(f"| {date} | {mentioned}/{total} | {rate} | {own}件 | {related}件 |")
+    # 言及率はエンジン別に出す（エンジンごとに露出構造が違うため平均は意味を持たない）
+    lines += ["## 言及率の推移（エンジン別）", ""]
+    header = "| エンジン | " + " | ".join(dates) + " |"
+    lines += [header, "|---" * (len(dates) + 1) + "|"]
+    for engine in engines:
+        cells = []
+        for date in dates:
+            entries = [
+                index[(e, q["id"], date)]
+                for q in queries
+                for e in [engine]
+                if (e, q["id"], date) in index
+            ]
+            if not entries:
+                cells.append("－")
+                continue
+            mentioned = sum(1 for e in entries if e.get("brand_mentioned"))
+            cells.append(f"{mentioned}/{len(entries)}")
+        lines.append(
+            f"| {ENGINE_LABELS.get(engine, engine)} | " + " | ".join(cells) + " |"
+        )
     lines.append("")
+
+    latest = dates[-1] if dates else None
+    latest_entries = [e for (_, _, d), e in index.items() if d == latest]
+
+    lines += build_citation_ranking(latest_entries, config, latest)
+    lines += build_share_of_voice(latest_entries, config, latest)
+    lines += build_opportunity_loss(index, queries, engines, latest)
+    lines += build_accuracy_check(index, queries, engines, latest)
 
     # 施策タイムライン
     lines += ["## 施策タイムライン", ""]
