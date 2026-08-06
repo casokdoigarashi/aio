@@ -192,6 +192,23 @@ def _flatten_text_blocks(blocks: list) -> list[str]:
     return out
 
 
+def _dedupe_lines(text: str) -> str:
+    """連続して繰り返される同一行を1つにまとめる。
+
+    AIモードの回答では同じ項目が2度出力されることがあり、そのままだと
+    本文が水増しされて「回答の前半に登場したか」の判定がぶれるため。
+    """
+    out: list[str] = []
+    last_content = None  # 直前の空行でない行（間に空行が入る繰り返しも検出するため）
+    for line in text.split("\n"):
+        if line.strip():
+            if line == last_content:
+                continue
+            last_content = line
+        out.append(line)
+    return "\n".join(out)
+
+
 def check_google_ai_mode(query: str, api_key: str) -> dict:
     """Google AIモードの回答をSerpApi経由で取得する（スクリーンショット不要）。
 
@@ -217,6 +234,7 @@ def check_google_ai_mode(query: str, api_key: str) -> dict:
     text = data.get("reconstructed_markdown") or "\n".join(
         _flatten_text_blocks(data.get("text_blocks", []))
     )
+    text = _dedupe_lines(text)
     citations = [
         _domain(r["link"]) for r in data.get("references", []) if r.get("link")
     ]
