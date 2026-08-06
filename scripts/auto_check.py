@@ -338,29 +338,29 @@ def main() -> None:
     config = load_config()
     own_domains = config["brand"].get("own_domains", [])
 
-    # エンジン -> 必要な環境変数
+    # エンジン -> 受け付ける環境変数名（先に見つかったものを使う）
     engine_keys = {
-        "google_ai_mode": "SERPAPI_KEY",
-        "gemini": "GEMINI_API_KEY",
-        "claude": "ANTHROPIC_API_KEY",
-        "chatgpt": "OPENAI_API_KEY",
-        "perplexity": "PERPLEXITY_API_KEY",
-        "serpapi_google": "SERPAPI_KEY",
+        "google_ai_mode": ["SERPAPI_KEY"],
+        "gemini": ["GEMINI_API_KEY"],
+        "claude": ["ANTHROPIC_API_KEY", "CLAUDE_API_KEY"],
+        "chatgpt": ["OPENAI_API_KEY"],
+        "perplexity": ["PERPLEXITY_API_KEY"],
+        "serpapi_google": ["SERPAPI_KEY"],
     }
     # 使用モデルは config.yml の models で上書きできる（既定値は下記）
     models = config.get("models", {}) or {}
     wanted = config.get("engines", {}).get("auto") or list(engine_keys)
     active = {}
     for engine in wanted:
-        env_name = engine_keys.get(engine)
-        if not env_name:
+        env_names = engine_keys.get(engine)
+        if not env_names:
             print(f"未知のエンジン '{engine}' をスキップします（config.yml を確認）")
             continue
-        key = os.environ.get(env_name)
+        key = next((os.environ[n] for n in env_names if os.environ.get(n)), None)
         if key:
             active[engine] = key
         else:
-            print(f"{env_name} が未設定のため {engine} をスキップします")
+            print(f"{' / '.join(env_names)} が未設定のため {engine} をスキップします")
     if not active:
         print("利用可能なAPIキーがありません。自動観測をスキップします。")
         return
