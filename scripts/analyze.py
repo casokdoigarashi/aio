@@ -24,6 +24,8 @@ from lib_common import (
 
 ENGINE_LABELS = {
     "google_ai_mode": "Google AIモード",
+    "claude": "Claude（web search）",
+    "chatgpt": "ChatGPT（web search）",
     "perplexity": "Perplexity",
     "gemini": "Gemini（Google検索グラウンディング）",
     "serpapi_google": "Google AI Overview + 通常検索（SerpAPI）",

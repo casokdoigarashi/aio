@@ -13,7 +13,10 @@ pip install -r scripts/requirements.txt
   `config/config.yml` の `engines.auto` で有効にしたエンジンのキーを登録する:
   - `SERPAPI_KEY` … Google AIモード（google_ai_mode）※本命
   - `GEMINI_API_KEY` … Gemini（Google検索グラウンディング）
+  - `ANTHROPIC_API_KEY` … Claude（web search有効）
+  - `OPENAI_API_KEY` … ChatGPT（web search有効）
   - `PERPLEXITY_API_KEY` … Perplexity（任意）
+- 使用モデルは `config/config.yml` の `models` で変更できる。
 - キーが無いエンジンは自動でスキップされる（1つだけでも動作する）。
 
 ## 1. 自動観測（GitHub Actionsが毎週火曜9時に自動実行）

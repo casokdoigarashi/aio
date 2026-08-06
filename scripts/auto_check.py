@@ -7,6 +7,8 @@
 対応エンジン（config.yml の engines.auto で有効化するものを指定）:
   - google_ai_mode  : SERPAPI_KEY（Google AIモードの回答本文＋引用元。スクショ不要）
   - gemini          : GEMINI_API_KEY（Google検索グラウンディング＝AIモードの近似）
+  - claude          : ANTHROPIC_API_KEY（Claude + web search。引用付き）
+  - chatgpt         : OPENAI_API_KEY（ChatGPT + web search。引用付き）
   - perplexity      : PERPLEXITY_API_KEY（引用付きAI回答）
   - serpapi_google  : SERPAPI_KEY（Google AI Overview + オーガニック順位）
 
@@ -192,6 +194,58 @@ def _flatten_text_blocks(blocks: list) -> list[str]:
     return out
 
 
+def check_claude(query: str, api_key: str, model: str = "claude-opus-5") -> dict:
+    """Claude（web searchツール有効）の回答と引用元を取得する。
+
+    実際のユーザーがClaudeに質問したときに近い回答を観測する。
+    """
+    import anthropic
+
+    client = anthropic.Anthropic(api_key=api_key)
+    response = client.messages.create(
+        model=model,
+        max_tokens=16000,
+        # 検索して答えるだけの単純なタスクなので効ort低めでコストを抑える
+        output_config={"effort": "low"},
+        tools=[{"type": "web_search_20260209", "name": "web_search"}],
+        messages=[{"role": "user", "content": query}],
+    )
+    if response.stop_reason == "refusal":
+        raise RuntimeError(f"Claudeが回答を拒否しました: {response.stop_details}")
+
+    texts, citations = [], []
+    for block in response.content:
+        if block.type == "text":
+            texts.append(block.text)
+        elif block.type == "web_search_tool_result":
+            # エラー時は content がリストではなくエラーオブジェクトになる
+            results = block.content
+            if isinstance(results, list):
+                citations.extend(
+                    _domain(r.url) for r in results if getattr(r, "url", None)
+                )
+    return {"text": "\n".join(texts), "citations": citations}
+
+
+def check_chatgpt(query: str, api_key: str, model: str = "gpt-5") -> dict:
+    """ChatGPT（web searchツール有効）の回答と引用元を取得する。"""
+    from openai import OpenAI
+
+    client = OpenAI(api_key=api_key)
+    response = client.responses.create(
+        model=model,
+        tools=[{"type": "web_search"}],
+        input=query,
+    )
+    citations = []
+    for item in response.output:
+        for content in getattr(item, "content", None) or []:
+            for ann in getattr(content, "annotations", None) or []:
+                if getattr(ann, "type", "") == "url_citation" and getattr(ann, "url", None):
+                    citations.append(_domain(ann.url))
+    return {"text": response.output_text, "citations": citations}
+
+
 def _dedupe_lines(text: str) -> str:
     """連続して繰り返される同一行を1つにまとめる。
 
@@ -288,9 +342,13 @@ def main() -> None:
     engine_keys = {
         "google_ai_mode": "SERPAPI_KEY",
         "gemini": "GEMINI_API_KEY",
+        "claude": "ANTHROPIC_API_KEY",
+        "chatgpt": "OPENAI_API_KEY",
         "perplexity": "PERPLEXITY_API_KEY",
         "serpapi_google": "SERPAPI_KEY",
     }
+    # 使用モデルは config.yml の models で上書きできる（既定値は下記）
+    models = config.get("models", {}) or {}
     wanted = config.get("engines", {}).get("auto") or list(engine_keys)
     active = {}
     for engine in wanted:
@@ -315,6 +373,10 @@ def main() -> None:
             try:
                 if engine == "google_ai_mode":
                     raw = check_google_ai_mode(query, key)
+                elif engine == "claude":
+                    raw = check_claude(query, key, models.get("claude", "claude-opus-5"))
+                elif engine == "chatgpt":
+                    raw = check_chatgpt(query, key, models.get("chatgpt", "gpt-5"))
                 elif engine == "perplexity":
                     raw = check_perplexity(query, key)
                 elif engine == "gemini":
