@@ -8,7 +8,7 @@
 
 | クエリ | 2026-07-15 | 2026-07-17 | 2026-07-21 | 2026-07-28 | 2026-08-04 | 2026-08-06 |
 |---|---|---|---|---|---|---|
-| 神楽坂 ハウススタジオ | ◎ | ◎ | － | － | － | × |
+| 神楽坂 ハウススタジオ | ◎ | ◎ | － | － | － | ◎ |
 | 神楽坂 撮影スタジオ | － | － | － | － | － | △ |
 | 神楽坂 スタジオ | × | × | － | － | － | × |
 | 東京 ハウススタジオ 自然光 | － | － | － | － | － | △ |
@@ -20,8 +20,8 @@
 
 | クエリ | 2026-07-15 | 2026-07-17 | 2026-07-21 | 2026-07-28 | 2026-08-04 | 2026-08-06 |
 |---|---|---|---|---|---|---|
-| 神楽坂 ハウススタジオ | － | ◎ | ○ | ◎ | ○ | ○ |
-| 神楽坂 撮影スタジオ | － | ◎ | ○ | ◎ | ○ | ◎ |
+| 神楽坂 ハウススタジオ | － | ◎ | ○ | ◎ | ○ | ◎ |
+| 神楽坂 撮影スタジオ | － | ◎ | ○ | ◎ | ○ | ○ |
 | 神楽坂 スタジオ | － | × | △ | × | ○ | △ |
 | 東京 ハウススタジオ 自然光 | － | △ | △ | △ | △ | △ |
 | ハウススタジオ 北欧家具 撮影 | － | △ | ○ | ○ | △ | △ |
@@ -32,7 +32,7 @@
 
 | クエリ | 2026-07-15 | 2026-07-17 | 2026-07-21 | 2026-07-28 | 2026-08-04 | 2026-08-06 |
 |---|---|---|---|---|---|---|
-| 神楽坂 ハウススタジオ | － | － | － | － | － | ○ |
+| 神楽坂 ハウススタジオ | － | － | － | － | － | ◎ |
 | 神楽坂 撮影スタジオ | － | － | － | － | － | △ |
 | 神楽坂 スタジオ | － | － | － | － | － | △ |
 | 東京 ハウススタジオ 自然光 | － | － | － | － | － | △ |
@@ -47,7 +47,7 @@
 | 神楽坂 ハウススタジオ | － | － | － | － | － | × |
 | 神楽坂 撮影スタジオ | － | － | － | － | － | × |
 | 神楽坂 スタジオ | － | － | － | － | － | × |
-| 東京 ハウススタジオ 自然光 | － | － | － | － | － | △ |
+| 東京 ハウススタジオ 自然光 | － | － | － | － | － | × |
 | ハウススタジオ 北欧家具 撮影 | － | － | － | － | － | × |
 | ARIGATO Living | － | － | － | － | － | ◎ |
 | 神楽坂でおすすめの撮影スタジオを教えてください | － | － | － | － | － | △ |
@@ -56,7 +56,7 @@
 
 | エンジン | 2026-07-15 | 2026-07-17 | 2026-07-21 | 2026-07-28 | 2026-08-04 | 2026-08-06 |
 |---|---|---|---|---|---|---|
-| Google AIモード | 1/2 | 1/2 | － | － | － | 1/7 |
+| Google AIモード | 1/2 | 1/2 | － | － | － | 2/7 |
 | Gemini（Google検索グラウンディング） | － | 4/7 | 5/7 | 5/7 | 4/7 | 4/7 |
 | Claude（web search） | － | － | － | － | － | 2/7 |
 | ChatGPT（web search） | － | － | － | － | － | 1/7 |
@@ -68,21 +68,21 @@ AIが情報源にしている媒体。上位ほど「AIが読んでいる場所�
 
 | 媒体 | 引用されたクエリ数 | 区分 |
 |---|---|---|
-| instabase.jp | 16 | その他 |
+| instabase.jp | 17 | その他 |
 | shootest.jp | 15 | 関連メディア |
-| hau-sta.com | 11 | 関連メディア |
-| spacemarket.com | 10 | その他 |
-| recosta.studio | 9 | その他 |
-| kagurazakastudio.com | 7 | その他 |
-| sakanoue-st.net | 7 | その他 |
+| spacemarket.com | 13 | その他 |
+| shucof.com | 8 | その他 |
+| upnow.jp | 8 | その他 |
+| hau-sta.com | 8 | 関連メディア |
+| recosta.studio | 6 | その他 |
+| sakanoue-st.net | 6 | その他 |
 | google.com | 6 | その他 |
-| rstudio.co.jp | 6 | 関連メディア |
-| upnow.jp | 5 | その他 |
-| shucof.com | 5 | その他 |
-| powerpage.jp | 4 | その他 |
-| studio-press.com | 4 | 関連メディア |
-| studio.powerpage.jp | 4 | その他 |
-| studiokensaku.com | 3 | その他 |
+| kagurazakastudio.com | 4 | その他 |
+| publicspace.jp | 4 | その他 |
+| session-house.net | 3 | その他 |
+| rstudio.co.jp | 3 | 関連メディア |
+| satsuei-navi.com | 3 | その他 |
+| studio-press.com | 2 | 関連メディア |
 
 ## シェア・オブ・ボイス（2026-08-06）
 
@@ -90,13 +90,13 @@ AIが情報源にしている媒体。上位ほど「AIが読んでいる場所�
 
 | スタジオ | 言及回数 | 占有率 |
 |---|---|---|
-| 神楽坂スタジオ | 11 | 39% |
+| 神楽坂スタジオ | 12 | 43% |
+| ARIGATO Living ★自社 | 9 | 32% |
 | shucof神楽坂 | 8 | 29% |
-| ARIGATO Living ★自社 | 8 | 29% |
-| 坂ノ上スタジオ | 7 | 25% |
-| アン・デオール神楽坂 | 2 | 7% |
-| 神楽坂セッションハウス | 2 | 7% |
-| 神楽坂オンラインスタジオ | 1 | 4% |
+| アン・デオール神楽坂 | 5 | 18% |
+| 坂ノ上スタジオ | 5 | 18% |
+| 神楽坂セッションハウス | 3 | 11% |
+| 神楽坂オンラインスタジオ | 2 | 7% |
 
 ## 機会損失クエリ（2026-08-06）
 
@@ -105,11 +105,11 @@ AIが情報源にしている媒体。上位ほど「AIが読んでいる場所�
 
 | クエリ | エンジン | 代わりに挙がった競合 |
 |---|---|---|
-| 神楽坂 撮影スタジオ | Google AIモード | 神楽坂スタジオ、坂ノ上スタジオ、shucof神楽坂 |
-| 神楽坂 撮影スタジオ | Claude（web search） | 神楽坂スタジオ |
-| 神楽坂 スタジオ | Gemini（Google検索グラウンディング） | 坂ノ上スタジオ、shucof神楽坂、神楽坂セッションハウス |
+| 神楽坂 撮影スタジオ | Google AIモード | 神楽坂スタジオ、アン・デオール神楽坂、坂ノ上スタジオ、shucof神楽坂 |
+| 神楽坂 スタジオ | Gemini（Google検索グラウンディング） | 神楽坂スタジオ、shucof神楽坂、神楽坂セッションハウス |
 | 神楽坂 スタジオ | Claude（web search） | 神楽坂スタジオ |
-| 神楽坂でおすすめの撮影スタジオを教えてください | Google AIモード | 神楽坂スタジオ、坂ノ上スタジオ |
+| 東京 ハウススタジオ 自然光 | Google AIモード | アン・デオール神楽坂 |
+| 神楽坂でおすすめの撮影スタジオを教えてください | Google AIモード | 神楽坂スタジオ、アン・デオール神楽坂、坂ノ上スタジオ、shucof神楽坂 |
 | 神楽坂でおすすめの撮影スタジオを教えてください | Claude（web search） | 神楽坂スタジオ |
 | 神楽坂でおすすめの撮影スタジオを教えてください | ChatGPT（web search） | 神楽坂スタジオ、坂ノ上スタジオ、神楽坂オンラインスタジオ |
 
@@ -124,45 +124,47 @@ AIの説明に誤りがないか目視で確認する。
 
 | クエリ | エンジン | 実際の引用元 |
 |---|---|---|
-| ARIGATO Living | Gemini（Google検索グラウンディング） | kenhonda.com, lewishowes.com, youtube.com, victusgroup.co.za, norikoart.com |
-| ARIGATO Living | Claude（web search） | facebook.com, facebook.com, facebook.com, instagram.com, en.wikipedia.org |
+| ARIGATO Living | Gemini（Google検索グラウンディング） | youthop.com, apple.com, lewishowes.com, norikoart.com, norikoart.com |
+| ARIGATO Living | Claude（web search） | instagram.com, vimeo.com, facebook.com, instagram.com, facebook.com |
 | ARIGATO Living | ChatGPT（web search） | (引用元なし) |
 
 ### AIによる説明（要確認）
 
-- **神楽坂 ハウススタジオ**（Gemini（Google検索グラウンディング））: ポートレート、商品撮影、インタビュー、展示会・対談など。
-* **アクセス**: 神楽坂駅 徒歩約7分 / 江戸川橋駅 徒歩約7分。
-
-#### ② ARIGATO Living 神楽坂
-* **特徴**: 神楽坂駅から徒歩3分と好立地。無垢材のウッドフローリングとナチュラルモダンな家具（フリッツ・
-- **神楽坂 ハウススタジオ**（Claude（web search））: を見渡せる屋上も使用でき、多様な撮影シーンを作れます。
-184㎡のゆとりある空間で、自然光のスタジオと屋上ロケを一体運用できるのが特徴です。
-
-
-**ARIGATO Living（神楽坂）**
-神楽坂駅より徒歩3分。ウッドを基調とした落ち着きのあるナチュラルモダンな雰囲気のハウススタジオです（一部オ
-- **神楽坂 撮影スタジオ**（Gemini（Google検索グラウンディング））: 表的な撮影スタジオと選び方のポイントをまとめました。
+- **神楽坂 ハウススタジオ**（Google AIモード）: マーケット（アン・デオール神楽坂）](https://www.spacemarket.com/spaces/apres_kagurazaka/)
+- ARIGATO Living（アリガトリビング） [5] [11] [12]
+  - 特徴: 無垢材の床と北欧名作家具をしつらえた、明るく上質な空間。
+- **神楽坂 ハウススタジオ**（Gemini（Google検索グラウンディング））: 気や用途に応じた代表的なハウススタジオと、選ぶ際のポイントをご紹介します。
 
 ---
 
-### 1. 自然光・ハウススタジオ（おしゃれな内装・生活感のある撮影）
+### 神楽坂周辺の代表的なハウススタジオ
 
-* **ARIGATO Living 神楽坂**
-  * **特徴**: 東・南向きの窓から自然光が差し込むナチュラルモダンなハウススタジオ。
-  * **用
-- **ARIGATO Living**（Google AIモード）: ARIGATO Living（アリガトリビング）は、東京・神楽坂にあるPRエージェンシーが手掛ける人気のナチュラルモダンなハウススタジオ・レンタルスペースです。 \(https://www.a\-ms2.com/arigatoliving/\) [0] [1] [2]
+#### 1. ARIGATO Living 神楽坂
+* **特徴**: 淡いトーンの壁面とウッドフローリング、ナチュラルなデザイナーズ家具が特徴の上質な空間。
+*
+- **神楽坂 ハウススタジオ**（Claude（web search））: gurazaka.
+神楽坂エリアのハウススタジオ（撮影用レンタルスタジオ）について、検索結果をまとめます。
 
-### 📍 特徴・魅力
+## 主な神楽坂のハウススタジオ
 
--
-- **ARIGATO Living**（Gemini（Google検索グラウンディング））: **ARIGATO Living** can refer to a few different concepts, most notably the personal growth movement and global community founded by Japanese author Ke
-- **ARIGATO Living**（ChatGPT（web search））: Could you share what you mean by “ARIGATO Living”? A few possibilities:
+**ARIGATO Living**
+神楽坂駅より徒歩3分。ウッドを基調としたナチュラルモダンな雰囲気のハウススタジオで、東面と南面の窓から自然光が豊富に
+- **神楽坂 撮影スタジオ**（Gemini（Google検索グラウンディング））: 途**: ポートレート、ECアパレル撮影、YouTube、インタビューなど。
+    *   **アクセス**: 神楽坂駅 徒歩5分。
 
-- Translation/meaning: arigatō (ありがとう) = “thank you.” “Arigato Living” could
-- **神楽坂でおすすめの撮影スタジオを教えてください**（Gemini（Google検索グラウンディング））: **も合わせて利用できます。
-  * **こんな撮影に:** ブランドPV、アパレル・ルックブック、複数パターンの背景が必要な人物・物撮り。
-* **ARIGATO Living 神楽坂**
-  * **特徴:** 2面の大きな窓からたっぷりと自然光が差し込むナチュラルモダンなハウススタジオ。北欧デ
+*   **ARIGATO Living**
+    *   **特徴**: 上質なウッドフローリングと柔らかい自然光が差し込む、洗練された生活空間風のハウススタ
+- **ARIGATO Living**（Google AIモード）: 東京・神楽坂にあるARIGATO Living（アリガトリビング）は、PRエージェンシーが手がける、自然光がたっぷり入るナチュラルモダンなレンタル撮影スタジオ・ハウススタジオです。 \(https://www.rstudio.co.jp/studio/113049/\) [0] [1]
+
+### ス
+- **ARIGATO Living**（Gemini（Google検索グラウンディング））: **"ARIGATO Living"** primarily refers to the lifestyle philosophy and global online community created by **Ken Honda**, the bestselling Japanese autho
+- **ARIGATO Living**（ChatGPT（web search））: Could you tell me what you mean by “ARIGATO Living”? A few possibilities:
+- Translation/wording: arigatō (ありがとう) = “thank you.” “Living” could be life
+- **神楽坂でおすすめの撮影スタジオを教えてください**（Gemini（Google検索グラウンディング））: パレルのルックブック、雑誌・カタログ、ポートレート、アーティスト写真。
+* **雰囲気**: モダン、ミニマル、ヴィンテージMIX。
+
+#### **ARIGATO Living 神楽坂**
+* **特徴**: 大きな窓から自然光がしっかり入る、明るく温かみのあるハウススタジオ。センスの良いインテリ
 
 ## 施策タイムライン
 
