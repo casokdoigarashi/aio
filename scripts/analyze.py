@@ -265,10 +265,96 @@ def build_summary(config, observations, actions) -> str:
     return "\n".join(lines)
 
 
+POSITION_RANK = {"none": 0, "cited_only": 1, "listed": 2, "featured": 3}
+
+
+def build_change_report(config, observations, target_date: str) -> list[str]:
+    """前回観測との差分。「今週何が変わったか」だけを短くまとめる。"""
+    index, dates, engines = collect(observations)
+    queries = config["queries"]
+    brand = config["brand"]["name"]
+
+    if target_date not in dates or dates.index(target_date) == 0:
+        return ["## 今週の変化", "", "前回観測がないため比較できません（初回観測）。", ""]
+    prev_date = dates[dates.index(target_date) - 1]
+
+    improved, declined = [], []
+    for q in queries:
+        for engine in engines:
+            now = index.get((engine, q["id"], target_date))
+            before = index.get((engine, q["id"], prev_date))
+            if not now or not before:
+                continue  # 片方しか観測がないクエリは変化として扱わない
+            a = POSITION_RANK.get(before.get("mention_position") or "none", 0)
+            b = POSITION_RANK.get(now.get("mention_position") or "none", 0)
+            if a == b:
+                continue
+            row = (
+                f"- 「{q['text']}」（{ENGINE_LABELS.get(engine, engine)}）: "
+                f"{symbol(before)} → {symbol(now)}"
+            )
+            (improved if b > a else declined).append(row)
+
+    def _cited(date: str) -> set[str]:
+        return {
+            str(s)
+            for (_, _, d), e in index.items()
+            if d == date
+            for s in e.get("cited_sources", [])
+            if s
+        }
+
+    new_sources = sorted(_cited(target_date) - _cited(prev_date))
+    lost_sources = sorted(_cited(prev_date) - _cited(target_date))
+
+    def _sov(date: str) -> dict:
+        counts = Counter()
+        for (_, _, d), e in index.items():
+            if d != date:
+                continue
+            if e.get("brand_mentioned"):
+                counts[brand] += 1
+            for comp in e.get("competitors_mentioned", []):
+                counts[comp] += 1
+        return counts
+
+    sov_now, sov_prev = _sov(target_date), _sov(prev_date)
+    rank_now = [n for n, _ in sov_now.most_common()]
+    rank_prev = [n for n, _ in sov_prev.most_common()]
+
+    lines = [f"## 今週の変化（{prev_date} → {target_date}）", ""]
+    if not improved and not declined:
+        lines += ["判定に変化のあったクエリはありませんでした。", ""]
+    if improved:
+        lines += [f"### 改善 {len(improved)}件", "", *improved, ""]
+    if declined:
+        lines += [f"### 低下 {len(declined)}件", "", *declined, ""]
+
+    lines += ["### シェア・オブ・ボイス", ""]
+    my_now, my_prev = sov_now.get(brand, 0), sov_prev.get(brand, 0)
+    pos_now = rank_now.index(brand) + 1 if brand in rank_now else None
+    pos_prev = rank_prev.index(brand) + 1 if brand in rank_prev else None
+    lines += [
+        f"- 自社の言及回数: {my_prev} → {my_now}（{my_now - my_prev:+d}）",
+        f"- 順位: {pos_prev or '圏外'}位 → {pos_now or '圏外'}位",
+        "",
+    ]
+
+    if new_sources or lost_sources:
+        lines += ["### 引用元の入れ替わり", ""]
+        if new_sources:
+            lines.append("- 新たに引用: " + "、".join(new_sources[:10]))
+        if lost_sources:
+            lines.append("- 引用されなくなった: " + "、".join(lost_sources[:10]))
+        lines.append("")
+    return lines
+
+
 def build_weekly(config, observations, actions, target_date: str) -> str:
     brand = config["brand"]["name"]
     obs_list = [o for o in observations if str(o["date"]) == target_date]
     lines = [f"# 週次レポート {target_date} — {brand}", ""]
+    lines += build_change_report(config, observations, target_date)
 
     # 直近2週間の施策
     d = datetime.date.fromisoformat(target_date)
@@ -282,12 +368,13 @@ def build_weekly(config, observations, actions, target_date: str) -> str:
             lines.append(f"- {a['date']} 【{a.get('type','')}】{a.get('title','')}")
         lines.append("")
 
+    lines += ["---", "", "## 観測の詳細", ""]
     for obs in obs_list:
-        lines += [f"## {obs.get('source', obs.get('method', ''))}", ""]
+        lines += [f"### {obs.get('source', obs.get('method', ''))}", ""]
         for entry in obs["queries"]:
             engine = ENGINE_LABELS.get(entry.get("engine"), entry.get("engine"))
             pos = POSITION_LABELS.get(entry.get("mention_position") or "none", "－")
-            lines += [f"### 「{entry['query']}」（{engine}）", "", f"- 判定: {pos}"]
+            lines += [f"#### 「{entry['query']}」（{engine}）", "", f"- 判定: {pos}"]
             if entry.get("organic_rank") is not None:
                 lines.append(f"- 通常検索の自社順位: {entry['organic_rank']}位")
             if entry.get("mention_text"):
