@@ -13,8 +13,11 @@ from __future__ import annotations
 import datetime
 from collections import Counter, defaultdict
 
+import yaml
+
 from lib_common import (
     POSITION_LABELS,
+    ROOT,
     POSITION_SYMBOLS,
     REPORTS_DIR,
     load_actions,
@@ -189,6 +192,77 @@ def build_accuracy_check(index, queries, engines, date) -> list[str]:
     return lines
 
 
+def load_note_articles() -> list[dict]:
+    path = ROOT / "data" / "note_articles.yml"
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    articles = [a for a in data.get("articles", []) if a.get("date")]
+    articles.sort(key=lambda a: str(a["date"]))
+    return articles
+
+
+def build_note_impact(index, dates, articles) -> list[str]:
+    """note発信とAI検索の状態を並べ、影響を読み取れるようにする。
+
+    因果を自動で判定はしない。判断材料（累計本数・直近の発信・note.comの引用有無・
+    言及率）を同じ表に並べ、人が突き合わせられる形にする。
+    """
+    lines = ["## note発信の影響検証", ""]
+    if not articles:
+        return lines + [
+            "note記事のデータがありません。",
+            "`python scripts/fetch_note.py` を実行するか、config.yml の note.username を確認してください。",
+            "",
+        ]
+
+    lines += [f"### 公開記事（累計 {len(articles)} 本）", "", "| 公開日 | タイトル |", "|---|---|"]
+    for a in articles:
+        title = str(a.get("title", ""))[:50]
+        url = a.get("url")
+        lines.append(f"| {a['date']} | {f'[{title}]({url})' if url else title} |")
+    lines.append("")
+
+    lines += [
+        "### 観測日ごとの状態",
+        "",
+        "AI検索への反映には2〜6週間のラグがあるため、"
+        "「直近4週の発信」と「その時点の露出」を並べて見る。",
+        "",
+        "| 観測日 | 公開済み記事 | 直近4週の新規 | note.com引用 | 言及あり／観測数 |",
+        "|---|---|---|---|---|",
+    ]
+    for date in dates:
+        d = datetime.date.fromisoformat(date)
+        published = [
+            a for a in articles if datetime.date.fromisoformat(str(a["date"])) <= d
+        ]
+        recent = [
+            a
+            for a in published
+            if (d - datetime.date.fromisoformat(str(a["date"]))).days <= 28
+        ]
+        entries = [e for (_, _, dd), e in index.items() if dd == date]
+        note_cited = any(
+            "note.com" in str(s)
+            for e in entries
+            for s in e.get("cited_sources", [])
+        )
+        mentioned = sum(1 for e in entries if e.get("brand_mentioned"))
+        lines.append(
+            f"| {date} | {len(published)}本 | {len(recent)}本 | "
+            f"{'✅ あり' if note_cited else '—'} | {mentioned}/{len(entries)} |"
+        )
+    lines += [
+        "",
+        "**note.com引用**が「あり」になれば、AIがnote記事を情報源として"
+        "採用したという直接的な証拠になる。これが最も重要な指標。",
+        "",
+    ]
+    return lines
+
+
 def build_summary(config, observations, actions) -> str:
     index, dates, engines = collect(observations)
     queries = config["queries"]
@@ -250,6 +324,7 @@ def build_summary(config, observations, actions) -> str:
     lines += build_share_of_voice(latest_entries, config, latest)
     lines += build_opportunity_loss(index, queries, engines, latest)
     lines += build_accuracy_check(index, queries, engines, latest)
+    lines += build_note_impact(index, dates, load_note_articles())
 
     # 施策タイムライン
     lines += ["## 施策タイムライン", ""]

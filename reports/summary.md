@@ -1,6 +1,6 @@
 # ARIGATO Living AIO定点観測サマリー
 
-最終更新: 2026-08-25 ／ 観測回数: 10回 (2026-07-15 〜 2026-08-25)
+最終更新: 2026-08-26 ／ 観測回数: 10回 (2026-07-15 〜 2026-08-25)
 
 凡例: ◎ 筆頭で紹介 ／ ○ リスト内で言及 ／ △ 引用リンクのみ ／ × 言及なし ／ － 未観測
 
@@ -75,14 +75,14 @@ AIが情報源にしている媒体。上位ほど「AIが読んでいる場所�
 | rstudio.co.jp | 5 | 関連メディア |
 | shucof.com | 4 | その他 |
 | google.com | 4 | その他 |
-| kagurazakastudio.com | 3 | その他 |
 | hau-sta.com | 3 | 関連メディア |
+| kagurazakastudio.com | 3 | その他 |
 | kashispace.com | 3 | その他 |
 | upnow.jp | 2 | その他 |
 | sakanoue-st.net | 2 | その他 |
-| studiokensaku.com | 2 | その他 |
 | note.com | 2 | 関連メディア |
-| studio.cheered.jp | 2 | その他 |
+| studiokensaku.com | 2 | その他 |
+| page.line.me | 2 | その他 |
 
 ## シェア・オブ・ボイス（2026-08-25）
 
@@ -153,6 +153,11 @@ AIの説明に誤りがないか目視で確認する。
 
 *   **ARIGATO Living 神楽坂**
     *   **特徴**: 自然光が豊かに入る明るい空間と、厳選されたインテリアが魅力のハウススタジオで
+
+## note発信の影響検証
+
+note記事のデータがありません。
+`python scripts/fetch_note.py` を実行するか、config.yml の note.username を確認してください。
 
 ## 施策タイムライン
 

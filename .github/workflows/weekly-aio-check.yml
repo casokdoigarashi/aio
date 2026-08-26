@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      - name: Fetch note articles
+        run: python scripts/fetch_note.py
+
       - name: Run automated AI search observation
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}

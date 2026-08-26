@@ -80,6 +80,11 @@ engines:
     # - perplexity      # PERPLEXITY_API_KEY
     # - serpapi_google  # SERPAPI_KEY（AI Overview + オーガニック順位。別課金になるので任意）
 
+# note（1次情報の発信元）
+# 公開記事の日付を自動取得し、AI検索の変化と突き合わせる
+note:
+  username: casokdo_note
+
 # 各エンジンで使うモデル（未指定なら下記の既定値）
 models:
   claude: claude-opus-5
