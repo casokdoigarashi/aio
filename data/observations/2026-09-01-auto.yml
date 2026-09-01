@@ -1,0 +1,1005 @@
+date: '2026-09-01'
+method: api_auto
+source: 自動観測 (google_ai_mode, gemini, claude, chatgpt)
+queries:
+- query_id: q1
+  query: 神楽坂 ハウススタジオ
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - google.com
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - アン・デオール神楽坂
+  - 坂ノ上スタジオ
+  - shucof神楽坂
+  - 神楽坂セッションハウス
+  answer_text: '神楽坂周辺にあるおすすめのハウススタジオや撮影向けスペースをご紹介します。
+
+
+    ### 神楽坂のおすすめハウススタジオ一覧
+
+
+    | スタジオ名 | 特徴・設備 | 住所・アクセス |
+
+    | --- | --- | --- |
+
+    | 神楽坂スタジオ | 天井高3.3m、約80平米の広さ。電動バックペーパー昇降機完備、ライトスタンド無料。 | 新宿区矢来町38神楽坂駅から徒歩5分 |
+
+    | アン・デオール神楽坂 | 元自動車ショールーム。北向き全面ガラス張りの吹き抜け、アトリエ風空間。 | 新宿区南山伏町2\-11都営大江戸線牛込神楽坂駅付近 |
+
+    | 坂ノ上スタジオ | 大きなアイランドキッチンやガーデンテラス付き。CMや料理撮影に便利。 | 新宿区天神町8神楽坂駅から徒歩2分 |
+
+    | shucof神楽坂 | 都心の眺望が望める屋上での撮影シーンにも対応。 | 新宿区築地町6神楽坂駅周辺エリア |
+
+
+    電話[経路](https://www.google.com/maps/dir//%E3%80%92162-0805+%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E7%9F%A2%E6%9D%A5%E7%94%BA%EF%BC%93%EF%BC%98+%E3%83%99%E3%83%83%E3%83%A9%E3%83%9C%E3%83%BC%E3%83%81%E3%82%A7102/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x60188cf8bd415555:0xc0191fa6a8523d20?entry=s)[ウェブサイト](https://www.google.com/goto?url=CAESWAHrOzAVr5eDwQn6H0TqCxcd9nDqDasTBhE0Zr6AF17rZp2el-41hhVUKeGbadNHb2HcQAs5j9eeJ5VJGVRHXvxXFMYV5BHjOvu3PkJ5q6MQgsT4wMxFW8s)24時間利用可能で、公式HPからの予約でお得なパック料金（3時間24,200円〜）が用意されています。
+
+
+    [経路](https://www.google.com/maps/dir//%E3%80%92162-0854+%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E5%8D%97%E5%B1%B1%E4%BC%8F%E7%94%BA%EF%BC%92%E2%88%92%EF%BC%91%EF%BC%91+F%E3%83%BBfield/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x60188d5de7c3187f:0xef6897844ea19cd8?entry=s)[ウェブサイト](https://www.spacemarket.com/spaces/apres_kagurazaka/)1階ガレージと2階スタジオの吹き抜けがあり、天候に左右されにくい安定した自然光が入ります。
+
+
+    電話[経路](https://www.google.com/maps/dir//%E3%80%92162-0808+%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E5%A4%A9%E7%A5%9E%E7%94%BA%EF%BC%98+%E7%A5%9E%E6%A5%BD%E5%9D%82U%E3%83%93%E3%83%AB+B1F/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x60188cff5170b50f:0x3cd4c426c1f21874?entry=s)[ウェブサイト](https://www.google.com/goto?url=CAESVAHrOzAVLSj4pNhfJmn79djf0QFpakEtXzJehux0GSTvQx8v4r5lsM1q7tfJGLDrMLDddOZuDVnYkRtE3P0YAH71eE1b2FhC_snVPohQhS212emAXQ)アクセスが良く、地下のキッチンスタジオやテラス付きフロアなど用途に合わせて選べます。
+    [0]
+
+
+    もしよろしければ、以下について教えてください：
+
+
+    - 撮影の用途（スチール、動画、ロケ、料理など）
+
+    - ご希望の予算や利用時間
+
+
+    最適なスタジオをご提案できます。
+
+
+
+    ### References
+
+
+    [0] [神楽坂セッションハウス](https://www.google.com/searchviewer/10?svid=CAwSGxIZCgNwdnESEkNnc3ZaeTh4TWpGaU1qQTBlZxgK)
+    — 〒162\-0805 東京都新宿区矢来町１５８ 伊藤ビル
+
+    '
+  notes: ''
+- query_id: q1
+  query: 神楽坂 ハウススタジオ
+  engine: gemini
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: "ススタジオが揃っています。\n\n代表的なハウススタジオをタイプ別にご紹介します。\n\n---\n\n### 1. 自然光・北欧ナチュラル・生活シーン\n* **ARIGATO\
+    \ Living（アリガトリビング）**\n  * **アクセス：** 神楽坂駅 徒歩約6分\n  * **広さ：** 約89.6㎡\n  *"
+  cited: true
+  cited_sources:
+  - rstudio.co.jp
+  - shootest.jp
+  - note.com
+  - powerpage.jp
+  - shopcounter.jp
+  - recosta.studio
+  - publicspace.jp
+  - upnow.jp
+  - hau-sta.com
+  - instabase.jp
+  - spacemarket.com
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - shucof神楽坂
+  answer_text: "神楽坂・牛込神楽坂エリア（江戸川橋・飯田橋寄りを含む）には、自然光が入る上質な空間や、多彩なシチュエーションが撮影できるハウススタジオが揃っています。\n\n代表的なハウススタジオをタイプ別にご紹介します。\n\
+    \n---\n\n### 1. 自然光・北欧ナチュラル・生活シーン\n* **ARIGATO Living（アリガトリビング）**\n  * **アクセス：** 神楽坂駅 徒歩約6分\n  * **広さ：**\
+    \ 約89.6㎡\n  * **特徴：** 南・東の2面採光で明るい自然光が入るスタジオ。無垢材のフローリングに「フリッツ・ハンセン」などの上質な北欧家具が揃っています。カウンターキッチンや洗面台もあり、暮らし・美容・インタビュー・EC物撮りまで幅広く対応可能です。機材の無料レンタルも充実しています。\n\
+    \n### 2. 大型空間・屋上付き・多彩な質感\n* **shucof（シュコフ）神楽坂**\n  * **アクセス：** 神楽坂駅 徒歩約4分／江戸川橋駅 徒歩約6分\n  * **広さ：**\
+    \ 約184㎡（メインスタジオ＋屋上利用可）\n  * **特徴：** モルタル床×白壁の洗練されたベースに、漆喰壁・古材・アンティーク建具が配置された表情豊かな空間。天井高約3mで引きの撮影がしやすく、屋上での抜け感ある屋外ロケも同時に行えます。\n\
+    \n### 3. 多背景・天井高・動画＆ポートレート向け\n* **神楽坂スタジオ**\n  * **アクセス：** 神楽坂駅 徒歩約5分（矢来町）\n  * **広さ：** 約80㎡（天井高3.3m）\n\
+    \  * **特徴：** 1つのフロアに「漆喰壁」「レンガ壁」「コンクリート壁」「洋風壁」など異なる背景が用意されており、短時間でバリエーション豊かなカットが撮れます。白バックペーパーやフリッカーレス照明もあり、スチールからYouTube・対談動画まで対応。\n\
+    \n### 4. 個性派・アンティーク・ギャラリー調\n* **swamp gallery 神楽坂**\n  * 独特の質感の壁面や可動壁があり、展示会やアート感のあるルックブック・アパレル撮影向き。\n\
+    * **Atlantiq studio CLASSIC（近隣エリア）**\n  * ブリティッシュコロニアル調の上品で重厚なアンティーク家具・内装が魅力。\n\n---\n\n### スタジオ選びのポイント\n\
+    1. **自然光の時間帯：** 南向き・東向きの窓が多いスタジオは午前〜日中の光が綺麗に入ります。\n2. **同録・動画収録の有無：** 住宅街やマンション内にあるスタジオの場合、音出し制限（同録・楽器・ダンス等）の条件を事前に確認するのが安心です。\n\
+    3. **キッチン・水回り：** 料理撮影やスキンケア等の物撮りがある場合は、実際に通水・調理可能か（給排水やダミーキッチンの違い）をチェックしておくとスムーズです。\n\n※予約状況や機材リスト、最新の利用規約（商用・個人、ムービー料金など）は、各スタジオの公式サイトまたはスペースマーケット／インスタベース等の予約プラットフォームにてご確認ください。"
+  notes: ''
+- query_id: q1
+  query: 神楽坂 ハウススタジオ
+  engine: chatgpt
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: false
+  cited_sources: []
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: '神楽坂周辺で撮影用のハウススタジオ（レンタル撮影スタジオ）をお探しでしょうか？ご希望に合う候補をすぐ絞り込みますので、以下を教えてください。
+
+
+    - 撮影内容：スチール／ムービー／配信 など
+
+    - 希望テイスト：和風（町家・古民家）／洋風（一軒家・アパルトマン）／モダン など
+
+    - 予算帯：スチール/ムービーそれぞれの上限（円/時・円/日）
+
+    - 広さ・天井高・部屋数の希望、自然光の有無
+
+    - 人数（キャスト・スタッフ合計）
+
+    - 希望日・時間帯（例：2026-09-10 午前〜夕方）
+
+    - 付帯条件：駐車場、メイクルーム、キッチン使用、同録可否、発電容量 など
+
+    - エリア範囲：神楽坂限定か、飯田橋・牛込神楽坂・江戸川橋まで可か
+
+
+    ご希望をいただければ、最新の空き状況や料金を含めて候補を3〜5件に整理してご提案します。ネットでの最新版リサーチも実施してよろしいですか？'
+  notes: ''
+- query_id: q2
+  query: 神楽坂 撮影スタジオ
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - google.com
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - アン・デオール神楽坂
+  answer_text: '神楽坂周辺には、自然光が入るハウススタジオや白ホリゾント、配信・キッチン向けなど多様な撮影スタジオがあります \[0.8\]。 [0]
+
+
+    ### 神楽坂のおすすめ撮影スタジオ
+
+
+    - 特徴: 東西線神楽坂駅から徒歩5分。天井高3.3m、約80m²の広々としたハウススタジオ。電動バックペーパー昇降機や無料のライトスタンドを完備。
+
+    - 住所: 東京都新宿区矢来町38 ベッラボーチェ102
+
+
+    - 特徴: 東西線神楽坂駅から徒歩5分。天井高3.3m、約80m²の広々としたハウススタジオ。電動バックペーパー昇降機や無料のライトスタンドを完備。
+
+    - 住所: 東京都新宿区矢来町38 ベッラボーチェ102
+
+
+    - 特徴: 白を基調とした開放感のある2階建てのマルチスペース・スタジオ。三面採光の北向き全面ガラス張りで、安定した自然光を取り込めます。
+
+    - 住所: 東京都新宿区南山伏町2\-11 F\-field
+
+
+    - 特徴: 白を基調とした開放感のある2階建てのマルチスペース・スタジオ。三面採光の北向き全面ガラス張りで、安定した自然光を取り込めます。
+
+    - 住所: 東京都新宿区南山伏町2\-11 F\-field
+
+
+    - 特徴: 白ホリゾントが使えてリーズナブルな価格設定が魅力のコンパクトなスタジオ。搬入がしやすい1階に位置しています。
+
+    - 住所: 東京都新宿区天神町64 プラスワンビル1階
+
+
+    - 特徴: 白ホリゾントが使えてリーズナブルな価格設定が魅力のコンパクトなスタジオ。搬入がしやすい1階に位置しています。
+
+    - 住所: 東京都新宿区天神町64 プラスワンビル1階
+
+
+    - 特徴: 地下1階にキッチン設備を備えており、料理やCMなどの撮影に便利に使えます。
+
+    - 住所: 東京都新宿区天神町8 神楽坂Uビル B1F
+
+
+    - 特徴: 地下1階にキッチン設備を備えており、料理やCMなどの撮影に便利に使えます。
+
+    - 住所: 東京都新宿区天神町8 神楽坂Uビル B1F
+
+
+    撮影ジャンル（スチール・動画・コスプレ・キッズ等）や、ご予算・必要な機材（白ホリやストロボなど）はお決まりですか？ 条件に合わせてさらに絞り込むことも可能です。
+
+
+
+    ### References
+
+
+    [0] [アン・デオール神楽坂](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhFMFltTjNjbU0wGAo)
+    — 【映像\u0026イベントディレクターが考えたマルチスペース】\n有名ディーラーのショールームとして使用されていたビルをフルリノベー...
+
+    '
+  notes: ''
+- query_id: q2
+  query: 神楽坂 撮影スタジオ
+  engine: gemini
+  brand_mentioned: true
+  mention_position: listed
+  mention_text: "がたっぷり入る明るい空間。ナチュラルテイストな家具や内装が揃っており、ポートレート撮影、インタビュー、アパレルのルックブック撮影などに人気。\n* **ARIGATO Living\
+    \ 神楽坂**\n  * **特徴:** リビング風の落ち着いたインテリアが特徴のハウススタジオ。日常シーンの再現やYouTu"
+  cited: true
+  cited_sources:
+  - hau-sta.com
+  - shootest.jp
+  - spacemarket.com
+  - kashispace.com
+  - shootest.jp
+  - instabase.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: "神楽坂・飯田橋エリアは、落ち着いた街並みやアクセスの良さから、自然光ハウススタジオから本格的な白ホリスタジオまで多彩な撮影スタジオが集まっています。\n\n用途やシーンに合わせて選べるおすすめのスタジオをジャンル別にご紹介します。\n\
+    \n---\n\n### 1. 白ホリ・物撮り・本格撮影向け\n* **N1 STUDIO 神楽坂**\n  * **特徴:** 天高3.5m、広さ約80㎡の3面R白ホリゾントスタジオ。モルタル床やレトロな倉庫風エリアも併設しており、アパレルルック撮影や商品撮影、動画撮影まで幅広く対応可能。\n\
+    \  * **アクセス:** 神楽坂駅から徒歩約5分\n* **ライトスタジオ（神楽坂・飯田橋）**\n  * **特徴:** 白ホリとハウススタジオの要素が組み合わさったスタジオ。広めのベランダや自然光が入るエリアもあり、商品撮影からインタビュー・対談動画までマルチに活用できます。\n\
+    * **撮影スタジオ Pico 神楽坂 / DOLLY 飯田橋**\n  * **特徴:** 少人数撮影や格安で白ホリ・機材を利用したい個人・小規模プロジェクト向けのレンタルスペース。\n\n---\n\
+    \n### 2. 自然光・ハウススタジオ（ポートレート・ライフスタイル・対談）\n* **memelink（ミームリンク）神楽坂**\n  * **特徴:** 大きな窓から自然光がたっぷり入る明るい空間。ナチュラルテイストな家具や内装が揃っており、ポートレート撮影、インタビュー、アパレルのルックブック撮影などに人気。\n\
+    * **ARIGATO Living 神楽坂**\n  * **特徴:** リビング風の落ち着いたインテリアが特徴のハウススタジオ。日常シーンの再現やYouTubeの対談動画、ライフスタイル雑貨の撮影に適しています。\n\
+    * **harista / SAY STUDIO**\n  * **特徴:** 白やニュアンスカラーを基調とした洗練された空間。静かな環境で自然光を活かした雰囲気ある写真が撮影可能。\n\n---\n\
+    \n### 3. キッチン付きスタジオ（料理撮影・フード系）\n* 神楽坂エリアには、調理器具や食器類が揃った**キッチン併設レンタルスペース**が多数あります。料理動画の収録や試食を伴う撮影、アットホームなパーティーシーンの撮影に最適です。\n\
+    \  * ※「スペースマーケット」や「インスタベース」で「神楽坂 キッチン 撮影」と検索すると、時間貸しのキッチンスタジオが多数見つかります。\n\n---\n\n### スタジオ選びのチェックポイント\n\
+    1. **自然光の入り方・時間帯:** 南向きか東向きか、遮光ができるか確認。\n2. **同録（音声収録）の可否:** 大通り沿いや木造ビルの場合、外音を拾う可能性があるため動画撮影時は要確認。\n\
+    3. **搬入経路・エレベーター:** 機材や大物家具を持ち込む場合、階段の有無やEVのサイズを確認。"
+  notes: ''
+- query_id: q2
+  query: 神楽坂 撮影スタジオ
+  engine: chatgpt
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: false
+  cited_sources: []
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: '神楽坂の「撮影スタジオ」をお探しですね。どんな用途・条件でしょうか？ご希望に合わせて候補を調べてご提案します。
+
+
+    教えてください
+
+    - 用途：スチール（人物・商品）/ 動画（インタビュー・配信・ドラマ等）
+
+    - 日時：いつ使いたいか（例：2026年9月◯日、何時間）
+
+    - 予算感：1時間あたりの上限
+
+    - 広さ・人数：何人規模、メイク/控室の有無
+
+    - 特徴：自然光/白ホリ/キッチン/和風・町家風/天井高/防音 など
+
+    - 機材：照明・背景紙・カメラのレンタル要否
+
+    - アクセス：最寄駅（神楽坂/牛込神楽坂/江戸川橋など）やエレベーター必須など
+
+
+    条件をいただければ、最新の空き状況や料金も含めて具体的なスタジオをお調べします。'
+  notes: ''
+- query_id: q3
+  query: 神楽坂 スタジオ
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - google.com
+  - google.com
+  - google.com
+  - google.com
+  - google.com
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 坂ノ上スタジオ
+  answer_text: '神楽坂エリア周辺にある、撮影・キッチン・音楽・ダンスなどに利用できるおすすめのスタジオをご紹介します。用途に合わせてチェックしてみてください。
+
+
+    ### 1. 撮影・キッチンスタジオ
+
+
+    - 住所: 東京都新宿区天神町8 神楽坂Uビル B1F
+
+    - 特徴: 神楽坂駅から徒歩2分。大きなアイランドキッチンやガーデンテラスを備えた、CMや雑誌、料理撮影などに大人気の清潔感あるレンタルキッチンスタジオです。
+
+
+    - 住所: 東京都新宿区天神町8 神楽坂Uビル B1F
+
+    - 特徴: 神楽坂駅から徒歩2分。大きなアイランドキッチンやガーデンテラスを備えた、CMや雑誌、料理撮影などに大人気の清潔感あるレンタルキッチンスタジオです。
+
+
+    ### 2. 音楽・ライブ・多目的スペース
+
+
+    - 住所: 東京都新宿区神楽坂6\-48 TOMOS神楽坂ビル B1F
+
+    - 特徴: 神楽坂にあるライブハウス＆オルタナティブスペース。音楽公演だけでなく、WEB配信、レコーディング、撮影、各種イベントやパーティーなどにも対応しています。
+
+
+    - 住所: 東京都新宿区神楽坂6\-48 TOMOS神楽坂ビル B1F
+
+    - 特徴: 神楽坂にあるライブハウス＆オルタナティブスペース。音楽公演だけでなく、WEB配信、レコーディング、撮影、各種イベントやパーティーなどにも対応しています。
+
+
+    - 住所: 東京都新宿区神楽坂2\-12\-15 さわやビル
+
+    - 特徴: 神楽坂下交差点を上がってすぐのところにある、アクセスの良いレンタルスペース・スタジオです。
+
+
+    - 住所: 東京都新宿区神楽坂2\-12\-15 さわやビル
+
+    - 特徴: 神楽坂下交差点を上がってすぐのところにある、アクセスの良いレンタルスペース・スタジオです。
+
+
+    ### 3. ダンス・レッスンスタジオ
+
+
+    - 住所: 東京都新宿区矢来町105 イシカワハイム 1F
+
+    - 特徴: 神楽坂エリア（矢来町）にある、ダンス等のレッスンや練習に親しまれているスタジオです。
+
+
+    - 住所: 東京都新宿区矢来町105 イシカワハイム 1F
+
+    - 特徴: 神楽坂エリア（矢来町）にある、ダンス等のレッスンや練習に親しまれているスタジオです。
+
+
+    - 住所: 東京都新宿区西五軒町3\-7 高橋ビル1F
+
+    - 特徴: 西五軒町方面にある、ダンスや各種練習・利用に向いた1階のスタジオです。
+
+
+    - 住所: 東京都新宿区西五軒町3\-7 高橋ビル1F
+
+    - 特徴: 西五軒町方面にある、ダンスや各種練習・利用に向いた1階のスタジオです。
+
+
+    もしよろしければ、どのような用途（ダンス練習、楽器・バンド、料理・商用撮影、ライブ・配信など）でのご利用を想定されているか教えていただけますか？さらに具体的な条件に合うスタジオをご提案できます。
+
+
+
+    ### References
+
+
+    [0] [坂ノ上スタジオ](https://www.google.com/searchviewer/10?svid=CAwSGxIZCgNwdnESEkNnc3ZaeTh4ZEhaNWJISjZYdxgK)
+    — 坂ノ上スタジオは撮影用のレンタルキッチンスタジオです。\n『撮影のしやすさ』『清潔感』『コミュニケーション』をテーマに有限...
+
+
+    [1] [神楽音/Kagurane](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVdSa2VtUTJhMk4wGAo)
+    — 神楽音は最先端の表現の場であるとともにコミュニケーションの場としても機能しています。音楽公演のみならず、WEB配信、撮影...
+
+
+    [2] [スタジオ・ユニ](https://www.google.com/searchviewer/10?svid=CAwSGxIZCgNwdnESEkNnc3ZaeTh4ZGpoclgyeDBaZxgK)
+    — 〒162\-0825 東京都新宿区神楽坂２丁目１２−１５ さわやビル
+
+
+    [3] [N studio](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVc1dE9YTXpjVzQyGAo)
+    — 〒162\-0805 東京都新宿区矢来町１０５ イシカワハイム 1F
+
+
+    [4] [ファンファーレスタジオ新宿神楽坂](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhFeGNUVndjVFF5GAo)
+    — 坂ノ上スタジオは撮影用のレンタルキッチンスタジオです。 『撮影のしやすさ』『清潔感』『コミュニケーション』をテーマに有限会社カンゴロー事務所が運営しています。 B1Fにはセパレートでも使用可能なABスタジオ、３Fには20坪の広いガーデンテラスがついた自然光の入るCスタジオ、どちらのスタジオにも使用可能な大きなアイランドキッチンが設置されています。
+    撮影関連の各分野の方々に、ストレスなく仕事をしていただくための環境作りにスタッフ一同、日々頭と身体を使っています。 「キレイなキッチンスタジオだね！調理器具・レンタル品・機材もありとても使いやすかったよ！」
+    「神楽坂駅から徒歩2分で近いし、駐車場もあっていいね！」 お客様からそんな声が聞ける事がやりがいと誇りです。 坂ノ上スタジオは『撮影しやすさ』『清潔感』『コミュニケーション』をご提供いたします。
+
+    '
+  notes: ''
+- query_id: q3
+  query: 神楽坂 スタジオ
+  engine: gemini
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - kagurazakastudio.com
+  - publicspace.jp
+  - rstudio.co.jp
+  - studiomarche.jp
+  - session-house.net
+  - tokyo-dancelife.com
+  - rentalstudio-adorea.com
+  - spacemarket.com
+  - tsubaki-musicschool.com
+  - jimdosite.com
+  - jpn.com
+  - wixsite.com
+  - navitime.co.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - 神楽坂セッションハウス
+  answer_text: "神楽坂エリアにある「スタジオ」を用途別（撮影、ダンス・レンタル、音楽、ヨガ・ピラティス）にまとめました。\n\n---\n\n### 1. 撮影スタジオ・フォトスタジオ\n\
+    写真撮影・動画配信・商品撮影・コスプレ撮影などに利用できるスタジオです。\n\n* **神楽坂スタジオ**\n  * 神楽坂駅徒歩約5分。天井高3.3m・約80㎡のハウススタジオ。漆喰やレンガ壁、白バックペーパーなどを備え、アパレル撮影やインタビュー動画撮影に人気。\n\
+    * **swamp gallery 神楽坂 / BASK Edogawabashi**\n  * 自然光や洗練されたインテリアが特徴のハウススタジオ。ポートレートやブランド撮影に向いています。\n\
+    * **スタジオマルシェ 神楽坂店**\n  * 七五三、マタニティ、家族写真などの記念撮影に特化したフォトスタジオ。\n\n---\n\n### 2. ダンス・稽古場・レンタルスタジオ\n大型の鏡が設置されており、ダンス練習、演劇の稽古、ウォーキングレッスンなどに使えます。\n\
+    \n* **神楽坂セッションハウス (Session House)**\n  * ダンス公演やワークショップ、バレエ・コンテンポラリーダンスのクラスが開かれる神楽坂を代表するダンススペース＆劇場。\n\
+    * **ファンファーレスタジオ 新宿神楽坂**\n  * ダンスの自主練や少人数レッスンに使いやすいレンタルスタジオ。\n* **神楽坂レンタルスタジオ Adore（アドレ）**\n  * 牛込神楽坂駅から徒歩1分。定期利用やヨガ・ダンスのプライベートレッスンに便利です。\n\
+    \n---\n\n### 3. 音楽スタジオ・防音練習室\n楽器練習、バンドリハーサル、ボーカル録音、配信などに利用できる防音施設です。\n\n* **WAO亭 Studio**\n  * 神楽坂駅徒歩4分。リハーサルやレコーディング、動画配信に対応したスタジオ（ビッグバンド等の大人数編成にも対応）。\n\
+    * **ミュージックスタジオ ユニバース / OK studio 神楽坂**\n  * ピアノを中心とした個人練習やレッスン向けの音楽スタジオ・教室。\n* **飯田橋・水道橋寄りのバンドスタジオ（STUDIO\
+    \ NODEなど）**\n  * 本格的なアンプやドラムセットを備えたリハーサルスタジオ。\n\n---\n\n### 4. ヨガ・ピラティススタジオ\nボディメイクやリフレッシュ向けの常設スタジオです。\n\
+    \n* **zen place pilates 神楽坂**（マシンピラティス・マットピラティス）\n* **ホットヨガスタジオLAVA 神楽坂店 / カルド神楽坂**（ホットヨガ）\n* **Pilates\
+    \ Alliance / クラブピラティス 神楽坂**（ピラティス専門スタジオ）\n\n---\n\nもし「特定の機材を使いたい」「個人で格安に練習したい」「法人向けの撮影で使いたい」など、具体的な目的があれば詳しくお調べしますのでお知らせください。"
+  notes: ''
+- query_id: q3
+  query: 神楽坂 スタジオ
+  engine: chatgpt
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: false
+  cited_sources: []
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: 'ご希望の「神楽坂のスタジオ」について、もう少し詳しく教えてください。
+
+
+    - 用途はどれですか？（写真・動画撮影用レンタル、ダンス/稽古場、音楽レコーディング、ヨガ/フィットネス、イベント/貸し会議室 など）
+
+    - 人数や広さの目安
+
+    - 予算と利用時間（例：9/10 13:00–17:00）
+
+    - 必要設備（白ホリ、自然光、照明・ストロボ、ミラー、ピアノ、遮音 など）
+
+    - エリアの幅（神楽坂〜飯田橋・江戸川橋・牛込神楽坂 周辺も可？）
+
+
+    条件をいただければ、最新の空き状況や候補スタジオを絞ってご提案します。検索もお任せください。'
+  notes: ''
+- query_id: q4
+  query: 東京 ハウススタジオ 自然光
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - rstudio.co.jp
+  - studio-herb.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: '東京エリアで自然光が美しく入るおすすめのハウススタジオは、大きな窓や天窓、緑豊かなロケーションを備えたスタジオが人気です。 \(https://www.rstudio.co.jp/\)
+
+
+    ### 東京の代表的な自然光ハウススタジオ
+
+
+    | スタジオ名 | エリア | 特徴・魅力 |
+
+    | --- | --- | --- |
+
+    | ART WORKS WHITE | 渋谷区神宮前 | 南一面7.6mの窓と天窓から緑の森と光が差し込む開放的な白基調の空間。 |
+
+    | スタジオレナード | 世田谷区代沢 | 全面天窓で一日中明るい光が降り注ぐ、下北沢の一戸建てハウススタジオ。 |
+
+    | Daylight Studio Nakameguro | 目黒区上目黒 | 中目黒駅徒歩5分。高台に位置し、全面ガラス張りの明るい自然光空間。 |
+
+    | スタジオハーブ | 江東区周辺（銀座から30分） | テラスからたっぷりの自然光が入り、アンティーク家具も充実。 |
+
+
+    もしよろしければ、以下について教えていただけますか？
+
+
+    - 撮影の用途（スチール、ムービー、商用、アパレルなど）
+
+    - 希望するテイストやインテリア（白ホリ、ナチュラル、ヴィンテージ、可愛い系など）
+
+    - ご予算やエリアのこだわり
+
+
+    条件に合わせた最適なスタジオをご提案いたします。
+
+
+
+    ### References
+
+
+    [0] [自然光スタジオ特集【自然光抜群の明るい撮影スタジオを厳選】](https://www.rstudio.co.jp/) — 表参道 ART WORKS WHITE. 南一面7.6mの窓から6000坪の緑の森が広がる開放的な空間。
+    天井高3.8m、天窓もあり、白い空間に光と影が美しい絵を描き、撮影バリエーションは無限大です。 東南向き 北天窓✕白壁 南全面窓（7.6m）緑抜け. 南西 緑抜け 黒絵画壁✕白半艶床. 表参道 ART
+    WORKS WHI...
+
+
+    [1] [自然光ハウススタジオを都内でお探しなら『スタジオハーブ』](https://studio-herb.jp/) — 都内の撮影ハウススタジオSTUDIO HERB。銀座から30分、綺麗な部屋、テラスから差し込むたっぷりの自然光はモデル撮影に最適です。雰囲気作りに欠かせないアンティーク家具やビンテージ小道具なども無料レンタル。駐車3台OK。総面積100坪.
+
+    '
+  notes: ''
+- query_id: q4
+  query: 東京 ハウススタジオ 自然光
+  engine: gemini
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - spacemarket.com
+  - shootest.jp
+  - shootest.jp
+  - pastis.co.jp
+  - rstudio.co.jp
+  - hau-sta.com
+  - shootest.jp
+  - instabase.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: "東京都内で自然光が綺麗に入る人気のハウススタジオを、テイスト・雰囲気別にご紹介します。用途（アパレル撮影、宣材・ポートレート、商品撮影、対談・動画収録など）に合わせて選んでみてください。\n\
+    \n---\n\n### 1. ナチュラル・白基調・北欧風（万人受け・明るい透明感）\n*   **PASTIS & BASIL 系列（世田谷・目黒など各所）**\n    *   都内屈指の老舗ハウススタジオグループ。大きな窓や天窓があり、白壁と明るいフローリングの組み合わせで、1日を通して柔らかい自然光が入ります。\n\
+    *   **ART WORKS 青山 / 表参道（渋谷区神宮前）**\n    *   大きなガラス窓から一日中豊かな自然光が差し込む人気の白空間スタジオ。窓の外の抜け感（緑など）も美しく、クリアで洗練された撮影に向いています。\n\
+    *   **studio Couleurs（世田谷区・駒沢周辺）**\n    *   フレンチナチュラルな明るい空間と庭・テラスを備えたスタジオ。日当たりが良く、アパレルやライフスタイル系の撮影に人気です。\n\
+    \n---\n\n### 2. モルタル・無機質・韓国風・モダン系（アパレル・コスメ向け）\n*   **STUDIO ROKUMARU（中野区）**\n    *   白壁×モルタル床やウッドを基調としたモダンなハウススタジオ。各階で採光が工夫されており、スタイリッシュなルック撮影や物撮りに適しています。\n\
+    *   **BASK Waseda（新宿区・早稲田）**\n    *   4面採光で多方向から光が入るスタジオ。質感のあるニュアンス壁とデザイン家具が揃い、落ち着いたトーンの自然光撮影が可能です。\n\
+    *   **LAG SPACE Shinjuku（新宿・代々木）**\n    *   天井が高く大きな窓から新宿の街並みと自然光がたっぷり入る、高級マンションテイストのモダンスタジオ。\n\n\
+    ---\n\n### 3. アンティーク・洋館・ヴィンテージ系（重厚感・世界観重視）\n*   **EASE（品川区・目黒駅近く）**\n    *   ヨーロッパの街並みやヴィンテージ家具が揃う大型複合スタジオ。直射日光・日陰の陰影を活かした雰囲気のある撮影が可能です。\n\
+    *   **ミモザハウス / シャビーシック（渋谷区神山町・奥渋谷）**\n    *   アンティーク家具や緑豊かな庭が特徴の一軒家スタジオ。サンルームや格子窓から差し込む情緒ある光が特徴です。\n\
+    *   **Studio Licorne（世田谷・下馬など）**\n    *   シャビーシックやクラシカルな家具が揃い、窓から差し込む光の陰影を綺麗に活かせます。\n\n---\n\n###\
+    \ 4. 一軒家・生活シーン・対談向け（キッチン・リビング・庭付き）\n*   **Haku Studio / THE HOUSE（世田谷区下馬）**\n    *   南向きの大きな窓と吹き抜け構造により、美術館のような美しい光が一日中差し込む洗練された一軒家スタジオ。\n\
+    *   **下北沢 スタジオレナード（世田谷区代沢）**\n    *   全面天窓から光が降り注ぐ一戸建てスタジオ。ヴィンテージリビングやキッチンシーンの撮影に最適です。\n*   **パスティス上原（渋谷区西原）**\n\
+    \    *   代々木上原駅近くの庭付き一軒家。掃き出し窓から明るい光が入るリビング＆対面キッチンがあり、暮らしのシーン撮影に使いやすい空間です。\n\n---\n\n### 自然光スタジオを選ぶときのチェックポイント\n\
+    \n1.  **窓の方角と撮影時間帯**\n    *   **南向き・天窓：** 終日明るく、光量が安定しやすい。\n    *   **東向き：** 午前中に強い直射光が入り、午後は柔らかい光に。\n\
+    \    *   **西向き：** 午後から夕方にかけてドラマチックな西日が入る。\n2.  **レースカーテン・遮光設備の有無**\n    *   直射日光を柔らかいディフューズ光（拡散光）にしたい場合、レースカーテンやブラインドがあるか確認しておくと安心です。\n\
+    3.  **窓の外の「抜け」（背景）**\n    *   窓際をバックに撮る際、隣のビルが近すぎないか、緑が見えるか（緑抜け）などもスタジオ写真で確認しておくと失敗しません。\n\n---\n\n\
+    ### 探しやすいポータルサイト\n*   **[R]studio（アールスタジオ）** / **SHOOTEST**：プロ向けスチール・ムービー用の自然光スタジオが多数掲載。\n*   **ハウスタ.com**：都内のハウススタジオに特化した検索サイト。\n\
+    *   **スペースマーケット / インスタベース**：1時間単位・低予算で利用できる個人・少人数向けスタジオが豊富。\n\n※「〇〇駅近く」「予算1時間1万円以内」「白ホリ＋自然光」など、具体的な条件があればさらに絞り込んでご案内できます。"
+  notes: ''
+- query_id: q4
+  query: 東京 ハウススタジオ 自然光
+  engine: chatgpt
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - studio-terranova.com
+  - shootest.jp
+  - musakostudio.com
+  - nonames.jp
+  - studiomon.com
+  - garden-studio.com
+  - studio60.co.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: '東京で「自然光の入るハウススタジオ」をお探しですね。用途（スチール／ムービー／同録の有無）、希望エリア、人数・広さ、キッチンや寝室・庭／屋上の有無、予算・利用日時（例：2026-09-◯◯）を教えていただければ、最適な候補を絞り込みます。
+
+
+    まずは評判の良い自然光系ハウススタジオをエリア別にいくつかご紹介します。
+
+    - 代々木上原 Studio TERRANOVA（Studio D）: 3面窓で柔らかな自然光。キッチン＆ベッドルーム、ウッドデッキ付きでライフスタイル撮影に強い。渋谷・新宿からアクセス良好。 ([studio-terranova.com](https://www.studio-terranova.com/studio-d?utm_source=openai))
+
+    - 目黒 サモスタ目黒店 501/502: 目黒駅徒歩2分。南向きの大きな窓で自然光が豊富。2つの異なるテイストを同フロアで使い分け可。目安4,400円/時〜のプランあり。 ([shootest.jp](https://shootest.jp/studio/s1228/?utm_source=openai))
+
+    - 品川・武蔵小山 ムサコスタジオ: 一軒家を1F〜3Fまるごと利用可。やさしい自然光の入る各フロア、機材・家具込みで7,800円/時（同料金でスチール/ムービー、年中無休）。コスパ重視なら有力。
+    ([musakostudio.com](https://www.musakostudio.com/))
+
+    - 目白 STUDIO NONAMES MEJIRO: 南向きの広い窓から1日を通して自然光が差し込む開放的な空間。展示やワークショップ利用も可。 ([nonames.jp](https://www.nonames.jp/))
+
+    - 自由が丘（世田谷区奥沢） スタジオモン 自由が丘: 庭付き一軒家。リビング隣接の和室は南向きで自然光がきれい、遮光も容易。料金と詳細は利用案内PDF参照。 ([studiomon.com](https://studiomon.com/download_file/171/241))
+
+    - 都内各所 GARDEN STUDIO（複数拠点）: 自然光対応の部屋が複数。南東向き窓で一日中明るい白基調スタジオや、窓裏ライティングで自然光風を再現できる部屋も。ロケバリエーションを重視する撮影に。
+    ([garden-studio.com](https://www.garden-studio.com/))
+
+    - 杉並 スタジオロクマル: 自然光を活かした多彩なフロア構成のハウススタジオ。商品・人物・映像案件までプロ利用の実績多数。 ([studio60.co.jp](https://studio60.co.jp/))
+
+
+    次の情報を教えてください。条件に合わせて3〜5件に絞り、空き状況の確認手順やロケハンのポイント（方角別の光の入り方、録音可否、搬入や駐車の可否など）も併せてご案内します。
+
+    - 撮影内容（静止画/動画/同録の有無）
+
+    - 希望日・時間帯（例：2026-09-10の午前 9:00–13:00）
+
+    - 人数・必要面積/天井高
+
+    - 欲しいシーン（キッチン、ベッドルーム、庭／屋上、バスルーム等）
+
+    - 予算感（時給 or 1日あたり）
+
+    - エリアの希望（渋谷〜新宿周辺、目黒・世田谷、城東など）'
+  notes: ''
+- query_id: q5
+  query: ハウススタジオ 北欧家具 撮影
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - shootest.jp
+  - spacemarket.com
+  - google.com
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: '北欧家具やインテリアをしつらえた、撮影におすすめの都内・近郊のハウススタジオをご紹介します。自然光が入り、生活感や洗練されたデザイナーズ空間を演出できる人気のスタジオをピックアップしました。
+    \(https://shootest.jp/\)
+
+
+    ### おすすめの北欧風・北欧家具ハウススタジオ
+
+
+    - 特徴: 新高円寺駅から徒歩1分。都内で働くデザイナーの一人暮らしをイメージした、北欧ヴィンテージインテリアが揃うリアルな空間。自然光がたっぷり入る2面採光で、ポートレートから商品撮影まで幅広く活躍します。詳細や予約は[スペースマーケット](https://www.spacemarket.com/spaces/studiohokuo/)や撮影スタジオHOKUO公式サイトから確認できます。
+    \(https://www.spacemarket.com/spaces/studiohokuo/\)
+
+
+
+    - 特徴: 目黒駅から徒歩2分とアクセスの良いスタジオ。南向きの窓から入る自然光が魅力で、北欧モダンテイストの温かみのある空間と、無機質なコンクリート空間の双方が利用できます。 \(https://shootest.jp/\)
+
+
+
+    - 特徴: 名建築「フィン・ユール邸」を思わせる、本格的な北欧ナチュラルの一軒家ハウススタジオ。美しい木製家具やカウンターキッチン、庭付きの外観を備え、ライフスタイルや家具の撮影に最適です。 \(https://shootest.jp/\)
+
+
+
+    もしよろしければ、以下について教えていただけますか？
+
+
+    - どのような 被写体・ジャンル の撮影ですか？（家具、アパレル、ポートレート、ムービーなど）
+
+    - ご希望の エリアやご予算 はありますか？
+
+
+    条件に合わせてさらに絞り込んでご提案いたします。
+
+
+
+    ### References
+
+
+    [0] [STUDIO FINN スタジオフィン \| キッチン・庭付き一軒家 ...](https://shootest.jp/) — 千葉県印西市、フィン・ユール邸を思わせる北欧ナチュラルな一軒家ハウススタジオ。カウンターキッチンや庭付きの外観、控室・駐車場も完備し、生活感のあるスチール撮影からインタビュー、料理・ムービー撮影まで幅広く活用できます。
+
+
+    [1] [【新高円寺】北欧ヴィンテージモチーフ「撮影スタジオ ...](https://www.spacemarket.com/spaces/studiohokuo/) — 【新高円寺】北欧ヴィンテージモチーフ「撮影スタジオHOKUO」.
+    新高円寺徒歩1分/自然光たっぷり/北欧ヴィンテージ/ハウススタジオ/デザイナーズ/生活感/2面採光/メイクスペース完備. お気に入り. \-（0件）インボイス対応. お気に入り. ギャラリーで閲覧できる画像枚数
+    26枚. 間取り図. 予約成立後48時間はキャンセ...
+
+
+    [2] [撮影スタジオHOKUO](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhwM1gzSnJlRE5tGAo)
+    — 北欧ヴィンテージインテリアのハウススタジオ。\n\n実際に生活しているかのような、リアルにこだわったハウススタジオです。\n北...
+
+    '
+  notes: ''
+- query_id: q5
+  query: ハウススタジオ 北欧家具 撮影
+  engine: gemini
+  brand_mentioned: false
+  mention_position: cited_only
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - recosta.studio
+  - recosta.studio
+  - kyu-kaigan-studio.com
+  - kyu-kaigan-studio.com
+  - shootest.jp
+  - shootest.jp
+  - shootest.jp
+  - shootest.jp
+  - rstudio.co.jp
+  - rstudio.co.jp
+  - studio-press.com
+  - spacemarket.com
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: "北欧家具や北欧テイストの内装を取り入れたハウススタジオは、自然光が入りやすく、木材の温かみと洗練されたミニマルなデザインが共存しているため、**ライフスタイル撮影、アパレル・コスメのルック撮影、対談・インタビュー、ファミリー向けCM・広告**などで非常に人気があります。\n\
+    \nおすすめのスタジオタイプや代表的なスタジオ、探す際のポイントをまとめました。\n\n---\n\n### 1. 北欧家具が充実している代表的なハウススタジオ例\n\n* **旧海岸スタジオグループ（都内・川崎）**\n\
+    \  * ハンス・ウェグナーやフィン・ユールなどの北欧名作ヴィンテージ家具が豊富に揃うスタジオを展開（第二・第五・第九・第十二スタジオなど）。本格的なデザイナーズ家具を背景に使いたい場合に最適。\n\
+    * **STUDIO FINN（千葉・印西）**\n  * フィン・ユール邸を思わせる北欧ナチュラルな一軒家スタジオ。薪ストーブや上質なウッドフロア、アイランドキッチンなど広々とした生活シーンが撮影可能。\n\
+    * **aL/Right STUDIO（東京・世田谷）**\n  * 白とウッド、テラコッタが調和した自然光たっぷりのハウススタジオ。名作チェアや可動式家具が充実しており、暮らし・美容系の撮影に強み。\n\
+    * **スタジオピーク（北参道・表参道など）**\n  * 明るい木目の北欧モダンなダイニングテーブルやソファが設置されたハウススタジオ。アイランドキッチンや庭付きなどバリエーションが豊富。\n\n\
+    ---\n\n### 2. 北欧風ハウススタジオを選ぶチェックポイント\n\n1. **自然光の入り方（窓の方角・採光）**\n   * 北欧テイストの撮影は「柔らかい自然光」が質感を引き立てます。南向き・東向きの窓や、レースカーテン越しの拡散光が綺麗に入るスタジオを選ぶのがおすすめです。\n\
+    2. **家具の移動（建て込み・レイアウト変更）が可能か**\n   * 北欧ヴィンテージ家具やデザイナーズ家具は貴重なため、スタジオによっては**「家具の移動禁止」または「スタッフ立ち会い必須」**の場合があります。希望の画角に合わせて動かせるか事前に確認しましょう。\n\
+    3. **床材と壁のトーン**\n   * チーク材やオーク材の無垢フローリング、漆喰・ホワイト壁、ニュアンスカラーのペイント壁など、狙いたい世界観（ヴィンテージ寄りか、明るいナチュラルモダン寄りか）に合わせて選びます。\n\
+    4. **キッチンや水回りの有無**\n   * 朝食風景、料理シーン、スキンケアなどの生活感を演出したい場合、オープンキッチンや北欧風タイル仕様の洗面台があるスタジオが適しています。\n\n---\n\
+    \n### 3. スタジオを探しやすい専門検索サイト\n\n* **SHOOTEST（シューテスト）**：こだわり条件「北欧風」「ナチュラル」での絞り込みが充実。\n* **[R]studio（アールスタジオ）**：ハイエンドなハウススタジオやインテリアにこだわった空間が多数掲載。\n\
+    * **STUDIO PRESS（スタジオプレス）**：テイスト別（北欧・モダン・アンティークなど）で検索可能。\n* **スペースマーケット / インスタベース**：個人撮影や少人数・短時間のコスパ重視の撮影におすすめ。\n\
+    \n---\n\n撮影内容（スチール／ムービー、モデル人数、商品撮影の規模など）や希望エリア、予算感を教えていただければ、より条件に合ったスタジオの候補を絞り込んでご提案できます。"
+  notes: ''
+- query_id: q5
+  query: ハウススタジオ 北欧家具 撮影
+  engine: chatgpt
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: false
+  cited_sources: []
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: 'ご要望ありがとうございます。「ハウススタジオ 北欧家具 撮影」をお探しとのことですね。まず条件を少し教えてください。場所や用途が分かれば、最適なスタジオ候補を調べて提案できます。
+
+
+    確認させてください
+
+    - 希望エリアや都市（例：東京・大阪・福岡／ロサンゼルス・ニューヨーク など）
+
+    - 撮影内容（スチール／動画）、人数、必要な電源/音条件
+
+    - 北欧のテイストの方向性（ナチュラル＆白壁＆木床／ヴィンテージ・デンマーク家具中心 など）
+
+    - 広さ目安、天井高、自然光の有無・向き（北向き/南向き）
+
+    - 予算感と希望日時（例：2026年9月15日、10:00–18:00 など）
+
+    - 家具・小物は常設希望か、レンタル持ち込みでも可か（IKEA系で可／本格ヴィンテージ希望 など）
+
+    - 駐車場・荷捌き・音出し可否、キッチン使用、浴室の有無などの条件
+
+
+    すぐ使える探し方（場所未定でもOK）
+
+    - キーワード例（日本・東京圏）: 「ハウススタジオ 北欧家具」「北欧テイスト スタジオ 自然光」「白壁 木床 ハウススタジオ」
+
+    - キーワード例（米国・LA/NY）: “Scandinavian furnished house studio,” “natural light Scandinavian home rental
+    studio”
+
+    - 絞り込み条件: 南向き大窓／木製フローリング／白基調／家具ブランド（Artek, Carl Hansen, Fritz Hansen など）記載の有無
+
+
+    ロケハン時のチェックリスト
+
+    - 光: 9–15時の直射有無、レース/遮光の状態、室内の反射（白壁）での回り込み
+
+    - 音: 交通・空調ノイズ、動画ならリフ音
+
+    - 広さ: メインルームの有効間口と引き距離、搬入動線
+
+    - 家具: 可動・移動可否、キズ対応、撮影面の高さ（テーブル72cm前後、ソファ座面40–45cm）
+
+    - 電源: 回路分け、ブレーカー位置
+
+    - 規約: 家具移動・ネジ留め・壁貼りの可否、火気・水使用
+
+
+    北欧感を出す代替手段（スタジオに家具が少ない場合）
+
+    - 色と素材: 白〜ライトグレー基調＋オーク/バーチ調ウッド、黒は締め色に限定
+
+    - 小物だけで雰囲気づけ: リネンブランケット、モノトーンのテキスタイル（Marimekko等）、透明ガラスや白陶器、観葉（ゴム・ベンガレンシス）
+
+    - 光: 5000–5600Kでデイライト、ソフト大面積の拡散（4x4/8x8）＋バウンスで北欧の柔らかい質感に
+
+    - 画作り: 低彩度、小物は「引き算」で余白を作る
+
+
+    次のステップ
+
+    - 上記の条件を教えていただければ、該当エリアで「北欧家具常設」のハウススタジオをこちらでリサーチし、空き状況問い合わせ用の一括連絡テンプレとともに候補をお送りします（最新情報を確認してご提案します）。
+
+
+    まずは、撮影エリアと希望日時（例：2026年9月◯日）を教えていただけますか？'
+  notes: ''
+- query_id: q6
+  query: ARIGATO Living
+  engine: google_ai_mode
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: 'ARIGATO Living（アリガトリビング）は、PRエージェンシーが手がける、神楽坂駅からもアクセスしやすいナチュラルモダンなレンタルスペース・撮影スタジオです。 \(https://www.a\-ms2.com/arigatoliving/\)
+
+
+    ### 特徴・魅力
+
+
+    - 抜群の自然光：東面と'
+  cited: true
+  cited_sources:
+  - a-ms2.com
+  - rstudio.co.jp
+  - google.com
+  own_site_cited: true
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: 'ARIGATO Living（アリガトリビング）は、PRエージェンシーが手がける、神楽坂駅からもアクセスしやすいナチュラルモダンなレンタルスペース・撮影スタジオです。 \(https://www.a\-ms2.com/arigatoliving/\)
+
+
+    ### 特徴・魅力
+
+
+    - 抜群の自然光：東面と南面の大きな窓から豊富な自然光が差し込む、6階の開放的な空間です。 [2]
+
+    - 上質なインテリア：北欧の名作家具（フリッツ・ハンセンのソファやダイニング・チェアなど）や無垢材のフローリング、グリーンや雑貨が揃っており、追加料金なしで利用できます。 \(https://www.rstudio.co.jp/studio/113049/\)
+
+    - 多彩な用途：リビングやカウンターキッチンでの撮影、インタビュー、WEB動画配信、小規模なワークショップや展示会など幅広く対応しています。機材のレンタルサポートも充実。
+
+
+    ### アクセス・基本情報
+
+
+    - 住所：東京都新宿区東榎町4\-2 神楽坂グリーンランドビル 6F
+
+    - 最寄り駅：東京メトロ東西線「神楽坂駅」から徒歩約3分
+
+    - 公式情報：詳細や予約については [ARIGATO Living 公式サイト](https://www.a-ms2.com/arigatoliving/) または [R studio紹介ページ](https://www.rstudio.co.jp/studio/113049/)
+    をご覧ください。 \(https://www.rstudio.co.jp/studio/113049/\)
+
+
+    もしよろしければ、撮影や利用の目的（スチール、動画配信、イベントなど）や具体的な日時について教えてください。空き状況の確認方法など、さらに詳しくご案内できます。
+
+
+
+    ### References
+
+
+    [0] [ARIGATO Living – PRエージェンシーが手がけるハウス ...](https://www.a-ms2.com/arigatoliving/) — PR事業のノウハウやコミュニケーション力を駆使し、
+    皆様のプロモーションを万全の体制でサポートします。 販売やブランディングにつなげるためのプロモーションをサポートするために、今ではキービジュアルはしかり、 動画での発信が重要になってきています。
+    · レンタルスペース; 撮影スタジオ; 撮影サポート; 動画撮影・配信; プレ...
+
+
+    [1] [ARIGATO Living アリガトリビング｜\[R\]studio](https://www.rstudio.co.jp/studio/113049/) — 神楽坂駅より徒歩3分。
+    ウッド基調のナチュラルモダンなハウススタジオです。 東・南面の窓から豊富な自然光が降り注ぐ明るい空間。床の無垢材が上質でシンプルな雰囲気を演出します。北欧ブランド「フリッツ・ハンセン」のソファやダイニングテーブル、チェアのほか、グリーンやインテリア雑貨をご用意しています。（家具、備品、機材はすべてレン...
+
+
+    [2] [ARIGATO Living/アリガトリビング](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVd0d2F6VTNNbVI0GAo)
+    — 6階にあるスタジオは周囲に遮るものがなく、東面と南面の窓から自然光が降り注ぎ、明るく開放的です。その中で北欧の名作家具と...
+
+    '
+  notes: ''
+- query_id: q6
+  query: ARIGATO Living
+  engine: gemini
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: '**ARIGATO Living** can refer to a few notable concepts and businesses:
+
+
+    ---
+
+
+    ### 1. ARIGATO Living (Tokyo Rental Studios & Spaces)
+
+    * **What it is:** A'
+  cited: true
+  cited_sources:
+  - a-ms2.com
+  - note.com
+  - studiocohaku.com
+  - note.com
+  - apple.com
+  - candicewu.com
+  - facebook.com
+  - facebook.com
+  own_site_cited: true
+  related_cited: true
+  competitors_mentioned: []
+  answer_text: "**ARIGATO Living** can refer to a few notable concepts and businesses:\n\n---\n\n### 1.\
+    \ ARIGATO Living (Tokyo Rental Studios & Spaces)\n* **What it is:** A network of curated \"house studios\"\
+    \ and event spaces in Japan operated by the PR and creative agency **Casokdo Co., Ltd.**\n* **Locations:**\
+    \ Flagship spaces include **Kagurazaka** (Shinjuku, Tokyo), **Ginza**, and **Isumi** (Chiba private\
+    \ villa).\n* **Features:** \n  * Designed (by Studio Cohaku) with abundant natural light, solid wood\
+    \ floors, and modern Scandinavian furniture (such as Fritz Hansen).\n  * Used as a multi-purpose creative\
+    \ space for photo/video shoots, brand exhibitions, product launches, pop-up events, and workshops.\n\
+    \  * Integrated with Casokdo's PR and media production services.\n\n---\n\n### 2. Arigato Living Community\
+    \ (Ken Honda / *Happy Money*)\n* **What it is:** An online lifestyle and personal-growth community\
+    \ founded by **Ken Honda**, the bestselling author of *Happy Money: The Japanese Art of Making Peace\
+    \ with Your Money*.\n* **Philosophy:** Based on the Japanese principle of ***Arigato* (gratitude)**,\
+    \ the community focuses on cultivating financial mindfulness (\"Arigato in, Arigato out\"), gratitude-based\
+    \ living, and healthy emotional relationships with wealth and everyday life.\n\n---\n\n### 3. Arigato\
+    \ Living (Real Estate Projects)\n* **What it is:** In urban development, \"Arigato Living\" (such\
+    \ as *Arigato Living 68* in Bogotá, Colombia) is used as a brand name for modern residential apartment/studio\
+    \ developments emphasizing compact, minimalist urban living.\n\n---\n\n*If you are looking for a specific\
+    \ booking, contact details, or community platform related to one of these, please let me know which\
+    \ one you'd like more details about.*"
+  notes: ''
+- query_id: q6
+  query: ARIGATO Living
+  engine: chatgpt
+  brand_mentioned: true
+  mention_position: featured
+  mention_text: 'Got it—what would you like to do with “ARIGATO Living”?
+
+
+    A few possibilities:
+
+    - Clarify meaning: “arigatō” (ありがとう) means “thank you” in Japanese. Are'
+  cited: false
+  cited_sources: []
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned: []
+  answer_text: 'Got it—what would you like to do with “ARIGATO Living”?
+
+
+    A few possibilities:
+
+    - Clarify meaning: “arigatō” (ありがとう) means “thank you” in Japanese. Are you exploring it as a brand
+    or concept?
+
+    - Brand help: name validation, tagline ideas, logo/style guide, domain and social handle checks.
+
+    - Copywriting: About page, mission/values, product descriptions.
+
+    - Research: If ARIGATO Living is an existing company, I can look it up and summarize.
+
+    - Translation/localization: Japanese/English wording that feels authentic and culturally appropriate.
+
+
+    Tell me which direction you’re after, and any context (industry, audience, tone).'
+  notes: ''
+- query_id: q7
+  query: 神楽坂でおすすめの撮影スタジオを教えてください
+  engine: google_ai_mode
+  brand_mentioned: false
+  mention_position: none
+  mention_text: ''
+  cited: true
+  cited_sources:
+  - google.com
+  own_site_cited: false
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - 坂ノ上スタジオ
+  answer_text: "神楽坂エリアで目的に合わせて利用できるおすすめの撮影スタジオをご紹介します。商用利用から個人利用、キッズ撮影まで幅広く対応している店舗をピックアップしました。\n\n###\
+    \ 神楽坂のおすすめ撮影スタジオ\n\n- 神楽坂スタジオ [0]\n  - 特徴: 東西線神楽坂駅から徒歩5分のハウススタジオです。天井高3.3m、約80m²の広々とした空間で、電動バックペーパー昇降機やライトスタンドが無料で利用できます。お得なパック料金も用意されています。\n\
+    \  - 住所: 東京都新宿区矢来町38 ベッラボーチェ102\n- 坂ノ上スタジオ\n  - 特徴: 神楽坂駅から徒歩2分とアクセスが便利なレンタルキッチンスタジオです。大型アイランドキッチンが設置されており、CMや料理撮影、各種商用撮影に最適です。テラス付きのフロアもあります。\n\
+    \  - 住所: 東京都新宿区天神町8 神楽坂Uビル B1F\n- 撮影スタジオPico神楽坂\n  - 特徴: 白ホリゾントが使えるコストパフォーマンスに優れたコンパクトなスタジオです。段差が少なく機材の搬入がしやすいと評判です。\n\
+    \  - 住所: 東京都新宿区天神町64 プラスワンビル 1階\n- スタジオマルシェ 神楽坂A店・BABY店\n  - 特徴: 完全予約制・1枠1組限定のプライベートハウス型のキッズフォトスタジオです。お宮参りやバースデーなど、落ち着いた空間でお子様の自然な笑顔を撮影できます。\n\
+    \  - 住所: 東京都新宿区東五軒町1\\-9 片岡ビル 1F\n\nもしよろしければ、撮影したい内容（商用、コスプレ、キッズ、プロフィール写真など）や必要な設備（キッチン、白ホリなど）を教えていただけますか？さらに条件に合うスタジオをご提案できます。\n\
+    \n\n### References\n\n[0] [スタジオマルシェ 神楽坂A店・BABY店](https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhZd2RtcDVYemN5GAo)\
+    \ — キッズフォトスタジオ｜お子様の特別な日を貸切空間でカタチに｜完全予約制1枠1組限定のプライベートハウススタジオ｜百日・バ...\n"
+  notes: ''
+- query_id: q7
+  query: 神楽坂でおすすめの撮影スタジオを教えてください
+  engine: gemini
+  brand_mentioned: true
+  mention_position: listed
+  mention_text: "いている撮影**: アパレル・ルック撮影、インタビュー、広告、ブランド物撮り\n\n---\n\n### 2. 上品でナチュラルなライフスタイル空間\n* **ARIGATO\
+    \ Living 神楽坂**\n  * **特徴**: やわらかな自然光が差し込む淡いトーンの壁とウッドフローリング、洗練されたデザイナーズ"
+  cited: true
+  cited_sources:
+  - recosta.studio
+  - powerpage.jp
+  - hau-sta.com
+  - publicspace.jp
+  - kagurazakastudio.com
+  - upnow.jp
+  own_site_cited: false
+  related_cited: true
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - shucof神楽坂
+  answer_text: "神楽坂エリア（神楽坂駅・牛込神楽坂駅・江戸川橋周辺）は、落ち着いた街並みを生かした**自然光ハウススタジオ**や**質感にこだわった撮影スペース**が充実しています。\n\n\
+    用途や撮影イメージに合わせておすすめのスタジオを用途別にご紹介します。\n\n---\n\n### 1. 自然光・広さ・屋上ロケもできる万能スタジオ\n* **shucof（シュコフ）神楽坂**\n\
+    \  * **特徴**: 184㎡のゆったりとした空間に、モルタル×白壁の抜け感、漆喰壁や古材、アンティーク建具など多彩な背景が揃うハウススタジオ。\n  * **おすすめポイント**: 1つのスタジオ内で何パターンものシーン撮影が可能。事前申請で屋上撮影も行えるため、屋外のカットもまとめて撮りたい案件に最適です。\n\
+    \  * **向いている撮影**: アパレル・ルック撮影、インタビュー、広告、ブランド物撮り\n\n---\n\n### 2. 上品でナチュラルなライフスタイル空間\n* **ARIGATO Living\
+    \ 神楽坂**\n  * **特徴**: やわらかな自然光が差し込む淡いトーンの壁とウッドフローリング、洗練されたデザイナーズ家具が特徴の上品なスタジオ。\n  * **おすすめポイント**: キッチン、フィッティングルーム、控室が揃っており、快適に撮影が進行できます。無料貸し出しの機材も充実。\n\
+    \  * **向いている撮影**: ライフスタイル・ビューティー撮影、対談動画、ポートレート、商品撮影\n\n---\n\n### 3. バリエーション豊かな壁面・天井高のある空間\n* **神楽坂スタジオ**\n\
+    \  * **特徴**: 神楽坂駅徒歩約5分、天井高3.3m・約80㎡のスタジオ。\n  * **おすすめポイント**: 漆喰壁・レンガ壁・コンクリート壁など複数の質感の壁があり、白バックペーパーも常設。天井灯がフリッカーレス仕様のため、スマホやスローモーション動画の撮影にも便利です。\n\
+    \  * **向いている撮影**: ポートレート、ECサイト向けアパレル撮影、ダンス・レッスン動画、YouTube収録\n\n---\n\n### 4. 少人数・コスパ重視・ニュアンスのある空間\n\
+    * **レンタルスペース 8（hachi）神楽坂**\n  * **特徴**: 白壁と大きな窓から入る自然光、ヴィンテージ感のあるタイル張りのレストルームなど、ディテールが可愛らしいコンパクトなスペース。\n\
+    \  * **おすすめポイント**: 1時間あたりの料金が手頃で、少人数での撮影や物撮り、スチール撮影に使いやすいのが魅力です。\n  * **向いている撮影**: ポートレート、小物の物撮り、個人クリエイターの作品撮り\n\
+    \n---\n\n### スタジオ選びのポイント\n* **音出し・同時録音の有無**: 神楽坂は住宅街も多いため、動画の同録や音出しを予定している場合は事前に規定をご確認ください。\n* **自然光の向き**:\
+    \ 午前中から昼にかけて光が入るスタジオが多いため、光を重視する場合はロケハンの時間帯を意識すると安心です。"
+  notes: ''
+- query_id: q7
+  query: 神楽坂でおすすめの撮影スタジオを教えてください
+  engine: chatgpt
+  brand_mentioned: true
+  mention_position: listed
+  mention_text: "に最適。([kagurazakaonlinestudio.com](https://kagurazakaonlinestudio.com/))\n\n- ARIGATO\
+    \ Living（東榎町）\n  PR会社が運営するハウススタジオ。神楽坂の拠点は機材貸し出し対応ありで、撮影＋プロモーションの相談まで一気"
+  cited: true
+  cited_sources:
+  - photo-studio-pico.com
+  - studio.cheered.jp
+  - spacemarket.com
+  - kagurazakaonlinestudio.com
+  - a-ms2.com
+  - studio-dolly.com
+  - chocolatcorp.com
+  own_site_cited: true
+  related_cited: false
+  competitors_mentioned:
+  - 神楽坂スタジオ
+  - 神楽坂オンラインスタジオ
+  answer_text: "用途別に使いやすい「神楽坂エリア（飯田橋・江戸川橋含む）」の撮影スタジオを厳選してご紹介します。価格や設備は執筆時点の公開情報なので、ご予約前に各公式で最新状況をご確認ください。\n\
+    \n- Photo Studio PICO（神楽坂・天神町）\n  小規模〜中規模のスチールに強い白ホリ。ARRIのSKY PANEL/Orbiterなど常設、1時間4,480円（3時間〜）と良心的。神楽坂駅徒歩5分、江戸川橋徒歩7分。([photo-studio-pico.com](https://photo-studio-pico.com/))\n\
+    \n- CheeredSTUDIO（山吹町）\n  天井高最大3.8m、スタジオW8,230×D3,600mm（最大引き9,710mm）。控室はハリウッドミラー付き。基本1h 17,600円／8hパックあり。江戸川橋徒歩5分・神楽坂徒歩9分でアクセスも良好。([studio.cheered.jp](https://studio.cheered.jp/%E6%96%99%E9%87%91-1/))\n\
+    \n- 神楽坂スタジオ（飯田橋・神楽坂・江戸川橋からアクセス可）\n  約80㎡・天井高3.3mのハウススタジオ。白バックペーパーやLEDライト（有料含む）など備品が充実しており、人物・物撮り・動画まで汎用性高め。神楽坂駅徒歩5分の記載。([spacemarket.com](https://www.spacemarket.com/spaces/kagurazakastudio/?utm_source=openai))\n\
+    \n- 神楽坂オンラインスタジオ（矢来町近辺）\n  LEDビジョンとXR対応のバーチャル撮影向け。ライブ配信設備やメイクルーム完備で、配信・プロモーション撮影に最適。([kagurazakaonlinestudio.com](https://kagurazakaonlinestudio.com/))\n\
+    \n- ARIGATO Living（東榎町）\n  PR会社が運営するハウススタジオ。神楽坂の拠点は機材貸し出し対応ありで、撮影＋プロモーションの相談まで一気通貫で頼みたいときに便利。神楽坂駅徒歩5分。([a-ms2.com](https://www.a-ms2.com/arigatoliving/?utm_source=openai))\n\
+    \n- スタジオDOLLY 飯田橋1号店（番外：飯田橋）\n  駅徒歩1分。白/黒の直角ホリ完備で、宣材・ファッション・物撮りまで幅広く使える近隣スタジオ。([studio-dolly.com](https://studio-dolly.com/studio/iidabashi1/?utm_source=openai))\n\
+    \n- ショコラスタジオ（神楽坂）\n  神楽坂のビル内ハウススタジオ。多様なシーンを想定したレイアウトで、ワンフロアの使い勝手が良い。([chocolatcorp.com](https://www.chocolatcorp.com/))\n\
+    \nご希望に合う候補をさらに絞り込みます。以下を教えてください。\n- 撮影内容（例：人物ポートレート、商品、アパレル、動画配信 など）\n- 人数・必要な天井高／面積\n- 自然光重視 or 白ホリ・黒ホリ希望\n\
+    - だいたいのご予算と利用時間帯・日程（例：9月◯日 4時間 など）"
+  notes: ''
