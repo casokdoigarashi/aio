@@ -400,6 +400,11 @@ def main() -> None:
         print("観測結果が1件も取得できませんでした。")
         sys.exit(1)
 
+    # 全滅したエンジンの検出。1エンジンが落ちても他が動くと成功扱いになり、
+    # 欠測に何週間も気づけないため、保存はした上で最後に失敗させる。
+    got = {e["engine"] for e in entries}
+    dead = [e for e in active if e not in got]
+
     out_path = OBS_DIR / f"{date}-auto.yml"
     payload = {
         "date": date,
@@ -410,6 +415,13 @@ def main() -> None:
     with open(out_path, "w", encoding="utf-8") as f:
         yaml.safe_dump(payload, f, allow_unicode=True, sort_keys=False, width=100)
     print(f"保存しました: {out_path}")
+
+    if dead:
+        print(
+            f"::error::次のエンジンが全クエリで失敗しました: {', '.join(dead)}。"
+            "APIキーの有効性と残高を確認してください。"
+        )
+        sys.exit(1)
 
 
 if __name__ == "__main__":

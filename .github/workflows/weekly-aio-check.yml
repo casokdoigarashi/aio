@@ -31,6 +31,9 @@ jobs:
         run: python scripts/fetch_note.py
 
       - name: Run automated AI search observation
+        id: observe
+        # エンジンが全滅しても保存とコミットは行い、最後にジョブを失敗させる
+        continue-on-error: true
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -54,3 +57,10 @@ jobs:
             git commit -m "chore: 週次AIO観測 $(date +%Y-%m-%d)"
             git push
           fi
+
+      # 観測に問題があった場合はここでジョブを赤くし、GitHubから通知を飛ばす
+      - name: Fail if an engine was completely down
+        if: steps.observe.outcome == 'failure'
+        run: |
+          echo "::error::観測に失敗したエンジンがあります。上のログでAPIキーと残高を確認してください。"
+          exit 1
