@@ -1,0 +1,63 @@
+name: note下書き削除
+
+# .github/run-note-delete に書いた下書きだけを削除する。
+# 取り消しがきかないので、ファイルに明示されたIDのみが対象。
+on:
+  workflow_dispatch:
+    inputs:
+      drafts:
+        description: "削除する下書きのURLまたはID（スペース区切り）"
+        required: true
+        type: string
+  push:
+    branches:
+      - claude/aio-search-impact-tracking-auwbao
+    paths:
+      - ".github/run-note-delete"
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve targets
+        id: target
+        env:
+          INPUT_DRAFTS: ${{ inputs.drafts }}
+        run: |
+          if [ -n "$INPUT_DRAFTS" ]; then
+            drafts="$INPUT_DRAFTS"
+          else
+            drafts="$(grep -v '^\s*#' .github/run-note-delete | grep -v '^\s*$' | tr '\n' ' ')"
+          fi
+          if [ -z "$drafts" ]; then
+            echo "削除対象がありません"; exit 0
+          fi
+          echo "drafts=$drafts" >> "$GITHUB_OUTPUT"
+          echo "削除対象: $drafts"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        if: steps.target.outputs.drafts != ''
+        run: |
+          npm install playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Delete drafts
+        if: steps.target.outputs.drafts != ''
+        env:
+          NOTE_COOKIES_JSON: ${{ secrets.NOTE_COOKIES_JSON }}
+          NOTE_SHOT_DIR: ${{ runner.temp }}/note_shots
+        run: node scripts/note_delete.js ${{ steps.target.outputs.drafts }}
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: note-delete-screenshot
+          path: ${{ runner.temp }}/note_shots
+          if-no-files-found: ignore
