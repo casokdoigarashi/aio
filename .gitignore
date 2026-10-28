@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# noteログインのCookie（絶対にコミットしない）
+data/.note_state.json

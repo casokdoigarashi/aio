@@ -1,0 +1,48 @@
+name: note下書き作成
+
+# 手動実行のみ。原稿ファイルを指定して note に下書きを作る。
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "原稿ファイル（例: content/note/2026-10-28_取材対談スタジオ.md）"
+        required: true
+        type: string
+      dry_run:
+        description: "変換結果の確認だけ（noteにログインしない）"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        run: |
+          npm install playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Create note draft
+        env:
+          # 下のどちらか一方を Secrets に登録しておけば動く
+          NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
+          NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
+          NOTE_COOKIES_JSON: ${{ secrets.NOTE_COOKIES_JSON }}
+          NOTE_DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          NOTE_SHOT_DIR: ${{ runner.temp }}/note_shots
+        run: node scripts/note_draft.js "${{ inputs.file }}"
+
+      - name: Upload confirmation screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: note-draft-screenshot
+          path: ${{ runner.temp }}/note_shots
+          if-no-files-found: ignore
