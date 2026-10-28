@@ -218,6 +218,16 @@ async function loginWithPassword(page) {
  *  クリップボードを経由せず paste イベントを直接投げる。
  *  エディタ側はコピペと同じ扱いでHTMLを解釈するので、見出し・太字・
  *  リンク・箇条書きが保たれる（プレーンテキストで打つと全部段落になる）。 */
+/** カーソルを本文の末尾に置く。
+ *  画像を挿入するとカーソルがエディタ内から外れ、その直後の貼り付けが
+ *  プレーンテキスト扱いになって見出し・太字が全部失われる。
+ *  貼り付けの前に毎回これを呼ぶこと。 */
+async function focusEnd(page, bodyField) {
+  await bodyField.click();
+  await page.keyboard.press("ControlOrMeta+End");
+  await page.waitForTimeout(300);
+}
+
 async function pasteHtml(bodyField, html) {
   await bodyField.evaluate((el, payload) => {
     const dt = new DataTransfer();
@@ -299,6 +309,7 @@ async function writeDraft(page, title, segments) {
   for (const [i, seg] of segments.entries()) {
     if (seg.type === "html") {
       const before = await bodyLength();
+      await focusEnd(page, bodyField);
       await pasteHtml(bodyField, seg.value);
       await page.waitForTimeout(2500);
       if ((await bodyLength()) <= before) {
@@ -317,7 +328,14 @@ async function writeDraft(page, title, segments) {
   }
 
   const imageCount = segments.filter((s) => s.type === "image").length;
-  console.log(`本文 ${await bodyLength()}文字 / 画像 ${inserted}/${imageCount}枚`);
+  // 見出しが0なら書式が飛んでいる（プレーンテキストとして入った）
+  const headings = await bodyField.locator("h1, h2, h3").count().catch(() => 0);
+  console.log(
+    `本文 ${await bodyLength()}文字 / 画像 ${inserted}/${imageCount}枚 / 見出し ${headings}個`
+  );
+  if (headings === 0) {
+    console.log("::warning::見出しが検出されません。書式が失われている可能性があります");
+  }
   if (failedImages.length) {
     console.log("挿入できなかった画像: " + failedImages.join(", "));
   }
