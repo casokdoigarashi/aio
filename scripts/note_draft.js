@@ -221,6 +221,36 @@ async function writeDraft(page, context, title, html) {
   return page.url();
 }
 
+/** セレクタが合わなかったときに、画面の構造を調べるための情報を出す。 */
+async function dumpState(page) {
+  try {
+    console.log("--- 画面の状態 ---");
+    console.log("URL: " + page.url());
+    console.log("title: " + (await page.title()));
+    const info = await page.evaluate(() => {
+      const list = (sel) =>
+        Array.from(document.querySelectorAll(sel)).slice(0, 25).map((el) => ({
+          tag: el.tagName.toLowerCase(),
+          placeholder: el.getAttribute("placeholder") || "",
+          ariaLabel: el.getAttribute("aria-label") || "",
+          name: el.getAttribute("name") || "",
+          cls: (el.getAttribute("class") || "").slice(0, 60),
+          role: el.getAttribute("role") || "",
+        }));
+      return {
+        textareas: list("textarea"),
+        inputs: list("input"),
+        editables: list('[contenteditable="true"]'),
+        iframes: Array.from(document.querySelectorAll("iframe")).map((f) => f.src),
+        bodyText: (document.body.innerText || "").replace(/\s+/g, " ").slice(0, 500),
+      };
+    });
+    console.log(JSON.stringify(info, null, 2));
+  } catch (e) {
+    console.log("画面の状態を取得できませんでした: " + e.message);
+  }
+}
+
 // --- 実行 ---------------------------------------------------------------
 
 async function main() {
@@ -248,6 +278,8 @@ async function main() {
     storageState: storageStateOption(),
   });
   const page = await context.newPage();
+  fs.mkdirSync(SHOT_DIR, { recursive: true });
+  const shot = path.join(SHOT_DIR, path.basename(mdPath, ".md") + ".png");
 
   try {
     if (!(await isLoggedIn(page))) {
@@ -263,12 +295,13 @@ async function main() {
     fs.mkdirSync(path.dirname(STATE_PATH), { recursive: true });
     await context.storageState({ path: STATE_PATH });
     console.log(`Cookie を保存しました: ${path.relative(ROOT, STATE_PATH)}（次回はログイン不要）`);
-
-    fs.mkdirSync(SHOT_DIR, { recursive: true });
-    const shot = path.join(SHOT_DIR, path.basename(mdPath, ".md") + ".png");
-    await page.screenshot({ path: shot, fullPage: true });
-    console.log(`確認用スクショ: ${path.relative(ROOT, shot)}`);
+  } catch (e) {
+    await dumpState(page);
+    throw e;
   } finally {
+    // 成否にかかわらず画面を残す（セレクタ調整の手がかりになる）
+    await page.screenshot({ path: shot, fullPage: true }).catch(() => {});
+    console.log(`確認用スクショ: ${path.relative(ROOT, shot)}`);
     await browser.close();
   }
 }
