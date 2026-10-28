@@ -76,6 +76,35 @@ function splitSegments(body, baseDir) {
   return segments;
 }
 
+/** HTMLの最後のブロックの文字列。画像を「どの段落の後ろに置くか」の目印にする。 */
+function lastBlockText(html) {
+  const blocks = html.match(/<(p|h2|h3|li)\b[^>]*>([\s\S]*?)<\/\1>/g) || [];
+  const last = blocks[blocks.length - 1] || "";
+  return last.replace(/<[^>]+>/g, "").trim();
+}
+
+/** 本文のHTML全体と、画像の差し込み位置（直前の段落の文字列）を組み立てる。
+ *
+ *  画像を入れるとカーソルが画像のキャプション欄に移り、その後に貼った
+ *  テキストがキャプションに流し込まれて書式が全部失われる。
+ *  そこで「本文を一括で貼ってから、画像を後入れする」順序にしている。 */
+function buildPlan(segments) {
+  const htmlParts = [];
+  const images = [];
+  for (const seg of segments) {
+    if (seg.type === "html") {
+      htmlParts.push(seg.value);
+    } else {
+      images.push({
+        ...seg,
+        // 直前の段落の末尾に置く。先頭の画像（直前が無い）は null
+        anchor: htmlParts.length ? lastBlockText(htmlParts[htmlParts.length - 1]) : null,
+      });
+    }
+  }
+  return { html: htmlParts.join("\n"), images };
+}
+
 /** note のエディタが受け取れる範囲のHTMLに変換する。
  *  note に表組みは無いので、表は「項目：内容」の箇条書きに落とす。 */
 function toHtml(body) {
@@ -241,7 +270,7 @@ async function pasteHtml(bodyField, html) {
 
 /** 画像ファイルを File としてエディタに渡す。
  *  note はアップロードに時間がかかるので、img が増えるまで待つ。 */
-async function insertImage(page, bodyField, file) {
+async function insertImage(page, bodyField, file, anchor) {
   const countImages = async () => bodyField.locator("img").count().catch(() => 0);
   const before = await countImages();
   const base64 = fs.readFileSync(file).toString("base64");
@@ -255,6 +284,30 @@ async function insertImage(page, bodyField, file) {
     }
     return false;
   };
+
+  // 差し込み位置（目印の段落の末尾）にカーソルを置く
+  if (anchor) {
+    const placed = await bodyField.evaluate((el, text) => {
+      const norm = (s) => (s || "").replace(/\s+/g, "");
+      const needle = norm(text);
+      const blocks = Array.from(el.querySelectorAll("p, h1, h2, h3, li, blockquote"));
+      const target = blocks.reverse().find((b) => norm(b.innerText).includes(needle));
+      if (!target) return false;
+      el.focus();
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      range.collapse(false);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return true;
+    }, anchor);
+    if (!placed) {
+      console.log(`    位置の目印が見つかりません: ${anchor.slice(0, 20)}…`);
+      return null;
+    }
+    await page.waitForTimeout(500);
+  }
 
   // paste → drop の順に試す。どちらも「人がコピペ/ドラッグした」のと同じ経路。
   for (const kind of ["paste", "drop"]) {
@@ -275,17 +328,10 @@ async function insertImage(page, bodyField, file) {
     );
     if (await waitForUpload(30000)) return kind === "paste" ? "pasteイベント" : "dropイベント";
   }
-
-  // 最後の手段。画像用の file input が開いていれば直接渡す
-  const fileInput = page.locator('input[type="file"]');
-  if (await fileInput.count()) {
-    await fileInput.first().setInputFiles(file).catch(() => {});
-    if (await waitForUpload(30000)) return "input[type=file]";
-  }
   return null;
 }
 
-async function writeDraft(page, title, segments) {
+async function writeDraft(page, title, plan) {
   if (!/\/notes\/new/.test(page.url()) && !/\/notes\/.+\/edit/.test(page.url())) {
     await page.goto("https://note.com/notes/new", { waitUntil: "domcontentloaded", timeout: 60000 });
   }
@@ -302,32 +348,27 @@ async function writeDraft(page, title, segments) {
   const bodyLength = async () =>
     (await bodyField.innerText().catch(() => "")).replace(/\s+/g, "").length;
 
-  // 原稿の順番どおりに、テキストと画像を交互に入れていく。
-  // カーソルは挿入のたびに末尾へ進むので、先頭から順に積むだけでよい。
+  // まず本文を一括で貼る。空のエディタへの一回の貼り付けなら書式が保たれる。
+  await pasteHtml(bodyField, plan.html);
+  await page.waitForTimeout(3000);
+  console.log(`本文を貼り付けました（${await bodyLength()}文字）`);
+
+  // そのうえで画像を、指定した段落の後ろに差し込む
   let inserted = 0;
   const failedImages = [];
-  for (const [i, seg] of segments.entries()) {
-    if (seg.type === "html") {
-      const before = await bodyLength();
-      await focusEnd(page, bodyField);
-      await pasteHtml(bodyField, seg.value);
-      await page.waitForTimeout(2500);
-      if ((await bodyLength()) <= before) {
-        console.log(`  [${i + 1}/${segments.length}] テキストが入りませんでした`);
-      }
+  for (const [i, img] of plan.images.entries()) {
+    const how = await insertImage(page, bodyField, img.file, img.anchor);
+    const label = `[${i + 1}/${plan.images.length}] ${path.basename(img.file)}`;
+    if (how) {
+      inserted++;
+      console.log(`  ${label} を挿入（${how}）`);
     } else {
-      const how = await insertImage(page, bodyField, seg.file);
-      if (how) {
-        inserted++;
-        console.log(`  [${i + 1}/${segments.length}] 画像 ${path.basename(seg.file)} を挿入（${how}）`);
-      } else {
-        failedImages.push(path.basename(seg.file));
-        console.log(`  [${i + 1}/${segments.length}] 画像 ${path.basename(seg.file)} は挿入できませんでした`);
-      }
+      failedImages.push(path.basename(img.file));
+      console.log(`  ${label} は挿入できませんでした`);
     }
   }
 
-  const imageCount = segments.filter((s) => s.type === "image").length;
+  const imageCount = plan.images.length;
   // 見出しが0なら書式が飛んでいる（プレーンテキストとして入った）
   const headings = await bodyField.locator("h1, h2, h3").count().catch(() => 0);
   console.log(
@@ -390,19 +431,17 @@ async function main() {
   const mdPath = path.isAbsolute(target) ? target : path.join(ROOT, target);
   const { title, body } = parseMarkdown(fs.readFileSync(mdPath, "utf-8"));
   const segments = splitSegments(body, path.dirname(mdPath));
-  const images = segments.filter((s) => s.type === "image");
+  const plan = buildPlan(segments);
   console.log(`原稿: ${path.relative(ROOT, mdPath)}`);
   console.log(`タイトル: ${title}`);
-  console.log(`構成: テキスト${segments.length - images.length}ブロック / 画像${images.length}枚`);
+  console.log(`構成: 本文${plan.html.length}文字（HTML）/ 画像${plan.images.length}枚`);
 
   if (process.env.NOTE_DRY_RUN) {
-    console.log("--- DRY RUN: 変換結果 ---");
-    for (const seg of segments) {
-      if (seg.type === "image") {
-        console.log(`\n[画像] ${path.relative(ROOT, seg.file)} — ${seg.caption}\n`);
-      } else {
-        console.log(seg.value);
-      }
+    console.log("--- DRY RUN: 本文 ---");
+    console.log(plan.html);
+    console.log("--- DRY RUN: 画像の差し込み位置 ---");
+    for (const img of plan.images) {
+      console.log(`${path.basename(img.file)} ← 「${(img.anchor || "本文の先頭").slice(0, 40)}」の直後`);
     }
     return;
   }
@@ -430,7 +469,7 @@ async function main() {
       console.log("保存済みの Cookie でログイン済みです");
     }
 
-    const url = await writeDraft(page, title, segments);
+    const url = await writeDraft(page, title, plan);
     console.log(`下書きを保存しました: ${url}`);
 
     fs.mkdirSync(path.dirname(STATE_PATH), { recursive: true });
