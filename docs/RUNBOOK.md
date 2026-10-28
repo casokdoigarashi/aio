@@ -80,3 +80,35 @@ git push
 
 クエリを追加したくなったら `config/config.yml` に**追加**する（既存は変更・削除しない。
 時系列比較が壊れるため。不要になったクエリはコメントアウトで残す）。
+
+## 欠測の記録
+
+レポートを社外公開する際、欠けている箇所は理由を注記する。
+後から「なぜここが空なのか」を思い出せなくなるため、起きた時点でここに書く。
+
+| 日付 | 欠けたエンジン | 理由 |
+|---|---|---|
+| 2026-08-25 〜 09-08 | Claude | Anthropic APIの残高不足。3週間気づかず欠測（この件を受けてエンジン全滅の検知を追加） |
+| 2026-10-27 | Gemini | Google AI Studio の前払いクレジット切れ（402 Payment Required）。10-28には復旧 |
+| 2026-11-03（予定） | Google AIモード | SerpApi無料枠（月250検索）を使い切り。更新日が11-06のため観測日に間に合わない。11-10から通常に戻る |
+
+### 2026-10-28 に枠を使い切った経緯
+
+`weekly-aio-check.yml` に動作確認用のpushトリガーが残っていたため、
+リポジトリへのpushのたびに観測がフル実行され、1日で10回走った。
+SerpApiの月枠（250）とAnthropicのクレジットを消費し切った。
+トリガーは削除済み。同日の二重実行を防ぐガードも `auto_check.py` に入れた
+（取り直す場合のみ `AIO_FORCE=1`）。
+
+なお、この日に生成された `2026-10-28-auto.yml` は水曜の記録で欠損も大きかったため削除した。
+
+## APIの残高・枠の確認先
+
+| サービス | 確認先 | 方式 |
+|---|---|---|
+| Anthropic（Claude） | https://console.anthropic.com/settings/billing | 都度チャージ。Auto reload推奨 |
+| Google（Gemini） | https://ai.studio/projects | 前払いクレジット |
+| OpenAI（ChatGPT） | https://platform.openai.com/settings/organization/billing | 都度チャージ |
+| SerpApi（Google AIモード） | https://serpapi.com/dashboard | 無料プラン月250検索、毎月リセット |
+
+通常運転の消費は週10クエリ×4エンジン。SerpApiは月43検索程度で、無料枠に収まる。
