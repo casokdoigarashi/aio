@@ -335,6 +335,16 @@ def _brand_excerpt(text: str, config: dict, width: int = 150) -> str:
 
 def main() -> None:
     date = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
+
+    # 同じ日に二重で走らせない。
+    # 1回の観測で 10クエリ×4エンジン のAPIを消費するため、誤って複数回
+    # 起動すると検索回数とクレジットを一気に使い切る（2026-10-28に実際に起きた）。
+    # 取り直したい場合は AIO_FORCE=1 を付ける。
+    if (OBS_DIR / f"{date}-auto.yml").exists() and not os.getenv("AIO_FORCE"):
+        print(f"{date} の観測データは既にあります。APIを消費しないため終了します。")
+        print("取り直す場合は AIO_FORCE=1 を付けて実行してください。")
+        return
+
     config = load_config()
     own_domains = config["brand"].get("own_domains", [])
 

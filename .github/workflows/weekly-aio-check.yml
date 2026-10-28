@@ -8,8 +8,10 @@ on:
   schedule:
     - cron: "0 0 * * 2" # 火曜 00:00 UTC = 09:00 JST
   workflow_dispatch:
-  push: # OPENAI_API_KEY の動作確認用（確認後に削除）
-    branches: [claude/aio-search-impact-tracking-auwbao]
+# push トリガーは付けないこと。
+# 以前「動作確認用」として付けたまま残っていたため、リポジトリへのpushのたびに
+# 10クエリ×4エンジンの観測が走り、SerpApiの検索回数とAnthropicのクレジットを
+# 使い切った（2026-10-28、1日で10回実行）。動作確認は workflow_dispatch で行う。
 
 permissions:
   contents: write
