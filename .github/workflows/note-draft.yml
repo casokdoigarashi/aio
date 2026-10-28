@@ -49,6 +49,12 @@ jobs:
           echo "dry=$dry" >> "$GITHUB_OUTPUT"
           echo "原稿: $file / dry_run: ${dry:-no}"
 
+      # 登録済みSecretの「名前だけ」を出す（値はjqで捨てるのでログに出ない）
+      - name: Diagnose secret names
+        env:
+          ALL_SECRET_NAMES: ${{ toJSON(secrets) }}
+        run: echo "$ALL_SECRET_NAMES" | jq -r 'keys[]' | sed 's/^/登録済み: /'
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
