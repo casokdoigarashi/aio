@@ -333,6 +333,34 @@ def _brand_excerpt(text: str, config: dict, width: int = 150) -> str:
     return ""
 
 
+ENGINE_LABELS = {
+    "google_ai_mode": "Google AIモード(SerpApi)",
+    "gemini": "Gemini",
+    "claude": "Claude",
+    "chatgpt": "ChatGPT",
+    "perplexity": "Perplexity",
+    "serpapi_google": "Google検索(SerpApi)",
+}
+
+
+def failure_reason(message: str) -> str:
+    """エラー文から、人が次に何をすればいいか分かる原因名を取り出す。"""
+    text = message.lower()
+    if "run out of searches" in text:
+        return "SerpApiの月間検索枠を使い切り（翌月のリセットで復旧）"
+    if "credit balance is too low" in text:
+        return "APIの残高不足（クレジットの追加が必要）"
+    if "insufficient_quota" in text or "quota" in text:
+        return "APIの利用枠超過"
+    if "429" in text or "rate limit" in text:
+        return "レート制限"
+    if "401" in text or "invalid api key" in text or "unauthorized" in text:
+        return "APIキーが無効"
+    if "404" in text:
+        return "モデルまたはエンドポイントが見つからない"
+    return "原因不明"
+
+
 def main() -> None:
     date = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
 
@@ -376,6 +404,7 @@ def main() -> None:
         return
 
     entries = []
+    reasons: dict[str, set[str]] = {}  # エンジンごとの失敗理由
     for query_cfg in config["queries"]:
         query = query_cfg["text"]
         for engine, key in active.items():
@@ -399,6 +428,7 @@ def main() -> None:
                 if resp is not None:
                     detail = f" / {resp.text[:300]}"
                 print(f"  -> エラー: {exc}{detail}")
+                reasons.setdefault(engine, set()).add(failure_reason(f"{exc}{detail}"))
                 continue
             entry = evaluate(query_cfg, engine, raw, config)
             mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
@@ -427,10 +457,12 @@ def main() -> None:
     print(f"保存しました: {out_path}")
 
     if dead:
-        print(
-            f"::error::次のエンジンが全クエリで失敗しました: {', '.join(dead)}。"
-            "APIキーの有効性と残高を確認してください。"
-        )
+        # 原因が分かるものは原因を書く。「残高切れ」と「原因不明」では打つ手が違う。
+        lines = []
+        for engine in dead:
+            why = "、".join(sorted(reasons.get(engine, {"原因不明"})))
+            lines.append(f"{ENGINE_LABELS.get(engine, engine)}: {why}")
+        print(f"::error::全クエリで失敗したエンジンがあります — {' / '.join(lines)}")
         sys.exit(1)
 
 
