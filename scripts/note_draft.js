@@ -204,22 +204,55 @@ async function writeDraft(page, context, title, html) {
   await bodyField.waitFor({ timeout: 30000 });
   await bodyField.click();
 
-  // 見出し・太字・リンクを残すため、HTMLとしてクリップボード経由で貼り付ける。
-  // プレーンテキストで打ち込むと全部ただの段落になる。
-  await context.grantPermissions(["clipboard-read", "clipboard-write"], {
-    origin: "https://note.com",
-  });
-  await page.evaluate(async (payload) => {
-    const plain = payload.replace(/<[^>]+>/g, "");
-    await navigator.clipboard.write([
-      new ClipboardItem({
-        "text/html": new Blob([payload], { type: "text/html" }),
-        "text/plain": new Blob([plain], { type: "text/plain" }),
-      }),
-    ]);
+  // 見出し・太字・リンクを残すため、HTMLとして貼り付ける
+  // （プレーンテキストで打ち込むと全部ただの段落になる）。
+  // ヘッドレスChromiumでは navigator.clipboard.write が拒否されるため、
+  // paste イベントを直接エディタに渡す。エディタ側はコピペと同じ扱いで解釈する。
+  const bodyLength = async () =>
+    (await bodyField.innerText().catch(() => "")).replace(/\s+/g, "").length;
+
+  await bodyField.evaluate((el, payload) => {
+    const dt = new DataTransfer();
+    dt.setData("text/html", payload);
+    dt.setData("text/plain", payload.replace(/<[^>]+>/g, ""));
+    el.dispatchEvent(
+      new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
+    );
   }, html);
-  await page.keyboard.press("ControlOrMeta+V");
   await page.waitForTimeout(3000);
+
+  let method = "pasteイベント";
+  if ((await bodyLength()) < 50) {
+    // それでも入らなければクリップボード経由を試す
+    method = "クリップボード";
+    try {
+      await context.grantPermissions(["clipboard-read", "clipboard-write"], {
+        origin: "https://note.com",
+      });
+      await page.evaluate(async (payload) => {
+        const plain = payload.replace(/<[^>]+>/g, "");
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/html": new Blob([payload], { type: "text/html" }),
+            "text/plain": new Blob([plain], { type: "text/plain" }),
+          }),
+        ]);
+      }, html);
+      await bodyField.click();
+      await page.keyboard.press("ControlOrMeta+V");
+      await page.waitForTimeout(3000);
+    } catch (e) {
+      console.log("クリップボード経由は使えませんでした: " + e.message);
+    }
+  }
+  if ((await bodyLength()) < 50) {
+    // 最後の手段。書式は失われるが本文は入る
+    method = "直接入力（書式なし）";
+    await bodyField.click();
+    await page.keyboard.type(html.replace(/<[^>]+>/g, ""), { delay: 0 });
+    await page.waitForTimeout(2000);
+  }
+  console.log(`本文の投入方法: ${method}（${await bodyLength()}文字）`);
 
   // note は自動保存されるが、保存ボタンがあれば明示的に押す
   const saveBtn = page.getByRole("button", { name: /下書き保存|保存/ }).first();
