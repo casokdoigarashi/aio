@@ -1,6 +1,9 @@
 name: note下書き作成
 
-# 手動実行のみ。原稿ファイルを指定して note に下書きを作る。
+# 実行方法は2通り
+#  1. Actions画面から手動実行（Run workflow）で原稿ファイルを指定する
+#  2. .github/run-note-draft を書き換えてpushする
+#     （1行目に原稿のパス、2行目に dry_run と書くと変換確認だけ）
 on:
   workflow_dispatch:
     inputs:
@@ -13,12 +16,38 @@ on:
         required: false
         type: boolean
         default: false
+  push:
+    branches:
+      - claude/aio-search-impact-tracking-auwbao
+    paths:
+      - ".github/run-note-draft"
 
 jobs:
   draft:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Resolve target
+        id: target
+        env:
+          INPUT_FILE: ${{ inputs.file }}
+          INPUT_DRY: ${{ inputs.dry_run }}
+        run: |
+          if [ -n "$INPUT_FILE" ]; then
+            file="$INPUT_FILE"
+            dry=""
+            [ "$INPUT_DRY" = "true" ] && dry="1"
+          else
+            # コメント行と空行を除いた最初の行を原稿パスとして読む
+            mapfile -t lines < <(grep -v '^\s*#' .github/run-note-draft | grep -v '^\s*$')
+            file="${lines[0]}"
+            dry=""
+            printf '%s\n' "${lines[@]:1}" | grep -q 'dry_run' && dry="1"
+          fi
+          echo "file=$file" >> "$GITHUB_OUTPUT"
+          echo "dry=$dry" >> "$GITHUB_OUTPUT"
+          echo "原稿: $file / dry_run: ${dry:-no}"
 
       - uses: actions/setup-node@v4
         with:
@@ -35,9 +64,9 @@ jobs:
           NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
           NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
           NOTE_COOKIES_JSON: ${{ secrets.NOTE_COOKIES_JSON }}
-          NOTE_DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          NOTE_DRY_RUN: ${{ steps.target.outputs.dry }}
           NOTE_SHOT_DIR: ${{ runner.temp }}/note_shots
-        run: node scripts/note_draft.js "${{ inputs.file }}"
+        run: node scripts/note_draft.js "${{ steps.target.outputs.file }}"
 
       - name: Upload confirmation screenshot
         if: always()
