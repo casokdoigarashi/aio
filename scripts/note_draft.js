@@ -169,14 +169,23 @@ async function loginWithPassword(page) {
   await inputs.nth(1).fill(password);
 
   await page.getByRole("button", { name: /ログイン/ }).first().click();
-  await page.waitForTimeout(6000);
+  await page.waitForTimeout(8000);
 
-  if (/\/login/.test(page.url())) {
-    const shown = (await page.innerText("body")).replace(/\s+/g, " ").slice(0, 400);
+  if (!/\/login/.test(page.url())) return;
+
+  // note のログインフォームには reCAPTCHA Enterprise（invisible）が入っている。
+  // データセンターのIPから自動でパスワードログインすると、ここで止まる。
+  const hasRecaptcha = await page
+    .locator('textarea[name="g-recaptcha-response"], iframe[src*="recaptcha"]')
+    .count();
+  if (hasRecaptcha) {
     throw new Error(
-      "ログインが完了しませんでした。二段階認証・新端末確認・入力誤りのいずれかです。画面の表示: " + shown
+      "noteのログインが reCAPTCHA で止まりました。ID・パスワードでの自動ログインは通りません。" +
+        "ログイン済みブラウザのCookieを NOTE_COOKIES_JSON に設定してください（README参照）。"
     );
   }
+  const shown = (await page.innerText("body")).replace(/\s+/g, " ").slice(0, 300);
+  throw new Error("ログインが完了しませんでした。画面の表示: " + shown);
 }
 
 // --- 下書き作成 ---------------------------------------------------------
@@ -276,6 +285,12 @@ async function main() {
   const context = await browser.newContext({
     viewport: { width: 1280, height: 1000 },
     storageState: storageStateOption(),
+    // 渡されたCookieが普段のブラウザと別物と見なされないように寄せる
+    locale: "ja-JP",
+    timezoneId: "Asia/Tokyo",
+    userAgent:
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
   });
   const page = await context.newPage();
   fs.mkdirSync(SHOT_DIR, { recursive: true });
