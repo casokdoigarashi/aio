@@ -332,10 +332,15 @@ async function insertImage(page, bodyField, file, anchor) {
 }
 
 async function writeDraft(page, title, plan) {
-  if (!/\/notes\/new/.test(page.url()) && !/\/notes\/.+\/edit/.test(page.url())) {
+  // NOTE_DRAFT_URL があれば既存の下書きを上書きする（実行のたびに増やさないため）
+  const existing = process.env.NOTE_DRAFT_URL;
+  if (existing) {
+    console.log(`既存の下書きを上書きします: ${existing}`);
+    await page.goto(existing, { waitUntil: "domcontentloaded", timeout: 60000 });
+  } else if (!/\/notes\/new/.test(page.url()) && !/\/notes\/.+\/edit/.test(page.url())) {
     await page.goto("https://note.com/notes/new", { waitUntil: "domcontentloaded", timeout: 60000 });
   }
-  await page.waitForTimeout(4000);
+  await page.waitForTimeout(5000);
 
   const titleField = page.locator('textarea[placeholder*="タイトル"], input[placeholder*="タイトル"]').first();
   await titleField.waitFor({ timeout: 30000 });
@@ -344,6 +349,13 @@ async function writeDraft(page, title, plan) {
   const bodyField = page.locator('div[contenteditable="true"]').first();
   await bodyField.waitFor({ timeout: 30000 });
   await bodyField.click();
+
+  if (existing) {
+    // 既存の本文を消してから入れ直す
+    await page.keyboard.press("ControlOrMeta+A");
+    await page.keyboard.press("Delete");
+    await page.waitForTimeout(1500);
+  }
 
   const bodyLength = async () =>
     (await bodyField.innerText().catch(() => "")).replace(/\s+/g, "").length;
@@ -381,13 +393,50 @@ async function writeDraft(page, title, plan) {
     console.log("挿入できなかった画像: " + failedImages.join(", "));
   }
 
-  // note は自動保存されるが、保存ボタンがあれば明示的に押す
-  const saveBtn = page.getByRole("button", { name: /下書き保存|保存/ }).first();
-  if (await saveBtn.count()) {
-    await saveBtn.click().catch(() => {});
+  // アップロード中（blob: のまま）の画像が残っていると保存に失敗する
+  for (let i = 0; i < 30; i++) {
+    const pending = await bodyField.locator('img[src^="blob:"]').count().catch(() => 0);
+    if (!pending) break;
+    if (i === 0) console.log("画像のアップロード完了を待っています…");
+    await page.waitForTimeout(2000);
   }
+
+  const url = page.url();
+  await saveDraft(page);
+  await verifySaved(page);
+  return url;
+}
+
+/** 下書き保存。失敗トーストが出たら間を置いて押し直す。 */
+async function saveDraft(page) {
+  const saveBtn = page.getByRole("button", { name: /下書き保存/ }).first();
+  if (!(await saveBtn.count())) {
+    console.log("下書き保存ボタンが見つかりません（自動保存に任せます）");
+    await page.waitForTimeout(8000);
+    return;
+  }
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    await saveBtn.click().catch(() => {});
+    await page.waitForTimeout(6000);
+    const failed = await page.getByText(/保存に失敗/).count().catch(() => 0);
+    if (!failed) return;
+    console.log(`下書き保存に失敗しました（${attempt}回目）。やり直します`);
+    await page.waitForTimeout(6000);
+  }
+  console.log("::warning::下書き保存を3回試しましたが失敗しました");
+}
+
+/** 保存されたものを読み直して確かめる。画面上の見た目ではなく保存結果を見る。 */
+async function verifySaved(page) {
+  await page.reload({ waitUntil: "domcontentloaded", timeout: 60000 });
   await page.waitForTimeout(8000);
-  return page.url();
+  const body = page.locator('div[contenteditable="true"]').first();
+  const length = (await body.innerText().catch(() => "")).replace(/\s+/g, "").length;
+  const images = await body.locator("img").count().catch(() => 0);
+  const headings = await body.locator("h1, h2, h3").count().catch(() => 0);
+  console.log(`保存の確認（再読み込み後）: 本文${length}文字 / 画像${images}枚 / 見出し${headings}個`);
+  if (length < 100) throw new Error("保存された本文が空か極端に短いです");
+  return { length, images, headings };
 }
 
 /** セレクタが合わなかったときに、画面の構造を調べるための情報を出す。 */

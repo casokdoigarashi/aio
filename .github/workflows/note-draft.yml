@@ -44,10 +44,13 @@ jobs:
             file="${lines[0]}"
             dry=""
             printf '%s\n' "${lines[@]:1}" | grep -q 'dry_run' && dry="1"
+            # editor.note.com のURLがあれば、その下書きを上書きする
+            draft="$(printf '%s\n' "${lines[@]:1}" | grep -o 'https://editor\.note\.com/[^ ]*' | head -1 || true)"
           fi
           echo "file=$file" >> "$GITHUB_OUTPUT"
           echo "dry=$dry" >> "$GITHUB_OUTPUT"
-          echo "原稿: $file / dry_run: ${dry:-no}"
+          echo "draft=$draft" >> "$GITHUB_OUTPUT"
+          echo "原稿: $file / dry_run: ${dry:-no} / 上書き先: ${draft:-新規}"
 
       # どの名前で登録されているか確認する。値は出さず、設定の有無と文字数だけ。
       - name: Diagnose credentials
@@ -85,6 +88,7 @@ jobs:
           NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
           NOTE_COOKIES_JSON: ${{ secrets.NOTE_COOKIES_JSON }}
           NOTE_DRY_RUN: ${{ steps.target.outputs.dry }}
+          NOTE_DRAFT_URL: ${{ steps.target.outputs.draft }}
           NOTE_SHOT_DIR: ${{ runner.temp }}/note_shots
         run: node scripts/note_draft.js "${{ steps.target.outputs.file }}"
 
