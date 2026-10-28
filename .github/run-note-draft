@@ -6,7 +6,6 @@
 # 実行のたびに新しい下書きが増えるため、普段は dry_run を付けた状態にしておく。
 # 本当に下書きを作るときだけ dry_run の行を消してpushする。
 content/note/2026-10-28_取材対談スタジオ.md
-dry_run
 
 # 実行履歴
-# 2026-10-28 取材対談スタジオ → https://editor.note.com/notes/nbfcb2f597562/edit/
+# 2026-10-28 取材対談スタジオ（画像なし） → https://editor.note.com/notes/nbfcb2f597562/edit/

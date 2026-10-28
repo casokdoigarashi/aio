@@ -5,14 +5,12 @@
  * 使い方:
  *   node scripts/note_draft.js content/note/2026-10-28_取材対談スタジオ.md
  *
- * ログインの渡し方（どちらか一方）:
- *   A) Cookie（推奨）  NOTE_STORAGE_STATE に Playwright の storageState JSON を入れる
- *                      （または NOTE_STORAGE_STATE_FILE にファイルパス）
- *   B) ID / パスワード NOTE_EMAIL と NOTE_PASSWORD
+ * ログインは NOTE_COOKIES_JSON（ログイン済みブラウザのCookie）で渡す。
+ * note のログインフォームには reCAPTCHA があり、ID・パスワードでの
+ * 自動ログインは通らない。詳細は content/note/AUTOMATION.md を参照。
  *
- * B で一度ログインすると storage-state を data/.note_state.json に書き出すので、
- * 次回以降は A として使い回せる（二段階認証の確認を毎回出さないため）。
- * このファイルは .gitignore 済み。コミットしないこと。
+ * 原稿中の `![キャプション](images/xxx.jpg)` の行は画像として挿入する。
+ * パスは原稿ファイルからの相対パス。
  *
  * note に公開投稿APIは無いため画面操作で行う。note 側のUI変更で壊れる前提の仕組み。
  */
@@ -51,6 +49,31 @@ function inline(s) {
     .replace(/>/g, "&gt;")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+}
+
+/** 本文を「HTMLの塊」と「画像」の並びに分解する。
+ *  画像行（![説明](パス)）でテキストを区切り、順番どおりに挿入していく。 */
+function splitSegments(body, baseDir) {
+  const segments = [];
+  let buffer = [];
+  const flush = () => {
+    const text = buffer.join("\n").trim();
+    if (text) segments.push({ type: "html", value: toHtml(text) });
+    buffer = [];
+  };
+  for (const line of body.split("\n")) {
+    const m = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (m) {
+      flush();
+      const file = path.resolve(baseDir, m[2]);
+      if (!fs.existsSync(file)) throw new Error(`画像が見つかりません: ${file}`);
+      segments.push({ type: "image", caption: m[1], file });
+    } else {
+      buffer.push(line);
+    }
+  }
+  flush();
+  return segments;
 }
 
 /** note のエディタが受け取れる範囲のHTMLに変換する。
@@ -190,7 +213,69 @@ async function loginWithPassword(page) {
 
 // --- 下書き作成 ---------------------------------------------------------
 
-async function writeDraft(page, context, title, html) {
+/** HTMLを paste イベントとしてエディタに渡す。
+ *  ヘッドレスChromiumでは navigator.clipboard.write が拒否されるため、
+ *  クリップボードを経由せず paste イベントを直接投げる。
+ *  エディタ側はコピペと同じ扱いでHTMLを解釈するので、見出し・太字・
+ *  リンク・箇条書きが保たれる（プレーンテキストで打つと全部段落になる）。 */
+async function pasteHtml(bodyField, html) {
+  await bodyField.evaluate((el, payload) => {
+    const dt = new DataTransfer();
+    dt.setData("text/html", payload);
+    dt.setData("text/plain", payload.replace(/<[^>]+>/g, ""));
+    el.dispatchEvent(
+      new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
+    );
+  }, html);
+}
+
+/** 画像ファイルを File としてエディタに渡す。
+ *  note はアップロードに時間がかかるので、img が増えるまで待つ。 */
+async function insertImage(page, bodyField, file) {
+  const countImages = async () => bodyField.locator("img").count().catch(() => 0);
+  const before = await countImages();
+  const base64 = fs.readFileSync(file).toString("base64");
+  const name = path.basename(file);
+
+  const waitForUpload = async (ms) => {
+    const deadline = Date.now() + ms;
+    while (Date.now() < deadline) {
+      if ((await countImages()) > before) return true;
+      await page.waitForTimeout(1000);
+    }
+    return false;
+  };
+
+  // paste → drop の順に試す。どちらも「人がコピペ/ドラッグした」のと同じ経路。
+  for (const kind of ["paste", "drop"]) {
+    await bodyField.evaluate(
+      (el, { b64, fileName, eventKind }) => {
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        const dt = new DataTransfer();
+        dt.items.add(new File([bytes], fileName, { type: "image/jpeg" }));
+        const event =
+          eventKind === "paste"
+            ? new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
+            : new DragEvent("drop", { dataTransfer: dt, bubbles: true, cancelable: true });
+        el.dispatchEvent(event);
+      },
+      { b64: base64, fileName: name, eventKind: kind }
+    );
+    if (await waitForUpload(30000)) return kind === "paste" ? "pasteイベント" : "dropイベント";
+  }
+
+  // 最後の手段。画像用の file input が開いていれば直接渡す
+  const fileInput = page.locator('input[type="file"]');
+  if (await fileInput.count()) {
+    await fileInput.first().setInputFiles(file).catch(() => {});
+    if (await waitForUpload(30000)) return "input[type=file]";
+  }
+  return null;
+}
+
+async function writeDraft(page, title, segments) {
   if (!/\/notes\/new/.test(page.url()) && !/\/notes\/.+\/edit/.test(page.url())) {
     await page.goto("https://note.com/notes/new", { waitUntil: "domcontentloaded", timeout: 60000 });
   }
@@ -204,62 +289,45 @@ async function writeDraft(page, context, title, html) {
   await bodyField.waitFor({ timeout: 30000 });
   await bodyField.click();
 
-  // 見出し・太字・リンクを残すため、HTMLとして貼り付ける
-  // （プレーンテキストで打ち込むと全部ただの段落になる）。
-  // ヘッドレスChromiumでは navigator.clipboard.write が拒否されるため、
-  // paste イベントを直接エディタに渡す。エディタ側はコピペと同じ扱いで解釈する。
   const bodyLength = async () =>
     (await bodyField.innerText().catch(() => "")).replace(/\s+/g, "").length;
 
-  await bodyField.evaluate((el, payload) => {
-    const dt = new DataTransfer();
-    dt.setData("text/html", payload);
-    dt.setData("text/plain", payload.replace(/<[^>]+>/g, ""));
-    el.dispatchEvent(
-      new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
-    );
-  }, html);
-  await page.waitForTimeout(3000);
-
-  let method = "pasteイベント";
-  if ((await bodyLength()) < 50) {
-    // それでも入らなければクリップボード経由を試す
-    method = "クリップボード";
-    try {
-      await context.grantPermissions(["clipboard-read", "clipboard-write"], {
-        origin: "https://note.com",
-      });
-      await page.evaluate(async (payload) => {
-        const plain = payload.replace(/<[^>]+>/g, "");
-        await navigator.clipboard.write([
-          new ClipboardItem({
-            "text/html": new Blob([payload], { type: "text/html" }),
-            "text/plain": new Blob([plain], { type: "text/plain" }),
-          }),
-        ]);
-      }, html);
-      await bodyField.click();
-      await page.keyboard.press("ControlOrMeta+V");
-      await page.waitForTimeout(3000);
-    } catch (e) {
-      console.log("クリップボード経由は使えませんでした: " + e.message);
+  // 原稿の順番どおりに、テキストと画像を交互に入れていく。
+  // カーソルは挿入のたびに末尾へ進むので、先頭から順に積むだけでよい。
+  let inserted = 0;
+  const failedImages = [];
+  for (const [i, seg] of segments.entries()) {
+    if (seg.type === "html") {
+      const before = await bodyLength();
+      await pasteHtml(bodyField, seg.value);
+      await page.waitForTimeout(2500);
+      if ((await bodyLength()) <= before) {
+        console.log(`  [${i + 1}/${segments.length}] テキストが入りませんでした`);
+      }
+    } else {
+      const how = await insertImage(page, bodyField, seg.file);
+      if (how) {
+        inserted++;
+        console.log(`  [${i + 1}/${segments.length}] 画像 ${path.basename(seg.file)} を挿入（${how}）`);
+      } else {
+        failedImages.push(path.basename(seg.file));
+        console.log(`  [${i + 1}/${segments.length}] 画像 ${path.basename(seg.file)} は挿入できませんでした`);
+      }
     }
   }
-  if ((await bodyLength()) < 50) {
-    // 最後の手段。書式は失われるが本文は入る
-    method = "直接入力（書式なし）";
-    await bodyField.click();
-    await page.keyboard.type(html.replace(/<[^>]+>/g, ""), { delay: 0 });
-    await page.waitForTimeout(2000);
+
+  const imageCount = segments.filter((s) => s.type === "image").length;
+  console.log(`本文 ${await bodyLength()}文字 / 画像 ${inserted}/${imageCount}枚`);
+  if (failedImages.length) {
+    console.log("挿入できなかった画像: " + failedImages.join(", "));
   }
-  console.log(`本文の投入方法: ${method}（${await bodyLength()}文字）`);
 
   // note は自動保存されるが、保存ボタンがあれば明示的に押す
   const saveBtn = page.getByRole("button", { name: /下書き保存|保存/ }).first();
   if (await saveBtn.count()) {
     await saveBtn.click().catch(() => {});
   }
-  await page.waitForTimeout(6000);
+  await page.waitForTimeout(8000);
   return page.url();
 }
 
@@ -303,14 +371,21 @@ async function main() {
   }
   const mdPath = path.isAbsolute(target) ? target : path.join(ROOT, target);
   const { title, body } = parseMarkdown(fs.readFileSync(mdPath, "utf-8"));
-  const html = toHtml(body);
+  const segments = splitSegments(body, path.dirname(mdPath));
+  const images = segments.filter((s) => s.type === "image");
   console.log(`原稿: ${path.relative(ROOT, mdPath)}`);
   console.log(`タイトル: ${title}`);
-  console.log(`本文: ${html.length} 文字（HTML換算）`);
+  console.log(`構成: テキスト${segments.length - images.length}ブロック / 画像${images.length}枚`);
 
   if (process.env.NOTE_DRY_RUN) {
     console.log("--- DRY RUN: 変換結果 ---");
-    console.log(html);
+    for (const seg of segments) {
+      if (seg.type === "image") {
+        console.log(`\n[画像] ${path.relative(ROOT, seg.file)} — ${seg.caption}\n`);
+      } else {
+        console.log(seg.value);
+      }
+    }
     return;
   }
 
@@ -337,7 +412,7 @@ async function main() {
       console.log("保存済みの Cookie でログイン済みです");
     }
 
-    const url = await writeDraft(page, context, title, html);
+    const url = await writeDraft(page, title, segments);
     console.log(`下書きを保存しました: ${url}`);
 
     fs.mkdirSync(path.dirname(STATE_PATH), { recursive: true });
