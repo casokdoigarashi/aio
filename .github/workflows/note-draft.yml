@@ -49,11 +49,25 @@ jobs:
           echo "dry=$dry" >> "$GITHUB_OUTPUT"
           echo "原稿: $file / dry_run: ${dry:-no}"
 
-      # 登録済みSecretの「名前だけ」を出す（値はjqで捨てるのでログに出ない）
-      - name: Diagnose secret names
+      # どの名前で登録されているか確認する。値は出さず、設定の有無と文字数だけ。
+      - name: Diagnose credentials
         env:
-          ALL_SECRET_NAMES: ${{ toJSON(secrets) }}
-        run: echo "$ALL_SECRET_NAMES" | jq -r 'keys[]' | sed 's/^/登録済み: /'
+          V_NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
+          V_NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
+          V_NOTE_PASS: ${{ secrets.NOTE_PASS }}
+          V_NOTE_PASSWARD: ${{ secrets.NOTE_PASSWARD }}
+          V_NOTE_PW: ${{ secrets.NOTE_PW }}
+          V_NOTE_ID: ${{ secrets.NOTE_ID }}
+          V_NOTE_COOKIES_JSON: ${{ secrets.NOTE_COOKIES_JSON }}
+        run: |
+          for name in NOTE_EMAIL NOTE_PASSWORD NOTE_PASS NOTE_PASSWARD NOTE_PW NOTE_ID NOTE_COOKIES_JSON; do
+            value="$(printenv "V_$name" || true)"
+            if [ -n "$value" ]; then
+              echo "設定あり: $name（${#value}文字）"
+            else
+              echo "未設定  : $name"
+            fi
+          done
 
       - uses: actions/setup-node@v4
         with:
