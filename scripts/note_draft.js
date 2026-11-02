@@ -275,6 +275,10 @@ async function insertImage(page, bodyField, file, anchor) {
   const before = await countImages();
   const base64 = fs.readFileSync(file).toString("base64");
   const name = path.basename(file);
+  const mime =
+    { ".png": "image/png", ".gif": "image/gif", ".webp": "image/webp" }[
+      path.extname(file).toLowerCase()
+    ] || "image/jpeg";
 
   const waitForUpload = async (ms) => {
     const deadline = Date.now() + ms;
@@ -312,19 +316,19 @@ async function insertImage(page, bodyField, file, anchor) {
   // paste → drop の順に試す。どちらも「人がコピペ/ドラッグした」のと同じ経路。
   for (const kind of ["paste", "drop"]) {
     await bodyField.evaluate(
-      (el, { b64, fileName, eventKind }) => {
+      (el, { b64, fileName, mimeType, eventKind }) => {
         const bin = atob(b64);
         const bytes = new Uint8Array(bin.length);
         for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
         const dt = new DataTransfer();
-        dt.items.add(new File([bytes], fileName, { type: "image/jpeg" }));
+        dt.items.add(new File([bytes], fileName, { type: mimeType }));
         const event =
           eventKind === "paste"
             ? new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
             : new DragEvent("drop", { dataTransfer: dt, bubbles: true, cancelable: true });
         el.dispatchEvent(event);
       },
-      { b64: base64, fileName: name, eventKind: kind }
+      { b64: base64, fileName: name, mimeType: mime, eventKind: kind }
     );
     if (await waitForUpload(30000)) return kind === "paste" ? "pasteイベント" : "dropイベント";
   }

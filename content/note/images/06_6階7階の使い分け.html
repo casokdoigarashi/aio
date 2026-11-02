@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --ink: #2e2a26;
+    --sub: #6f675f;
+    --line: #d8d0c6;
+    --wood: #c89f6d;
+    --wood-soft: #f3e7d6;
+    --smoke: #efeae3;
+    --accent: #8a7a66;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "IPAPGothic", "IPAGothic", sans-serif;
+    background: #fff;
+    color: var(--ink);
+    width: 1200px;
+    padding: 56px 64px 48px;
+  }
+  h1 { font-size: 30px; letter-spacing: .02em; margin-bottom: 6px; }
+  .lead { font-size: 16px; color: var(--sub); margin-bottom: 36px; }
+
+  .floor {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .tag {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    background: var(--smoke);
+    border-right: 2px solid var(--line);
+  }
+  .tag .n { font-size: 38px; font-weight: 700; line-height: 1; }
+  .tag .u { font-size: 13px; color: var(--sub); }
+
+  .body { padding: 22px 26px; }
+  .name { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+  .meta { font-size: 14px; color: var(--sub); margin-bottom: 16px; }
+  .role {
+    display: inline-block;
+    font-size: 15px; font-weight: 700;
+    padding: 5px 14px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .uses { display: flex; gap: 10px; flex-wrap: wrap; }
+  .use {
+    font-size: 14px; line-height: 1.5;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .six .body { background: var(--wood-soft); }
+  .six .tag { background: var(--wood); color: #fff; }
+  .six .tag .u { color: #fff; opacity: .85; }
+  .six .role { background: var(--wood); color: #fff; }
+  .six .use { background: #fff; }
+
+  .seven .role { background: var(--smoke); color: var(--accent); }
+
+  .link {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: var(--sub);
+    margin: 0 0 18px 138px;
+  }
+  .link::before, .link::after {
+    content: ""; flex: 0 0 auto;
+    width: 2px; height: 22px; background: var(--line);
+  }
+  .link::after { display: none; }
+
+  .total {
+    margin-top: 26px; padding-top: 20px;
+    border-top: 2px solid var(--line);
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .total .k { font-size: 15px; color: var(--sub); }
+  .total .v { font-size: 26px; font-weight: 700; }
+  .total .note { font-size: 14px; color: var(--sub); margin-left: auto; }
+</style>
+</head>
+<body>
+  <h1>CM撮影での6階・7階の使い分け</h1>
+  <p class="lead">同じビルの2フロアを同時に使い、撮影と人の滞留を階で分ける</p>
+
+  <div class="floor seven">
+    <div class="tag"><span class="n">7</span><span class="u">F</span></div>
+    <div class="body">
+      <div class="name">swamp gallery 神楽坂</div>
+      <div class="meta">別運営のスタジオ／同時利用が可能</div>
+      <span class="role">人と機材を置く階</span>
+      <div class="uses">
+        <div class="use">スタッフ待機</div>
+        <div class="use">機材置き場</div>
+        <div class="use">控室</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="link">エレベーターで行き来</div>
+
+  <div class="floor six">
+    <div class="tag"><span class="n">6</span><span class="u">F</span></div>
+    <div class="body">
+      <div class="name">ARIGATO Living 神楽坂</div>
+      <div class="meta">89.6㎡／天井高 最大2,680mm</div>
+      <span class="role">撮影に専念する階</span>
+      <div class="uses">
+        <div class="use">セットの立て込み</div>
+        <div class="use">本番撮影</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="total">
+    <span class="k">2フロア合計</span>
+    <span class="v">約170㎡</span>
+    <span class="note">6階をセットで占有しても、人と機材の居場所が確保できる</span>
+  </div>
+</body>
+</html>
