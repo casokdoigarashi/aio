@@ -197,7 +197,14 @@ function storageStateOption() {
 
 async function isLoggedIn(page) {
   await page.goto("https://note.com/notes/new", { waitUntil: "domcontentloaded", timeout: 60000 });
-  await page.waitForTimeout(3000);
+  // ログイン画面への転送はページ表示より遅れて起きることがある。
+  // 固定時間で判定すると「ログイン済み」と誤認し、この先のエディタ待ちが
+  // 原因の分からないタイムアウトになるため、どちらかが確定するまで待つ。
+  await Promise.race([
+    page.locator('textarea[placeholder*="タイトル"]').first().waitFor({ timeout: 25000 }),
+    page.waitForURL(/\/login/, { timeout: 25000 }),
+  ]).catch(() => {});
+  await page.waitForTimeout(1000);
   return !/\/login/.test(page.url());
 }
 
@@ -516,7 +523,15 @@ async function main() {
 
   try {
     if (!(await isLoggedIn(page))) {
-      console.log("Cookie が無い/期限切れのため、ID・パスワードでログインします");
+      if (process.env.NOTE_COOKIES_JSON || process.env.NOTE_STORAGE_STATE) {
+        throw new Error(
+          "noteのCookieが期限切れです。ログイン済みのブラウザからCookieを取り直して " +
+            "GitHub Secrets の NOTE_COOKIES_JSON を更新してください" +
+            "（手順: content/note/AUTOMATION.md）。原稿はコミット済みなので、" +
+            "急ぐ場合は手で貼り付けても公開できます。"
+        );
+      }
+      console.log("Cookie が無いため、ID・パスワードでログインします");
       await loginWithPassword(page);
     } else {
       console.log("保存済みの Cookie でログイン済みです");
