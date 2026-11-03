@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --ink: #2e2a26;
+    --sub: #6f675f;
+    --line: #ded6cb;
+    --wood: #c89f6d;
+    --smoke: #f4f1ec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "IPAPGothic", "IPAGothic", sans-serif;
+    background: #fff; color: var(--ink);
+    width: 1200px; padding: 52px 60px 44px;
+  }
+  h1 { font-size: 30px; margin-bottom: 6px; }
+  .lead { font-size: 16px; color: var(--sub); margin-bottom: 32px; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .col { border: 2px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .head {
+    background: var(--smoke); padding: 14px 18px;
+    border-bottom: 2px solid var(--line);
+  }
+  .head .t { font-size: 18px; font-weight: 700; }
+  .items { padding: 16px 18px; }
+  .items li {
+    list-style: none; font-size: 14.5px; line-height: 1.75;
+    padding-left: 16px; position: relative;
+  }
+  .items li::before {
+    content: ""; position: absolute; left: 0; top: 11px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--wood);
+  }
+
+  .free {
+    margin-top: 24px; padding: 16px 22px;
+    background: var(--wood); color: #fff; border-radius: 10px;
+    font-size: 19px; font-weight: 700; text-align: center;
+  }
+
+  .specs {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 2px solid var(--line);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .spec .k { font-size: 13px; color: var(--sub); margin-bottom: 2px; }
+  .spec .v { font-size: 16px; font-weight: 700; }
+  .note { margin-top: 16px; font-size: 13.5px; color: var(--sub); }
+</style>
+</head>
+<body>
+  <h1>無料で使える備品・機材</h1>
+  <p class="lead">ARIGATO Living 神楽坂</p>
+
+  <div class="cols">
+    <div class="col">
+      <div class="head"><span class="t">映像・配信</span></div>
+      <ul class="items">
+        <li>撮影カメラ 2台</li>
+        <li>カメラ三脚 2本</li>
+        <li>配信機材 1台</li>
+        <li>オペレーター用モニター 2台</li>
+        <li>HDMIケーブル 10m / 5m / 2m</li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="head"><span class="t">照明・撮影</span></div>
+      <ul class="items">
+        <li>センチュリー 4台</li>
+        <li>パネル型LEDライト</li>
+        <li>大光量LEDライト</li>
+        <li>ミニスポットライト</li>
+        <li>リフレクターセット</li>
+        <li>ライトスタンド 4本</li>
+        <li>撮影用背景紙 2本</li>
+        <li>白黒カポック 2本</li>
+        <li>ツールワゴン</li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="head"><span class="t">家具・インテリア</span></div>
+      <ul class="items">
+        <li>フリッツ・ハンセンのソファ</li>
+        <li>ダイニングテーブル</li>
+        <li>チェア</li>
+        <li>グリーン</li>
+        <li>インテリア雑貨</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="free">これらはすべて無料で使えます</div>
+
+  <div class="specs">
+    <div class="spec"><div class="k">電気容量</div><div class="v">70A</div></div>
+    <div class="spec"><div class="k">搬入（エレベーターあり）</div><div class="v">約W800 × H2,100mm</div></div>
+    <div class="spec"><div class="k">インターネット</div><div class="v">Wi-Fi（有線なし）</div></div>
+  </div>
+
+  <p class="note">電源車・発電機・照明の外打ちは不可。駐車場なし（近隣コインパーキングをご利用ください）。</p>
+</body>
+</html>
