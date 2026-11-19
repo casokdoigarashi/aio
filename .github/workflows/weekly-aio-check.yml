@@ -48,6 +48,19 @@ jobs:
       - name: Generate reports
         run: python scripts/analyze.py
 
+      # スプレッドシートへの書き込み。未設定でも観測は止めない
+      - name: Export to Google Sheets
+        id: sheets
+        continue-on-error: true
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "::warning::GOOGLE_SERVICE_ACCOUNT_JSON が未設定のためスプレッドシートへの書き込みをスキップしました（手順: docs/SHEETS_SETUP.md）"
+            exit 0
+          fi
+          python scripts/export_sheets.py
+
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
@@ -66,3 +79,8 @@ jobs:
         run: |
           echo "::error::観測に失敗したエンジンがあります。上のログでAPIキーと残高を確認してください。"
           exit 1
+
+      - name: Warn if the spreadsheet export failed
+        if: steps.sheets.outcome == 'failure'
+        run: |
+          echo "::warning::スプレッドシートへの書き込みに失敗しました。観測データはリポジトリに保存済みです。docs/SHEETS_SETUP.md を確認してください"

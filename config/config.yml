@@ -183,3 +183,12 @@ trials:
   default: 3
   claude: 1
   google_ai_mode: 1   # SerpApiの無料枠（月250検索）を使い切らないため
+
+# 会社ID（多社展開時にデータを分けるキー）
+client_id: arigato_living
+
+# 観測結果の書き込み先スプレッドシート
+# 認証は GitHub Secrets の GOOGLE_SERVICE_ACCOUNT_JSON（サービスアカウントの鍵）
+# 初回設定の手順は docs/SHEETS_SETUP.md
+sheets:
+  spreadsheet_id: "1A76_uywRdOCL9TQ-yX66LbwKK61p3QXzSK_vA9ZJ4LU"
