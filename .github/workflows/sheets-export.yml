@@ -1,0 +1,31 @@
+name: スプレッドシートへ書き込み
+
+# 観測データをスプレッドシートに書き直す。API費用はかからない（既存データを整形するだけ）。
+# 週次実行にも同じ処理が入っているので、これは手動でやり直したいときに使う。
+#
+# 実行方法: .github/run-sheets-export を書き換えてpushする。
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/aio-search-impact-tracking-auwbao
+    paths:
+      - ".github/run-sheets-export"
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Export to Google Sheets
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/export_sheets.py
