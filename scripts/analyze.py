@@ -39,9 +39,57 @@ def symbol(entry: dict) -> str:
     return POSITION_SYMBOLS.get(entry.get("mention_position") or "none", "－")
 
 
+POSITION_RANK = {"none": 0, "cited_only": 1, "listed": 2, "featured": 3}
+
+
+def _merge_trials(entries: list[dict]) -> dict:
+    """同じ週・同じ質問・同じエンジンの複数試行を1件にまとめる。
+
+    AIの回答は毎回変わるため、同じ質問を複数回聞いている（config.yml の trials）。
+    代表値は「一番よく出たときの結果」を採り、あわせて出現率を持たせる。
+    引用元と競合名は全試行の和集合にする（その週に読まれた情報源の全体像になる）。
+    """
+    if len(entries) == 1:
+        single = dict(entries[0])
+        single.setdefault("trials", 1)
+        single.setdefault("hits", 1 if single.get("brand_mentioned") else 0)
+        single["hit_rate"] = single["hits"] / single["trials"]
+        return single
+
+    best = max(entries, key=lambda e: POSITION_RANK.get(e.get("mention_position", "none"), 0))
+    merged = dict(best)
+    merged["trials"] = len(entries)
+    merged["hits"] = sum(1 for e in entries if e.get("brand_mentioned"))
+    merged["hit_rate"] = merged["hits"] / len(entries)
+
+    ranks = [e["rank"] for e in entries if e.get("rank")]
+    merged["rank"] = min(ranks) if ranks else None
+    merged["mean_rank"] = round(sum(ranks) / len(ranks), 1) if ranks else None
+
+    sources: list[str] = []
+    competitors: list[str] = []
+    for entry in entries:
+        for src in entry.get("cited_sources") or []:
+            if src not in sources:
+                sources.append(src)
+        for comp in entry.get("competitors_mentioned") or []:
+            if comp not in competitors:
+                competitors.append(comp)
+    merged["cited_sources"] = sources
+    merged["competitors_mentioned"] = competitors
+    merged["own_site_cited"] = any(e.get("own_site_cited") for e in entries)
+    merged["related_cited"] = any(e.get("related_cited") for e in entries)
+    merged["cited"] = bool(sources)
+    return merged
+
+
 def collect(observations: list[dict]):
-    """(engine, query_id, date) -> entry の索引と、日付・クエリの一覧を作る。"""
-    index = {}
+    """(engine, query_id, date) -> entry の索引と、日付・クエリの一覧を作る。
+
+    同じキーに複数の試行がある場合はまとめる（_merge_trials）。
+    手動観測とAPI観測が同じキーに併存する場合は、目視で判定した手動観測を優先する。
+    """
+    grouped: dict = {}
     dates = []
     engines = []
     for obs in observations:
@@ -53,16 +101,16 @@ def collect(observations: list[dict]):
             if engine not in engines:
                 engines.append(engine)
             key = (engine, entry.get("query_id") or entry["query"], date)
-            if key in index:
-                # 同日・同クエリ・同エンジンが重複（手動観測とAPI観測が併存した等）。
-                # 目視で判定した手動観測を優先し、取りこぼしに気づけるよう警告する。
-                existing_manual = index[key].get("_method") == "manual_screenshot"
-                print(f"警告: 観測が重複しています {key}。"
-                      f"{'手動' if existing_manual else '後勝ち'}の値を採用します")
-                if existing_manual:
-                    continue
             entry["_method"] = obs.get("method")
-            index[key] = entry
+            grouped.setdefault(key, []).append(entry)
+
+    index = {}
+    for key, entries in grouped.items():
+        manual = [e for e in entries if e.get("_method") == "manual_screenshot"]
+        if manual and len(manual) != len(entries):
+            print(f"注記: {key} は手動観測とAPI観測が併存しています。手動の値を採用します")
+            entries = manual
+        index[key] = _merge_trials(entries)
     return index, dates, engines
 
 
@@ -340,7 +388,6 @@ def build_summary(config, observations, actions) -> str:
     return "\n".join(lines)
 
 
-POSITION_RANK = {"none": 0, "cited_only": 1, "listed": 2, "featured": 3}
 
 
 def build_change_report(config, observations, target_date: str) -> list[str]:

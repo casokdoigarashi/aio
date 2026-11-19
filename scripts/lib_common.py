@@ -32,8 +32,12 @@ def load_config() -> dict:
 
 
 def load_observations() -> list[dict]:
-    """data/observations/*.yml を日付順に読み込む。"""
-    files = sorted(OBS_DIR.glob("*.yml"))
+    """data/observations/*.yml を日付順に読み込む。
+
+    `*-partial.yml` は動作確認用の部分実行の結果なので除外する。
+    一部の質問しか含まれておらず、週次の集計に混ぜると欠測と区別できなくなる。
+    """
+    files = [f for f in sorted(OBS_DIR.glob("*.yml")) if not f.name.endswith("-partial.yml")]
     observations = []
     for path in files:
         with open(path, encoding="utf-8") as f:
@@ -79,6 +83,37 @@ def brand_position(text: str, config: dict) -> str:
         if idx >= 0 and idx <= len(norm) * 0.25:
             return "featured"
     return "listed"
+
+
+def list_rank(text: str, config: dict) -> tuple[int | None, int]:
+    """回答が一覧形式のとき、自社が何番目に挙がっているかを返す。
+
+    戻り値は (順位, 一覧の項目数)。一覧として読めない、または自社が
+    一覧に入っていない場合は (None, 項目数) を返す。
+
+    AIは候補を箇条書きや番号付きで並べることが多い。その並び順は
+    「何番目に推されたか」そのものなので、◎○△× とは別に記録する。
+    """
+    items: list[str] = []
+    current: list[str] = []
+    # 「1.」「1)」「- 」「・」「**名前**」のような行を項目の先頭とみなす
+    head = re.compile(r"^\s*(?:\d+[.)、]|[-*・▪]|#{2,6}\s|\*\*[^*]+\*\*\s*[:：]?)")
+    for line in (text or "").splitlines():
+        if head.match(line):
+            if current:
+                items.append("\n".join(current))
+            current = [line]
+        elif current:
+            current.append(line)
+    if current:
+        items.append("\n".join(current))
+
+    if len(items) < 2:  # 一覧とは呼べない
+        return None, 0
+    for i, item in enumerate(items, start=1):
+        if find_brand_mention(item, config):
+            return i, len(items)
+    return None, len(items)
 
 
 def classify_citations(urls: list[str], config: dict) -> dict:

@@ -30,6 +30,7 @@ import yaml
 
 from lib_common import (
     OBS_DIR,
+    list_rank,
     brand_position,
     classify_citations,
     find_brand_mention,
@@ -295,7 +296,7 @@ def check_google_ai_mode(query: str, api_key: str) -> dict:
     return {"text": text, "citations": citations}
 
 
-def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict) -> dict:
+def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict, trial: int = 1) -> dict:
     text = raw.get("text", "")
     citations = [c for c in raw.get("citations", []) if c]
     cite_flags = classify_citations(citations, config)
@@ -303,10 +304,14 @@ def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict) -> dict:
     position = brand_position(text, config)
     if not mentioned and (cite_flags["own_site_cited"] or cite_flags["related_cited"]):
         position = "cited_only"
+    rank, rank_total = list_rank(text, config)
     entry = {
         "query_id": query_cfg["id"],
         "query": query_cfg["text"],
         "engine": engine,
+        "trial": trial,
+        "rank": rank,
+        "rank_total": rank_total,
         "brand_mentioned": mentioned,
         "mention_position": position,
         "mention_text": _brand_excerpt(text, config) if mentioned else "",
@@ -361,14 +366,46 @@ def failure_reason(message: str) -> str:
     return "原因不明"
 
 
+def parse_args(argv: list[str]) -> tuple[str, set[str]]:
+    """日付と、観測する質問IDの絞り込みを読む。
+
+    例:
+      python scripts/auto_check.py                      # 今日 / 全質問
+      python scripts/auto_check.py 2026-11-24           # 日付指定
+      python scripts/auto_check.py --queries q1,q23     # 動作確認用に3問だけ
+    """
+    date = None
+    only: set[str] = set()
+    i = 0
+    while i < len(argv):
+        arg = argv[i]
+        if arg == "--queries":
+            i += 1
+            if i >= len(argv):
+                print("--queries のあとに質問ID（カンマ区切り）が必要です")
+                sys.exit(2)
+            only = {q.strip() for q in argv[i].split(",") if q.strip()}
+        elif arg.startswith("--queries="):
+            only = {q.strip() for q in arg.split("=", 1)[1].split(",") if q.strip()}
+        elif not arg.startswith("-") and date is None:
+            date = arg
+        else:
+            print(f"不明な引数: {arg}")
+            sys.exit(2)
+        i += 1
+    return date or datetime.date.today().isoformat(), only
+
+
 def main() -> None:
-    date = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
+    date, only_ids = parse_args(sys.argv[1:])
 
     # 同じ日に二重で走らせない。
     # 1回の観測で 10クエリ×4エンジン のAPIを消費するため、誤って複数回
     # 起動すると検索回数とクレジットを一気に使い切る（2026-10-28に実際に起きた）。
     # 取り直したい場合は AIO_FORCE=1 を付ける。
-    if (OBS_DIR / f"{date}-auto.yml").exists() and not os.getenv("AIO_FORCE"):
+    if only_ids:
+        print(f"動作確認モード: {', '.join(sorted(only_ids))} のみ観測します")
+    if (OBS_DIR / f"{date}-auto.yml").exists() and not os.getenv("AIO_FORCE") and not only_ids:
         print(f"{date} の観測データは既にあります。APIを消費しないため終了します。")
         print("取り直す場合は AIO_FORCE=1 を付けて実行してください。")
         return
@@ -403,38 +440,59 @@ def main() -> None:
         print("利用可能なAPIキーがありません。自動観測をスキップします。")
         return
 
+    # 1週あたり同じ質問を何回聞くか。AIの回答は毎回変わるので、
+    # 複数回聞いて「n回中何回出たか」で記録する。
+    trials_cfg = config.get("trials", {}) or {}
+    default_trials = int(trials_cfg.get("default", 1))
+
+    def trials_for(engine: str) -> int:
+        return max(1, int(trials_cfg.get(engine, default_trials)))
+
+    queries = config["queries"]
+    if only_ids:
+        queries = [q for q in queries if q["id"] in only_ids]
+        if not queries:
+            print(f"指定された質問IDが見つかりません: {', '.join(sorted(only_ids))}")
+            sys.exit(2)
+
+    planned = sum(trials_for(e) for e in active) * len(queries)
+    print(f"質問 {len(queries)}問 × エンジン {len(active)} → 呼び出し {planned} 回")
+
     entries = []
     reasons: dict[str, set[str]] = {}  # エンジンごとの失敗理由
-    for query_cfg in config["queries"]:
+    for query_cfg in queries:
         query = query_cfg["text"]
         for engine, key in active.items():
-            print(f"[{engine}] {query}")
-            try:
-                if engine == "google_ai_mode":
-                    raw = check_google_ai_mode(query, key)
-                elif engine == "claude":
-                    raw = check_claude(query, key, models.get("claude", "claude-opus-5"))
-                elif engine == "chatgpt":
-                    raw = check_chatgpt(query, key, models.get("chatgpt", "gpt-5"))
-                elif engine == "perplexity":
-                    raw = check_perplexity(query, key)
-                elif engine == "gemini":
-                    raw = check_gemini(query, key)
-                else:
-                    raw = check_serpapi(query, key, own_domains)
-            except Exception as exc:  # 個別失敗は記録して続行
-                detail = ""
-                resp = getattr(exc, "response", None)
-                if resp is not None:
-                    detail = f" / {resp.text[:300]}"
-                print(f"  -> エラー: {exc}{detail}")
-                reasons.setdefault(engine, set()).add(failure_reason(f"{exc}{detail}"))
-                continue
-            entry = evaluate(query_cfg, engine, raw, config)
-            mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
-            print(f"  -> {mark} ({entry['mention_position']})")
-            entries.append(entry)
-            time.sleep(5)  # 無料枠のRPM制限対策
+            for trial in range(1, trials_for(engine) + 1):
+                suffix = f" (試行 {trial}/{trials_for(engine)})" if trials_for(engine) > 1 else ""
+                print(f"[{engine}] {query}{suffix}")
+                try:
+                    if engine == "google_ai_mode":
+                        raw = check_google_ai_mode(query, key)
+                    elif engine == "claude":
+                        raw = check_claude(query, key, models.get("claude", "claude-opus-5"))
+                    elif engine == "chatgpt":
+                        raw = check_chatgpt(query, key, models.get("chatgpt", "gpt-5"))
+                    elif engine == "perplexity":
+                        raw = check_perplexity(query, key)
+                    elif engine == "gemini":
+                        raw = check_gemini(query, key)
+                    else:
+                        raw = check_serpapi(query, key, own_domains)
+                except Exception as exc:  # 個別失敗は記録して続行
+                    detail = ""
+                    resp = getattr(exc, "response", None)
+                    if resp is not None:
+                        detail = f" / {resp.text[:300]}"
+                    print(f"  -> エラー: {exc}{detail}")
+                    reasons.setdefault(engine, set()).add(failure_reason(f"{exc}{detail}"))
+                    continue
+                entry = evaluate(query_cfg, engine, raw, config, trial=trial)
+                mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
+                rank = f" / {entry['rank']}番目" if entry.get("rank") else ""
+                print(f"  -> {mark} ({entry['mention_position']}){rank}")
+                entries.append(entry)
+                time.sleep(5)  # 無料枠のRPM制限対策
 
     if not entries:
         print("観測結果が1件も取得できませんでした。")
@@ -445,7 +503,8 @@ def main() -> None:
     got = {e["engine"] for e in entries}
     dead = [e for e in active if e not in got]
 
-    out_path = OBS_DIR / f"{date}-auto.yml"
+    # 絞り込み実行は動作確認用なので、本番の週次データを上書きしない
+    out_path = OBS_DIR / (f"{date}-partial.yml" if only_ids else f"{date}-auto.yml")
     payload = {
         "date": date,
         "method": "api_auto",
@@ -456,7 +515,7 @@ def main() -> None:
         yaml.safe_dump(payload, f, allow_unicode=True, sort_keys=False, width=100)
     print(f"保存しました: {out_path}")
 
-    if dead:
+    if dead and not only_ids:
         # 原因が分かるものは原因を書く。「残高切れ」と「原因不明」では打つ手が違う。
         lines = []
         for engine in dead:

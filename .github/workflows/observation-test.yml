@@ -1,0 +1,89 @@
+name: 観測の動作確認（部分実行）
+
+# 質問を絞って観測を1回だけ回し、結果を確認するためのワークフロー。
+# 本番の週次観測（weekly-aio-check.yml）とは別物で、
+# 結果は data/observations/<日付>-partial.yml に保存され、週次レポートには混ざらない。
+#
+# 実行方法: .github/run-observation に質問IDを書いてpushする。
+on:
+  workflow_dispatch:
+    inputs:
+      queries:
+        description: "質問ID（カンマ区切り。例: q1,q23,q30）"
+        required: true
+        type: string
+  push:
+    branches:
+      - claude/aio-search-impact-tracking-auwbao
+    paths:
+      - ".github/run-observation"
+
+permissions:
+  contents: write
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve queries
+        id: target
+        env:
+          INPUT_QUERIES: ${{ inputs.queries }}
+        run: |
+          if [ -n "$INPUT_QUERIES" ]; then
+            queries="$INPUT_QUERIES"
+          else
+            queries="$(grep -v '^\s*#' .github/run-observation | grep -v '^\s*$' | head -1 | tr -d ' ')"
+          fi
+          if [ -z "$queries" ]; then
+            echo "質問IDが指定されていません"; exit 1
+          fi
+          echo "queries=$queries" >> "$GITHUB_OUTPUT"
+          echo "観測する質問: $queries"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run partial observation
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/auto_check.py --queries "${{ steps.target.outputs.queries }}"
+
+      - name: Show what was recorded
+        if: always()
+        run: |
+          f=$(ls -t data/observations/*-partial.yml 2>/dev/null | head -1)
+          if [ -z "$f" ]; then echo "保存されたファイルがありません"; exit 0; fi
+          echo "== $f =="
+          python - "$f" <<'PY'
+          import sys, yaml, collections
+          d = yaml.safe_load(open(sys.argv[1]))
+          rows = collections.defaultdict(list)
+          for q in d["queries"]:
+              rows[(q["query_id"], q["engine"])].append(q)
+          print(f"{'質問':5} {'エンジン':16} {'試行':4} {'出現':6} {'位置':12} 順位")
+          for (qid, engine), items in sorted(rows.items()):
+              hits = sum(1 for i in items if i.get("brand_mentioned"))
+              best = max(items, key=lambda i: {"none":0,"cited_only":1,"listed":2,"featured":3}[i["mention_position"]])
+              ranks = [i["rank"] for i in items if i.get("rank")]
+              rank = f"{min(ranks)}/{best.get('rank_total')}" if ranks else "-"
+              print(f"{qid:5} {engine:16} {len(items):4} {hits}/{len(items):4} {best['mention_position']:12} {rank}")
+          PY
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: partial-observation
+          path: data/observations/*-partial.yml
+          if-no-files-found: ignore
