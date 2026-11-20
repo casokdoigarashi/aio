@@ -15,11 +15,11 @@ import sys
 import requests
 import yaml
 
-from lib_common import ROOT, load_config
+from lib_common import NOTE_ARTICLES_PATH, load_config
 
 API = "https://note.com/api/v2/creators/{user}/contents"
 TIMEOUT = 30
-OUT_PATH = ROOT / "data" / "note_articles.yml"
+OUT_PATH = NOTE_ARTICLES_PATH
 
 
 def _pick(d: dict, *names, default=""):

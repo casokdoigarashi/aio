@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 import yaml
 
 from lib_common import (
+    NOTE_ARTICLES_PATH,
     POSITION_LABELS,
     ROOT,
     POSITION_SYMBOLS,
@@ -241,7 +242,7 @@ def build_accuracy_check(index, queries, engines, date) -> list[str]:
 
 
 def load_note_articles() -> list[dict]:
-    path = ROOT / "data" / "note_articles.yml"
+    path = NOTE_ARTICLES_PATH
     if not path.exists():
         return []
     with open(path, encoding="utf-8") as f:
@@ -527,7 +528,7 @@ def main() -> None:
         print("観測データがありません (data/observations/)。")
         return
 
-    REPORTS_DIR.mkdir(exist_ok=True)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     (REPORTS_DIR / "weekly").mkdir(exist_ok=True)
 
     summary_path = REPORTS_DIR / "summary.md"

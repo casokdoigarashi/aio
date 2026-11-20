@@ -1,0 +1,178 @@
+# =============================================================
+# AIO 定点観測 設定ファイル — AiMY（株式会社ツカモトコーポレーション）
+#
+#   AIO_CLIENT=aimy python scripts/auto_check.py
+#
+# データは data/aimy/ 配下に保存され、他社と混ざらない。
+# =============================================================
+
+client_id: aimy
+
+brand:
+  name: "AiMY"
+  # AI回答の中で「自社言及」と判定する表記ゆれ
+  aliases:
+    - "AiMY"
+    - "AIMY"
+    - "aimy"
+    - "エイミー"
+    - "ツカモトエイム"
+    - "ツカモトコーポレーション"
+  own_domains:
+    - "aimy-net.com"        # ブランドサイト
+    - "aimydirect.com"      # 公式EC
+    - "tsukamoto-aim.co.jp" # 会社サイト
+
+  # 自社が情報を出しているメディア・販路（引用元に出たら「関連メディア引用」）
+  # 2026-10-30 のプレスリリース転載先を掲載リストから登録。
+  # PR TIMESの配信がAI検索に効くのかを測るための中心的なデータになる。
+  related_domains:
+    - "prtimes.jp"
+    - "ascii.jp"
+    - "kakaku.com"          # 価格.com 新製品ニュース
+    - "mainichikirei.jp"
+    - "mapion.co.jp"
+    - "straightpress.jp"
+    - "keizai.biz"          # 品川・池袋・調布 各経済新聞
+    - "japantoday.com"
+    - "jj-jj.net"
+    - "digimaga.jp"
+    - "tohakusha.com"
+    - "note.com"            # 2026-11-20 公式note開設（公開開始）
+    - "makuake.com"
+    # 販路（自社が掲載内容をコントロールできるため関連扱い）
+    - "rakuten.co.jp"
+    - "amazon.co.jp"
+    - "paypaymall.yahoo.co.jp"
+
+# 競合（AI回答に登場したら記録する）
+# 2026-11-20 時点の暫定。実際に回答へ出てくるブランドを見て追加していく。
+competitors:
+  - name: "ルルド"
+    aliases: ["LOURDES", "アテックス"]
+    domains: ["atex-net.co.jp"]
+  - name: "ドクターエア"
+    aliases: ["DOCTORAIR", "Dr.Air"]
+    domains: ["doctorair.jp"]
+  - name: "パナソニック"
+    aliases: ["Panasonic"]
+    domains: ["panasonic.jp"]
+  - name: "MYTREX"
+    aliases: ["マイトレックス"]
+    domains: ["mytrex.jp"]
+
+# 定点観測クエリ
+# id は変えない（週次の時系列比較のキーになる）。追加はしてよい。
+#
+# 設計方針: ブランド名を含まない一般クエリを多めにする。
+# 指名検索で出るのは当たり前で、探している人が打つ言葉で名前が出るかが本番。
+queries:
+  # --- 指名・ブランド軸 ---
+  - id: q1
+    text: "AiMY 家電"
+    intent: "指名（ブランド）"
+  - id: q2
+    text: "エイミー マッサージャー"
+    intent: "指名（カタカナ表記）"
+  - id: q3
+    text: "AiMY エアリーシェイプ"
+    intent: "指名（主力商品）"
+  - id: q4
+    text: "AiMY エアリーフット"
+    intent: "指名（主力商品）"
+  - id: q5
+    text: "ツカモトエイム 評判"
+    intent: "指名（社名・評判）"
+  - id: q6
+    text: "AiMY エアリーシェイプ 価格"
+    intent: "指名×事実検査。AIが価格を正しく言えているか回答本文を確認する"
+
+  # --- カテゴリ軸（ブランド名なし。ここが本番） ---
+  - id: q7
+    text: "フットマッサージャー おすすめ"
+    intent: "カテゴリ（主力商品の一般クエリ）"
+  - id: q8
+    text: "ふくらはぎ マッサージ機 おすすめ"
+    intent: "カテゴリ（部位）"
+  - id: q9
+    text: "マッサージ器 コードレス おすすめ"
+    intent: "カテゴリ×特徴（コードレス）"
+  - id: q10
+    text: "美容家電 ブランド 日本"
+    intent: "カテゴリ（ブランド想起）"
+  - id: q11
+    text: "リカバリーウェア おすすめ 比較"
+    intent: "カテゴリ（新規参入領域）"
+  - id: q12
+    text: "ソーラーファン コードレス 扇風機"
+    intent: "カテゴリ（HOME領域）"
+  - id: q13
+    text: "足のむくみ 解消 家電"
+    intent: "悩み軸"
+  - id: q14
+    text: "エアーマッサージャー 足 おすすめ"
+    intent: "カテゴリ（機構）"
+  - id: q15
+    text: "美顔器 おすすめ 日本ブランド"
+    intent: "カテゴリ（BEAUTY領域）"
+
+  # --- 自然文・対話型 ---
+  - id: q16
+    text: "足のむくみが取れるマッサージ機のおすすめを教えてください"
+    intent: "自然文（悩み）"
+  - id: q17
+    text: "自宅で使えるフットマッサージャーはどれがいいですか？"
+    intent: "自然文（用途）"
+  - id: q18
+    text: "ふくらはぎと足裏を同時にほぐせる機器はありますか？"
+    intent: "自然文（機能）"
+  - id: q19
+    text: "コードレスで使えるマッサージ器を探しています。おすすめはどれですか？"
+    intent: "自然文（特徴）"
+  - id: q20
+    text: "リカバリーウェアはどのブランドがいいですか？"
+    intent: "自然文（ブランド選び）"
+  - id: q21
+    text: "デスクワークの足のむくみ対策に、家電でできることはありますか？"
+    intent: "自然文（課題解決）"
+
+  # --- 比較・選び方 ---
+  - id: q22
+    text: "フットマッサージャー 人気ブランド 比較"
+    intent: "比較（AIが一覧形式で答えやすい）"
+  - id: q23
+    text: "マッサージ機 選び方 ふくらはぎ"
+    intent: "選び方"
+  - id: q24
+    text: "家庭用マッサージ器 メーカー 一覧"
+    intent: "一覧（競合の発見用）"
+  - id: q25
+    text: "プレゼント 美容家電 おすすめ"
+    intent: "購買文脈"
+
+# 観測エンジン
+engines:
+  auto:
+    - google_ai_mode
+    - gemini
+    - claude
+    - chatgpt
+
+# note（1次情報の発信元）
+# 2026-11-20 時点で公開記事0件。ここから書き始めるため、
+# 「ゼロからの立ち上がり」を純粋に測れる状態になっている。
+note:
+  username: tsukamoto_note
+
+models:
+  claude: claude-opus-5
+  chatgpt: gpt-5
+
+trials:
+  default: 3
+  claude: 1
+  google_ai_mode: 1
+
+# 観測結果の書き込み先スプレッドシート（会社ごとに別ファイル）
+sheets:
+  spreadsheet_id: ""

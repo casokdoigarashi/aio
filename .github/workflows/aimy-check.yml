@@ -1,0 +1,84 @@
+# AiMY（株式会社ツカモトコーポレーション）のAIO定点観測。
+#
+# ARIGATO Living の週次ジョブとは別に走らせる。環境変数 AIO_CLIENT=aimy を渡すと
+# clients/aimy/config.yml を読み、結果は data/aimy/ に入る。両社のデータは混ざらない。
+#
+# 手で走らせたいとき: .github/run-aimy-check を書き換えてpushする。
+# （workflow_dispatch はこの連携からAPIで叩けないため、トリガーファイル方式を併用）
+name: AiMY AIO Check
+
+on:
+  schedule:
+    - cron: "30 0 * * 2" # 火曜 09:30 JST（ARIGATO Livingの30分後にずらす）
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/aio-search-impact-tracking-auwbao
+    paths:
+      - ".github/run-aimy-check"
+
+permissions:
+  contents: write
+
+jobs:
+  observe-and-report:
+    runs-on: ubuntu-latest
+    env:
+      AIO_CLIENT: aimy
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch note articles
+        continue-on-error: true
+        run: python scripts/fetch_note.py
+
+      - name: Run automated AI search observation
+        id: observe
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/auto_check.py
+
+      - name: Generate reports
+        run: python scripts/analyze.py
+
+      - name: Export to Google Sheets
+        id: sheets
+        continue-on-error: true
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "::warning::GOOGLE_SERVICE_ACCOUNT_JSON が未設定のため書き込みをスキップしました"
+            exit 0
+          fi
+          python scripts/export_sheets.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data reports
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "chore: AiMY AIO観測 $(date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Fail if an engine was completely down
+        if: steps.observe.outcome == 'failure'
+        run: |
+          echo "::error::観測に失敗したエンジンがあります。上のログでAPIキーと残高を確認してください。"
+          exit 1

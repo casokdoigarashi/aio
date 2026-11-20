@@ -1,16 +1,34 @@
 """AIO定点観測スクリプト共通処理。"""
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG_PATH = ROOT / "config" / "config.yml"
-OBS_DIR = ROOT / "data" / "observations"
-ACTIONS_PATH = ROOT / "data" / "actions.yml"
-REPORTS_DIR = ROOT / "reports"
+
+# 観測対象の会社。環境変数 AIO_CLIENT で切り替える。
+#
+#   未指定            … ARIGATO Living（2026-07からの既存データ。パスは変えない）
+#   AIO_CLIENT=aimy  … clients/aimy/config.yml と data/aimy/ を使う
+#
+# 会社ごとにデータディレクトリを分けるので、別の会社のデータが混ざらない。
+CLIENT = (os.getenv("AIO_CLIENT") or "").strip()
+
+if CLIENT:
+    CONFIG_PATH = ROOT / "clients" / CLIENT / "config.yml"
+    DATA_DIR = ROOT / "data" / CLIENT
+    REPORTS_DIR = ROOT / "reports" / CLIENT
+else:
+    CONFIG_PATH = ROOT / "config" / "config.yml"
+    DATA_DIR = ROOT / "data"
+    REPORTS_DIR = ROOT / "reports"
+
+OBS_DIR = DATA_DIR / "observations"
+ACTIONS_PATH = DATA_DIR / "actions.yml"
+NOTE_ARTICLES_PATH = DATA_DIR / "note_articles.yml"
 
 POSITION_SYMBOLS = {
     "featured": "◎",
@@ -27,6 +45,12 @@ POSITION_LABELS = {
 
 
 def load_config() -> dict:
+    if not CONFIG_PATH.exists():
+        raise SystemExit(
+            f"設定ファイルがありません: {CONFIG_PATH}\n"
+            + (f"会社ID '{CLIENT}' の設定を clients/{CLIENT}/config.yml に作ってください。"
+               if CLIENT else "config/config.yml を確認してください。")
+        )
     with open(CONFIG_PATH, encoding="utf-8") as f:
         return yaml.safe_load(f)
 
