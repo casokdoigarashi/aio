@@ -481,10 +481,27 @@ def main() -> None:
         if len(qs) < len(queries):
             print(f"  {engine}: {len(qs)}問に絞って実行（engine_queries）")
 
+    # 絞り込み実行は動作確認用なので、本番の週次データを上書きしない
+    out_path = OBS_DIR / (f"{date}-partial.yml" if only_ids else f"{date}-auto.yml")
+    OBS_DIR.mkdir(parents=True, exist_ok=True)
+
+    def save(entries: list[dict]) -> None:
+        payload = {
+            "date": date,
+            "method": "api_auto",
+            "source": f"自動観測 ({', '.join(active)})",
+            "queries": entries,
+        }
+        tmp = out_path.with_suffix(".yml.tmp")
+        with open(tmp, "w", encoding="utf-8") as f:
+            yaml.safe_dump(payload, f, allow_unicode=True, sort_keys=False, width=100)
+        tmp.replace(out_path)  # 書き込み途中で落ちても壊れたファイルを残さない
+
     entries = []
     reasons: dict[str, set[str]] = {}  # エンジンごとの失敗理由
-    for query_cfg in queries:
+    for qi, query_cfg in enumerate(queries, start=1):
         query = query_cfg["text"]
+        print(f"=== {qi}/{len(queries)} {query_cfg['id']} ({time.strftime('%H:%M:%S')})")
         for engine, key in active.items():
             if query_cfg["id"] not in {q["id"] for q in plans[engine]}:
                 continue
@@ -519,6 +536,12 @@ def main() -> None:
                 entries.append(entry)
                 time.sleep(5)  # 無料枠のRPM制限対策
 
+        # 1問終わるごとに保存する。
+        # 25問×4エンジンだと2時間近くかかるため、最後にまとめて書く作りだと
+        # ジョブを止めたり落ちたりした時点で、それまでのAPI費用が丸ごと無駄になる。
+        if entries:
+            save(entries)
+
     if not entries:
         print("観測結果が1件も取得できませんでした。")
         sys.exit(1)
@@ -530,17 +553,8 @@ def main() -> None:
     # 最初から実行対象外なので欠測扱いにしない
     dead = [e for e in active if e not in got and plans[e]]
 
-    # 絞り込み実行は動作確認用なので、本番の週次データを上書きしない
-    out_path = OBS_DIR / (f"{date}-partial.yml" if only_ids else f"{date}-auto.yml")
-    payload = {
-        "date": date,
-        "method": "api_auto",
-        "source": f"自動観測 ({', '.join(active)})",
-        "queries": entries,
-    }
-    with open(out_path, "w", encoding="utf-8") as f:
-        yaml.safe_dump(payload, f, allow_unicode=True, sort_keys=False, width=100)
-    print(f"保存しました: {out_path}")
+    save(entries)
+    print(f"保存しました: {out_path}（{len(entries)}件）")
 
     if dead and not only_ids:
         # 原因が分かるものは原因を書く。「残高切れ」と「原因不明」では打つ手が違う。
