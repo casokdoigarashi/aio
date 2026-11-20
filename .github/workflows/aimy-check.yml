@@ -72,10 +72,17 @@ jobs:
           git add data reports
           if git diff --cached --quiet; then
             echo "変更なし"
-          else
-            git commit -m "chore: AiMY AIO観測 $(date +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "chore: AiMY AIO観測 $(date +%Y-%m-%d)"
+          # 観測の実行中に誰かが同じブランチへpushしていると push が弾かれ、
+          # せっかく取った観測データが失われる（取り直しはAPI費用がかかる）。
+          # 一度だけ rebase して乗せ直してから再試行する。
+          git push || {
+            echo "::warning::pushが弾かれたため rebase して再試行します"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          }
 
       - name: Fail if an engine was completely down
         if: steps.observe.outcome == 'failure'
