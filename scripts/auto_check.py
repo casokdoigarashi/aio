@@ -455,14 +455,39 @@ def main() -> None:
             print(f"指定された質問IDが見つかりません: {', '.join(sorted(only_ids))}")
             sys.exit(2)
 
-    planned = sum(trials_for(e) for e in active) * len(queries)
+    # エンジンごとに質問を絞る（config.yml の engine_queries）。
+    # Google AI Mode は SerpApi の検索回数（無料枠 月250回）を消費するため、
+    # 複数社を観測すると全問打つと枠を超える。重要な質問だけに絞るのに使う。
+    # 指定がないエンジンは全問打つ。
+    engine_queries_cfg = config.get("engine_queries", {}) or {}
+    all_ids = {q["id"] for q in queries}
+    for engine, ids in engine_queries_cfg.items():
+        unknown = sorted(set(ids) - {q["id"] for q in config["queries"]})
+        if unknown:
+            print(f"engine_queries.{engine} に存在しない質問IDがあります: {', '.join(unknown)}")
+            sys.exit(2)
+
+    def queries_for(engine: str) -> list[dict]:
+        ids = engine_queries_cfg.get(engine)
+        if not ids:
+            return queries
+        wanted_ids = set(ids) & all_ids
+        return [q for q in queries if q["id"] in wanted_ids]
+
+    plans = {e: queries_for(e) for e in active}
+    planned = sum(trials_for(e) * len(qs) for e, qs in plans.items())
     print(f"質問 {len(queries)}問 × エンジン {len(active)} → 呼び出し {planned} 回")
+    for engine, qs in plans.items():
+        if len(qs) < len(queries):
+            print(f"  {engine}: {len(qs)}問に絞って実行（engine_queries）")
 
     entries = []
     reasons: dict[str, set[str]] = {}  # エンジンごとの失敗理由
     for query_cfg in queries:
         query = query_cfg["text"]
         for engine, key in active.items():
+            if query_cfg["id"] not in {q["id"] for q in plans[engine]}:
+                continue
             for trial in range(1, trials_for(engine) + 1):
                 suffix = f" (試行 {trial}/{trials_for(engine)})" if trials_for(engine) > 1 else ""
                 print(f"[{engine}] {query}{suffix}")
@@ -501,7 +526,9 @@ def main() -> None:
     # 全滅したエンジンの検出。1エンジンが落ちても他が動くと成功扱いになり、
     # 欠測に何週間も気づけないため、保存はした上で最後に失敗させる。
     got = {e["engine"] for e in entries}
-    dead = [e for e in active if e not in got]
+    # 絞り込みで1問も割り当てられなかったエンジンは、落ちたのではなく
+    # 最初から実行対象外なので欠測扱いにしない
+    dead = [e for e in active if e not in got and plans[e]]
 
     # 絞り込み実行は動作確認用なので、本番の週次データを上書きしない
     out_path = OBS_DIR / (f"{date}-partial.yml" if only_ids else f"{date}-auto.yml")

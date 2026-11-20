@@ -111,4 +111,33 @@ SerpApiの月枠（250）とAnthropicのクレジットを消費し切った。
 | OpenAI（ChatGPT） | https://platform.openai.com/settings/organization/billing | 都度チャージ |
 | SerpApi（Google AIモード） | https://serpapi.com/dashboard | 無料プラン月250検索、毎月リセット |
 
-通常運転の消費は週10クエリ×4エンジン。SerpApiは月43検索程度で、無料枠に収まる。
+## SerpApiの無料枠の配分（複数社を観測する場合）
+
+SerpApiの無料枠は**月250検索**で、これが複数社展開の律速になる。
+Claude/Gemini/ChatGPTは従量課金なので増やせるが、SerpApiは枠を超えると止まる。
+
+| 会社 | Google AI Modeに回す質問数 | 月の消費 |
+|---|---|---|
+| ARIGATO Living | 30問（全問） | 130回 |
+| AiMY | 12問（`engine_queries` で絞り） | 52回 |
+| **合計** | | **182回**（残68回） |
+
+残68回は、再実行・調査・新規1社の立ち上げ分として空けてある。
+
+### 絞り方
+
+`config.yml` に `engine_queries` を書くと、そのエンジンだけ質問を絞れる。
+指定のないエンジンは全問打つ。
+
+```yaml
+engine_queries:
+  google_ai_mode:
+    - q1
+    - q7
+```
+
+絞ったエンジンは、その週に1問も割り当てられなくても欠測扱いにしない。
+
+3社目を足すときは、まずこの表を更新して合計が250に収まるか確認する。
+収まらない場合の選択肢は、質問をさらに絞る／隔週にする／有料プラン
+（月$75・5,000検索）に上げる。
