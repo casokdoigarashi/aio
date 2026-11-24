@@ -297,7 +297,22 @@ def check_google_ai_mode(query: str, api_key: str) -> dict:
     return {"text": text, "citations": citations}
 
 
-def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict, trial: int = 1) -> dict:
+def query_text_for(query_cfg: dict, engine: str) -> str:
+    """そのエンジンに実際に投げる質問文。
+
+    config.yml の各質問に text_by_engine を書くと、そのエンジンだけ
+    別の言い方で聞ける。書いていないエンジンは text をそのまま使う。
+
+    同じ意図を別の言い方で聞くため、質問IDは変えない（時系列が切れる）。
+    実際に投げた文は観測データの asked に残すので、あとから追える。
+    """
+    per = query_cfg.get("text_by_engine") or {}
+    return per.get(engine) or query_cfg["text"]
+
+
+def evaluate(
+    query_cfg: dict, engine: str, raw: dict, config: dict, trial: int = 1, asked: str | None = None
+) -> dict:
     text = raw.get("text", "")
     citations = [c for c in raw.get("citations", []) if c]
     cite_flags = classify_citations(citations, config)
@@ -315,6 +330,8 @@ def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict, trial: int =
     entry = {
         "query_id": query_cfg["id"],
         "query": query_cfg["text"],
+        # 実際に投げた文。text と違う場合はエンジン別の言い方を使っている
+        "asked": asked or query_cfg["text"],
         "engine": engine,
         "trial": trial,
         "rank": rank,
@@ -507,11 +524,13 @@ def main() -> None:
     entries = []
     reasons: dict[str, set[str]] = {}  # エンジンごとの失敗理由
     for qi, query_cfg in enumerate(queries, start=1):
-        query = query_cfg["text"]
         print(f"=== {qi}/{len(queries)} {query_cfg['id']} ({time.strftime('%H:%M:%S')})")
         for engine, key in active.items():
             if query_cfg["id"] not in {q["id"] for q in plans[engine]}:
                 continue
+            # エンジンごとに聞き方を変える。ChatGPTは短いキーワードだと
+            # 候補を挙げずに聞き返すため、文章で聞く必要がある。
+            query = query_text_for(query_cfg, engine)
             for trial in range(1, trials_for(engine) + 1):
                 suffix = f" (試行 {trial}/{trials_for(engine)})" if trials_for(engine) > 1 else ""
                 print(f"[{engine}] {query}{suffix}")
@@ -536,7 +555,7 @@ def main() -> None:
                     print(f"  -> エラー: {exc}{detail}")
                     reasons.setdefault(engine, set()).add(failure_reason(f"{exc}{detail}"))
                     continue
-                entry = evaluate(query_cfg, engine, raw, config, trial=trial)
+                entry = evaluate(query_cfg, engine, raw, config, trial=trial, asked=query)
                 mark = "言及あり" if entry["brand_mentioned"] else "言及なし"
                 rank = f" / {entry['rank']}番目" if entry.get("rank") else ""
                 print(f"  -> {mark} ({entry['mention_position']}){rank}")
