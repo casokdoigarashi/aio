@@ -30,6 +30,7 @@ import yaml
 
 from lib_common import (
     OBS_DIR,
+    is_ask_back,
     list_rank,
     brand_position,
     classify_citations,
@@ -305,6 +306,12 @@ def evaluate(query_cfg: dict, engine: str, raw: dict, config: dict, trial: int =
     if not mentioned and (cite_flags["own_site_cited"] or cite_flags["related_cited"]):
         position = "cited_only"
     rank, rank_total = list_rank(text, config)
+    # 候補を挙げずに条件を聞き返しただけの回答は「言及なし」と分けて記録する。
+    # 位置に関係なく判定する: 指名クエリでは質問文のブランド名が回答に残るため、
+    # 聞き返しでも「筆頭で紹介(◎)」と誤って数えてしまう。
+    if is_ask_back(text, citations):
+        position = "no_answer"
+        mentioned = False
     entry = {
         "query_id": query_cfg["id"],
         "query": query_cfg["text"],

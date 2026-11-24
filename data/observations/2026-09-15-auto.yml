@@ -228,7 +228,7 @@ queries:
   query: 神楽坂 ハウススタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -662,7 +662,7 @@ queries:
   query: 神楽坂 スタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1064,7 +1064,7 @@ queries:
   query: ハウススタジオ 北欧家具 撮影
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1226,8 +1226,8 @@ queries:
 - query_id: q6
   query: ARIGATO Living
   engine: claude
-  brand_mentioned: true
-  mention_position: featured
+  brand_mentioned: false
+  mention_position: no_answer
   mention_text: 'I''m not sure what you''re referring to with "ARIGATO Living." Could you clarify?
 
 
@@ -1254,6 +1254,7 @@ queries:
 
     Let me know what you have in mind, and if you''d like, I can search the web for it.'
   notes: ''
+  was_position: featured
 - query_id: q6
   query: ARIGATO Living
   engine: chatgpt

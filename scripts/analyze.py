@@ -40,7 +40,19 @@ def symbol(entry: dict) -> str:
     return POSITION_SYMBOLS.get(entry.get("mention_position") or "none", "－")
 
 
-POSITION_RANK = {"none": 0, "cited_only": 1, "listed": 2, "featured": 3}
+# 「回答なし（条件を聞き返された）」は×より下に置く。
+# 同じ質問を複数回聞いて、1回でも実際に回答が返っていれば、
+# その回答を代表値にしたい（聞き返しは観測できなかった扱い）。
+POSITION_RANK = {"no_answer": -1, "none": 0, "cited_only": 1, "listed": 2, "featured": 3}
+
+
+def answered(entries: list[dict]) -> list[dict]:
+    """候補を挙げずに条件を聞き返しただけの回答を除く。
+
+    出現率の分母に入れると、「候補に挙げてもらえなかった」のと
+    「そもそも候補が出てこなかった」が混ざって率が実態より低く出る。
+    """
+    return [e for e in entries if (e.get("mention_position") or "none") != "no_answer"]
 
 
 def _merge_trials(entries: list[dict]) -> dict:
@@ -298,10 +310,13 @@ def build_note_impact(index, dates, articles) -> list[str]:
             for e in entries
             for s in e.get("cited_sources", [])
         )
-        mentioned = sum(1 for e in entries if e.get("brand_mentioned"))
+        ans = answered(entries)
+        mentioned = sum(1 for e in ans if e.get("brand_mentioned"))
+        skipped = len(entries) - len(ans)
+        rate = f"{mentioned}/{len(ans)}" + (f"（聞き返し{skipped}件を除く）" if skipped else "")
         lines.append(
             f"| {date} | {len(published)}本 | {len(recent)}本 | "
-            f"{'✅ あり' if note_cited else '—'} | {mentioned}/{len(entries)} |"
+            f"{'✅ あり' if note_cited else '—'} | {rate} |"
         )
     lines += [
         "",
@@ -324,7 +339,12 @@ def build_summary(config, observations, actions) -> str:
         f"最終更新: {today} ／ 観測回数: {len(dates)}回 "
         f"({dates[0]} 〜 {dates[-1]})" if dates else "観測データなし",
         "",
-        "凡例: ◎ 筆頭で紹介 ／ ○ リスト内で言及 ／ △ 引用リンクのみ ／ × 言及なし ／ － 未観測",
+        "凡例: ◎ 筆頭で紹介 ／ ○ リスト内で言及 ／ △ 引用リンクのみ ／ × 言及なし"
+        " ／ ？ 候補が出ず条件を聞き返された ／ － 未観測",
+        "",
+        "「？」は、AIが候補を挙げずに「用途・日時・予算を教えてください」と"
+        "聞き返してきた回答。候補に挙げてもらえなかった「×」とは別に数え、"
+        "出現率の分母からも外している。短いキーワードのときにChatGPTで起きる。",
         "",
     ]
 
@@ -359,8 +379,12 @@ def build_summary(config, observations, actions) -> str:
             if not entries:
                 cells.append("－")
                 continue
-            mentioned = sum(1 for e in entries if e.get("brand_mentioned"))
-            cells.append(f"{mentioned}/{len(entries)}")
+            ans = answered(entries)
+            if not ans:  # 全部が聞き返しだった週
+                cells.append("－")
+                continue
+            mentioned = sum(1 for e in ans if e.get("brand_mentioned"))
+            cells.append(f"{mentioned}/{len(ans)}")
         lines.append(
             f"| {ENGINE_LABELS.get(engine, engine)} | " + " | ".join(cells) + " |"
         )

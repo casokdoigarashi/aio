@@ -211,7 +211,7 @@ queries:
   query: 神楽坂 ハウススタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -430,7 +430,7 @@ queries:
   query: 神楽坂 撮影スタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -704,7 +704,7 @@ queries:
   query: 神楽坂 スタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1147,7 +1147,7 @@ queries:
   query: ハウススタジオ 北欧家具 撮影
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1420,8 +1420,8 @@ queries:
 - query_id: q6
   query: ARIGATO Living
   engine: chatgpt
-  brand_mentioned: true
-  mention_position: featured
+  brand_mentioned: false
+  mention_position: no_answer
   mention_text: 'Could you clarify what you mean by “ARIGATO Living”? For example, are you looking for:
 
     - A translation or slogan idea (e.g., a brand name meaning “Tha'
@@ -1443,6 +1443,7 @@ queries:
 
     Tell me which, and I’ll dive in.'
   notes: ''
+  was_position: featured
 - query_id: q7
   query: 神楽坂でおすすめの撮影スタジオを教えてください
   engine: google_ai_mode

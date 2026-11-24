@@ -191,7 +191,7 @@ queries:
   query: 神楽坂 ハウススタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -651,7 +651,7 @@ queries:
   query: 神楽坂 スタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -951,7 +951,7 @@ queries:
   query: 東京 ハウススタジオ 自然光
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1097,7 +1097,7 @@ queries:
   query: ハウススタジオ 北欧家具 撮影
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1127,8 +1127,8 @@ queries:
 - query_id: q6
   query: ARIGATO Living
   engine: google_ai_mode
-  brand_mentioned: true
-  mention_position: featured
+  brand_mentioned: false
+  mention_position: no_answer
   mention_text: 'お探しの「ARIGATO Living」についてですね。
 
 
@@ -1151,6 +1151,7 @@ queries:
 
     '
   notes: ''
+  was_position: featured
 - query_id: q6
   query: ARIGATO Living
   engine: gemini
@@ -1266,8 +1267,8 @@ queries:
 - query_id: q6
   query: ARIGATO Living
   engine: chatgpt
-  brand_mentioned: true
-  mention_position: featured
+  brand_mentioned: false
+  mention_position: no_answer
   mention_text: 'Got it—what would you like to do with “ARIGATO Living”?
 
 
@@ -1292,6 +1293,7 @@ queries:
 
     Tell me which you’re after.'
   notes: ''
+  was_position: featured
 - query_id: q7
   query: 神楽坂でおすすめの撮影スタジオを教えてください
   engine: google_ai_mode

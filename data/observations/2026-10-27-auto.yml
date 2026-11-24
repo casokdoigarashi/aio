@@ -113,7 +113,7 @@ queries:
   query: 神楽坂 ハウススタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -351,7 +351,7 @@ queries:
   query: 神楽坂 スタジオ
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -712,7 +712,7 @@ queries:
   query: ハウススタジオ 北欧家具 撮影
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
@@ -1104,7 +1104,7 @@ queries:
   query: 対談 撮影 スタジオ 東京
   engine: chatgpt
   brand_mentioned: false
-  mention_position: none
+  mention_position: no_answer
   mention_text: ''
   cited: false
   cited_sources: []
